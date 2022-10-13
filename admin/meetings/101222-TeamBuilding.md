@@ -8,8 +8,6 @@
   - Learn each others strengths and experience
   - discuss forming teams
 
-- R
-
 - Discuss Team "Brand" / Culture
   - Colors, logo, mascot, fonts, etc
 
@@ -24,9 +22,7 @@
         
 - Availability, can we make this a weekly thing?
 
-## Meetings Notes:
-
-Attendence:
+## Attendence:
 
 Jacob 
 Haoyang
@@ -38,4 +34,25 @@ Hongkun
 Neal
 Beomsu
 Anh
+
+## Discussed:
+
+Team video: send a 10-15 second video saying 1 fun fact or something interesting about you
+send a download link or the file over slack with your year and major included in the message to add to the video send by mid-day saturday.  Will try and have the video ready that night
+
+Team page, is in /admin folder on github repo, add your information and help out with the overall page if you desire, is currently a skeleton
+
+Team Branding, possibly using navy and oragne as our colors?
+
+Group Contract: checkout the group contract in admin/rules.md, read over and understand it, add anything you think should be included, should be finalized by friday, create a copy sign and upload back to repo as a pdf
+
+## Left for Discussion:
+
+- Brand / Culture
+  - still need a logo team name
+
+- Start brainstorming our app architecture
+
+
+
 
