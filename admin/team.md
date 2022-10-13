@@ -10,6 +10,7 @@ our core values are
 
 ## The Crew!
 <hr>
+Format 1
 
 ### **First, Lastname**
 
@@ -25,22 +26,15 @@ possible add an image?
 
 <hr>
 
+Format number 2:
+
+
 ### **First, Lastname**
 
-- Major
-- Year
-- [Page](link)
-
-little summary about yourself and your goals for this quarter
-
-possible add an image?
-
-![image](images/image.jpg)
-
-<hr>
+| - major<br>- year<br>- [Page](link)<br><br>Little bit about yourself here<br>can cover a couple<br>of lines if needed | ![image](images/image.jpg) |
+|-----------------------------------------------------------------------------------------------------------------------|---------------------|
 
 
+you can use this site to make generating the table easier then editing in here if we choose to use format 2 with the text on the left and image on the right
 
-
-
-
+https://www.tablesgenerator.com/markdown_tables
