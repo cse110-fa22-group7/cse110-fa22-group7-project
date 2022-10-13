@@ -1,6 +1,6 @@
 
 # Team Building
-> 10/12/2022 From 8:00 - ...
+> 10/12/2022 From 8:00 - 9:00ish
 
 ## Meeting Goals:
 
