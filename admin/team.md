@@ -59,4 +59,4 @@ I'm a normal computer science student. My goals are to make money and get muscle
 
 Hi! Excited to see how this quarter is going to go and what application we end up making. My goals for the quarter is to learn as much as I can and hopefully apply all these skills in the future.
 
-![image](images/ritaimage.jpg)
+![image](images/ritaimage.jpg =1512×2016)
