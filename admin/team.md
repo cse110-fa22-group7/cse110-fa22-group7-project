@@ -38,3 +38,15 @@ Format number 2:
 you can use this site to make generating the table easier then editing in here if we choose to use format 2 with the text on the left and image on the right
 
 https://www.tablesgenerator.com/markdown_tables
+
+
+### Lucas,Xu
+-Computer Science
+
+-Junior
+
+-[Page](https://lucas22368.github.io/Projects/)
+
+I'm a normal computer science student. My goals are to make money and get muscles this quarter. In this picture I am not smiling because I just took the midterm
+
+![image](images/lucaspage.jpg)
