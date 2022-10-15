@@ -1,6 +1,6 @@
 # TEAM 7!
 
-Here at **_TEAM 7tm_** we __value__ things like uhhhhhhh creativity and other such things
+Here at **_TEAM 7_** we __value__ things like uhhhhhhh creativity and other such things
 our core values are 
 
 - this
@@ -50,3 +50,13 @@ https://www.tablesgenerator.com/markdown_tables
 I'm a normal computer science student. My goals are to make money and get muscles this quarter. In this picture I am not smiling because I just took the midterm
 
 ![image](images/lucaspage.jpg)
+
+### **Rita Abraham**
+
+- Major: Bioinformatics (Computer Science minor)
+- Year: Senior
+- Link to my GitHub Page: [Page]([link](https://rabraham-7482.github.io))
+
+Hi! Excited to see how this quarter is going to go and what application we end up making. My goals for the quarter is to learn as much as I can and hopefully apply all these skills in the future.
+
+![image](images/ritaimage.jpg)
