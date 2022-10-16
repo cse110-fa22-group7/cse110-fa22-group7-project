@@ -60,3 +60,13 @@ I'm a normal computer science student. My goals are to make money and get muscle
 Hi! Excited to see how this quarter is going to go and what application we end up making. My goals for the quarter is to learn as much as I can and hopefully apply all these skills in the future.
 
 <img src="./images/ritaimage.jpg"  width="50%" height="50%">
+
+### **Jenny Nguyen**
+
+- Major: Computer Science
+- Year: Junior
+- [Page](https://jen013.github.io/User-Page/)
+
+I'm a third year student studying computer science. Since I'm currently undecided on what I'd like to specialize in for my major, I'd like to explore/learn more about different CS fields this quarter.
+
+<img src="images/jennypage.jpg" width="50%">
