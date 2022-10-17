@@ -1,6 +1,6 @@
 # TEAM 7!
 
-Here at **_TEAM 7_** we __value__ things like uhhhhhhh creativity and other such things
+Here at **_TEAM 7_** we value team work and integrity
 our core values are 
 
 - Honesty
