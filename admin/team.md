@@ -70,3 +70,15 @@ Hi! Excited to see how this quarter is going to go and what application we end u
 I'm a third year student studying computer science. Since I'm currently undecided on what I'd like to specialize in for my major, I'd like to explore/learn more about different CS fields this quarter.
 
 <img src="images/jennypage.jpg" width="50%">
+
+### **Hongkun Guan**
+
+- Major: Computer Science
+- Year: Senior
+- [Page](https://hongkun882.github.io/User-Page/)
+
+Hi, everyone! I'm a forth year CS student. My goal of this quarter is learning more CS concepts and deepen my CS knowledge.  
+
+<img src="images/Hongkun-Page-img.jpeg" width="30%" height="30%">
+
+
