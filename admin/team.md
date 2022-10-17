@@ -45,7 +45,7 @@ Format 1
 
 - Computer Engineering
 - Junior
-- [Page](https://nparimoo13.github.io/Lab-2/)
+- [Page]( https://nparimoo13.github.io/About-Me/)
 
 I am a third year Computer Engineering major and my goal is that after I have finished this course I will truly understand what it means to be a software engineer and being on a team.
 
