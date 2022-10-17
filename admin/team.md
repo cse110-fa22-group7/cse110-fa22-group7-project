@@ -3,10 +3,10 @@
 Here at **_TEAM 7_** we __value__ things like uhhhhhhh creativity and other such things
 our core values are 
 
-- this
-- is 
-- a 
-- list of values
+- Honesty
+- Respect
+- Dedication
+- Perseverance 
 
 ## The Crew!
 <hr>
@@ -39,7 +39,18 @@ you can use this site to make generating the table easier then editing in here i
 
 https://www.tablesgenerator.com/markdown_tables
 
+Format 1
 
+### **Neal Parimoo**
+
+- Computer Engineering
+- Junior
+- [Page](https://nparimoo13.github.io/Lab-2/)
+
+I am a third year Computer Engineering major and my goal is that after I have finished this course I will truly understand what it means to be a software engineer and being on a team.
+
+<img src="./images/NealImage"  width="50%" height="50%">
+<hr>
 ### Lucas,Xu
 -Computer Science
 
@@ -55,7 +66,7 @@ I'm a normal computer science student. My goals are to make money and get muscle
 
 - Major: Bioinformatics (Computer Science minor)
 - Year: Senior
-- Link to my GitHub Page: [Page]([link](https://rabraham-7482.github.io))
+- Link to my GitHub Page: [Page](https://rabraham-7482.github.io)
 
 Hi! Excited to see how this quarter is going to go and what application we end up making. My goals for the quarter is to learn as much as I can and hopefully apply all these skills in the future.
 
