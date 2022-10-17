@@ -16,7 +16,7 @@ our core values are
 
 - Computer Science
 - Junior
-- [Page]( [https://nparimoo13.github.io/About-Me/](https://sideblade.github.io/CSE110/))
+- [Page]((https://sideblade.github.io/CSE110/)
 
 Hi everybody! I'm excited to work with everyone and learn new skills to prepare for the industry. I'm also looking forawrd to working in a new (to me) environment that involves collaboration with a great team.
 
