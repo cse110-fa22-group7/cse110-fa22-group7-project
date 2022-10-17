@@ -71,6 +71,7 @@ I'm a third year student studying computer science. Since I'm currently undecide
 
 <img src="images/jennypage.jpg" width="50%">
 
+
 ### **Hongkun Guan**
 
 - Major: Computer Science
@@ -90,3 +91,12 @@ Hi, everyone! I'm a forth year CS student. My goal of this quarter is learning m
 Hi, I feel so great to have this workspace together with my teammeats and exited to start building our project! I'm passioned in robotics and machine learning but also hope to find other things interesting and useful during this quarter.
 
 <img src="images/yaosenimage.jpg" width="30%">
+
+### **Beomsu Kim**
+ - Major: Computer Engineering
+ - Year: Senior
+ - [Page](https://bkim9.github.io/Bio/)
+
+I am a senior computer engineering major. I just came back from serving military in my country. I hope to have a great time working with my team. I like my short haircut in my picture.
+
+<img src="images/beomsupage.jpg" width="30%">
