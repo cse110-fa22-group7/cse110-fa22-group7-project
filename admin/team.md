@@ -9,37 +9,8 @@ our core values are
 - Perseverance 
 
 ## The Crew!
-<hr>
-Format 1
-
-### **First, Lastname**
-
-- Major
-- Year
-- [Page](link)
-
-little summary about yourself and your goals for this quarter
-
-possible add an image?
-
-![image](images/image.jpg)
 
 <hr>
-
-Format number 2:
-
-
-### **First, Lastname**
-
-| - major<br>- year<br>- [Page](link)<br><br>Little bit about yourself here<br>can cover a couple<br>of lines if needed | ![image](images/image.jpg) |
-|-----------------------------------------------------------------------------------------------------------------------|---------------------|
-
-
-you can use this site to make generating the table easier then editing in here if we choose to use format 2 with the text on the left and image on the right
-
-https://www.tablesgenerator.com/markdown_tables
-
-Format 1
 
 ### **Neal Parimoo**
 
@@ -50,6 +21,7 @@ Format 1
 I am a third year Computer Engineering major and my goal is that after I have finished this course I will truly understand what it means to be a software engineer and being on a team.
 
 <img src="./images/NealImage.jpg"  width="50%" height="50%">
+<hr>
 
 ### **Lucas Xu**
 
@@ -62,6 +34,7 @@ I am a third year Computer Engineering major and my goal is that after I have fi
 I'm a normal computer science student. My goals are to make money and get muscles this quarter. In this picture I am not smiling because I just took the midterm
 
 ![image](images/lucaspage.jpg)
+<hr>
 
 ### **Rita Abraham**
 
@@ -72,6 +45,7 @@ I'm a normal computer science student. My goals are to make money and get muscle
 Hi! Excited to see how this quarter is going to go and what application we end up making. My goals for the quarter is to learn as much as I can and hopefully apply all these skills in the future.
 
 <img src="./images/ritaimage.jpg"  width="50%" height="50%">
+<hr>
 
 ### **Jenny Nguyen**
 
@@ -83,6 +57,7 @@ I'm a third year student studying computer science. Since I'm currently undecide
 
 <img src="images/jennypage.jpg" width="50%">
 
+<hr>
 
 ### **Hongkun Guan**
 
@@ -94,6 +69,8 @@ Hi, everyone! I'm a forth year CS student. My goal of this quarter is learning m
 
 <img src="images/Hongkun-Page-img.jpeg" width="30%" height="30%">
 
+<hr>
+
 ### **Yaosen Zhang**
 
 - Major: Applied Math & Computer Engineering (Double)
@@ -104,6 +81,8 @@ Hi, I feel so great to have this workspace together with my teammeats and exited
 
 <img src="images/yaosenimage.jpg" width="30%">
 
+<hr>
+
 ### **Beomsu Kim**
  - Major: Computer Engineering
  - Year: Senior
@@ -112,3 +91,16 @@ Hi, I feel so great to have this workspace together with my teammeats and exited
 I am a senior computer engineering major. I just came back from serving military in my country. I hope to have a great time working with my team. I like my short haircut in my picture.
 
 <img src="images/beomsupage.jpg" width="30%">
+
+<hr>
+
+### **Jacob Yenney**
+
+ - Major: Computer Science
+ - Year: 3rd
+ - [Page](https://jarnke.github.io/CSE110Lab0/)
+
+Hey!  I'm excited to work with everyone this quarter, and hope to learn valuable time/project management skills as we work together to create our app!
+
+<img src="images/jakeimage.jpg" width="30%">
+ 
