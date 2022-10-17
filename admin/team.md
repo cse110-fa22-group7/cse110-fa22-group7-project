@@ -51,11 +51,9 @@ I am a third year Computer Engineering major and my goal is that after I have fi
 
 <img src="./images/NealImage.jpg"  width="50%" height="50%">
 <hr>
-### Lucas,Xu
+### **Lucas,Xu**
 -Computer Science
-
 -Junior
-
 -[Page](https://lucas22368.github.io/Projects/)
 
 I'm a normal computer science student. My goals are to make money and get muscles this quarter. In this picture I am not smiling because I just took the midterm
