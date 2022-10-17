@@ -81,4 +81,12 @@ Hi, everyone! I'm a forth year CS student. My goal of this quarter is learning m
 
 <img src="images/Hongkun-Page-img.jpeg" width="30%" height="30%">
 
+### **Yaosen Zhang**
 
+- Major: Applied Math & Computer Engineering (Double)
+- Year: Senior
+- [My page](https://neb345.github.io/GitHub-Pages/)
+
+Hi, I feel so great to have this workspace together with my teammeats and exited to start building our project! I'm passioned in robotics and machine learning but also hope to find other things interesting and useful during this quarter.
+
+<img src="images/yaosenimage.jpg" width="30%">
