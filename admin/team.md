@@ -49,7 +49,7 @@ Format 1
 
 I am a third year Computer Engineering major and my goal is that after I have finished this course I will truly understand what it means to be a software engineer and being on a team.
 
-<img src="./images/NealImage"  width="50%" height="50%">
+<img src="./images/NealImage.jpg"  width="50%" height="50%">
 <hr>
 ### Lucas,Xu
 -Computer Science
