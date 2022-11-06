@@ -12,6 +12,14 @@ input {
     font-weight: 600;
 }
 
+button {
+    color: black;
+    font-weight: 600;
+    border-radius: 2rem;
+    width: 150px;
+    height: 50px;
+}
+
 .appinfo {
     display: flex;
     flex-direction: row;
@@ -20,18 +28,24 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    border-bottom: 1px solid white;
 }
 main {
     display: grid;
     grid-template-columns: 3fr 7fr;
-    grid-template-rows: 9rem auto;
+    grid-template-rows: 5rem auto;
     grid-template-areas: 
      "left_create posts"
      "filters     posts";
 }
 
 .left_create {
+    display: flex;
+    flex-direction: row;
     grid-area: left_create;
+    border-bottom: 1px solid white;
+    padding-left: 20px;
+    align-items: center;
 }
 
 .filters {
@@ -39,9 +53,11 @@ main {
 }
 
 .labels {
-    display:
+    display: flex;
+    flex-direction: column;
 }
 
 .posts {
     grid-area: posts;
+    border-left: 1px solid white;
 }
