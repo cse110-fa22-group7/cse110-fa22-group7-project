@@ -1,0 +1,47 @@
+html {
+    background-color: #686c6c;
+}
+
+* {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+/* input[type="button"] { */
+input {
+    color: black;
+    font-weight: 600;
+}
+
+.appinfo {
+    display: flex;
+    flex-direction: row;
+}
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+main {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    grid-template-rows: 9rem auto;
+    grid-template-areas: 
+     "left_create posts"
+     "filters     posts";
+}
+
+.left_create {
+    grid-area: left_create;
+}
+
+.filters {
+    grid-area: filters;
+}
+
+.labels {
+    display:
+}
+
+.posts {
+    grid-area: posts;
+}

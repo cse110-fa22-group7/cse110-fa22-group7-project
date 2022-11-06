@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="main.css" />
     <meta chartset="UTF-8"/>
-    <title>Home page</title>
+    <title>My Journal</title>
 
     <!-- Main Stylesheet & Scripts -->
 </head>
 <body>
-    <grid>
         <header>
-            <img src="" alt="logo">
-            <h1 class="app_title">MyJournal</h1>
-            <h2 class="user_name">User Name</h2>
-            <input type="button" class="sign_out" value="Sign Out">
-            <hr>
+            <div class="appinfo">
+                <img src="" alt="logo">
+                <h1 class="app_title">MyJournal</h1>
+            </div>
+            <div class="user_info">    <h2 class="user_name">User Name</h2>
+                <input type="button" class="sign_out" value="Sign Out">
+            </div>
         </header>
+        <main>
         <div class="left_create">
             <img src="" alt="create_image">
             <input type="button" class="create" value="Create"/>
@@ -23,11 +26,13 @@
             <img src="" alt="filter_image">
             <h2>Filter by</h2>
             <h3>Label</h3>
-            <input type="button" class="filterby_label1" value="">
-            <input type="button" class="filterby_label2" value="">
-            <input type="button" class="filterby_label3" value="">
-            <input type="button" class="filterby_label4" value="">
-            <input type="button" class="filterby_label5" value="">
+            <div class="labels">
+                <input type="button" class="filterby_label1" value="">
+                <input type="button" class="filterby_label2" value="">
+                <input type="button" class="filterby_label3" value="">
+                <input type="button" class="filterby_label4" value="">
+                <input type="button" class="filterby_label5" value="">
+            </div>
             <h3 class="filterby_date">Date</h3>
             <form>
                 <h4>From: </h4>
@@ -40,6 +45,6 @@
         <div class="posts">
             <h2>Posts</h2>
         </div>
-    </grid>
+    </main>
 </body>
 </html>
