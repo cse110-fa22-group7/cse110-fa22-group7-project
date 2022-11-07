@@ -61,3 +61,11 @@ main {
     grid-area: posts;
     border-left: 1px solid white;
 }
+
+.filter_by{
+    display: flex;
+    flex-direction: row;
+}
+.filter_img{
+    padding-top: 15px;
+}
