@@ -34,16 +34,31 @@ class JournalPost extends HTMLElement{
 
 
 
-    /* Fill out the innerHTML of the article element under the shadowRoot with the data passed in
+    /** 
+     * Fill out the innerHTML of the article element under the shadowRoot with the data passed in
      * 
      * 
-     * @param data should be of the format {
-     *      label :
-     *      text : 
-     * }
+     * @param {Object} data - The data to pass into the <recipe-card>, must be of the
+     *                        following format:
+     *                        {
+     *                          "id": "string",
+     *                          "label": "string",
+     *                          "text": "string",
+     *                          "date": "date"
+     *                        }
      */
     set data(data){
+        if (!data) return;
 
+        let article = this.shadowRoot.querySelector('article');
+
+        // a temporary template; might need one from the front-end
+        article.innerHTML = `
+        <p class="id">${data['id']}</p>
+        <p class="label">${data['label']}</p>
+        <p class="text">${data['text']}</p>
+        <p class="date">${data['date']}</p>
+        `;
     }
 }
 customElements.define("journal-post", JournalPost);
