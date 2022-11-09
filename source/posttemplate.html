@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<!--Post template insert the values for elements with classes-->
+    <style>
+        article{
+            display:grid;
+            background-color: #686c6c;
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+            grid-template-rows: 
+            ".post_header"
+            "post_text";
+        }
+        .post_header{
+            display:flex;
+            flex-direction: row;
+            border-bottom: 1px solid white;
+            justify-content: space-between;
+        }
+        .post_meta{
+            display: flex;
+            flex-direction: row;
+            padding: 10px;
+        }
+        .post_buttons{
+            padding: 10px;
+        }
+        .post_text{
+            padding: 10px;
+        }
+        .post_label{
+            padding-right: 10px;
+        }
+        .create_date{
+            padding-right: 10px;
+        }
+    </style>
+
+    <article>
+        <div class="post_header">
+            <div class="post_meta">
+                <div class="post_label">Label</div>
+                <div>Date Created :</div>
+                <div class="create_date">MM/DD/YYYY</div>
+                <div>Last Updated :</div>
+                <div class="update_date">MM/DD/YYYY</div>
+            </div>
+            <div class="post_buttons">
+                <button class="post_edit">Edit</button>
+                <button class="post_delete">Delete</button>
+            </div>
+        </div>
+        <p class="post_text">Post Text</p>
+    </article>
+</body>
