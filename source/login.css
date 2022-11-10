@@ -1,0 +1,53 @@
+/*Initializes*/
+:root {
+    margin: 0;
+    padding: 0;
+    --mobile-textsize: 10px;
+}
+/*Makes the background color of the whole document grey*/
+html {
+    background-color: #686c6c;
+}
+/*Sets all text to be white*/
+* {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+}
+h1 {
+    font-size: xxx-large;
+}
+/*Sets input text to be black and font weight*/
+input {
+    color: black;
+    font-weight: 600;
+    height: 1.5rem;
+}
+input[type="text"],input[type="password"] {
+    padding-left: 1rem;
+}
+input[type="button"], input[type="submit"] {
+    border-radius: 0.5rem;
+    border: none;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 4rem;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 1rem;
+}
+/*Media query*/
+@media screen and (max-width: 700px) {
+    :root {
+        font-size: var(--mobile-textsize);
+    }
+    /* we have to work on design of the smaller mobile design */
+}
