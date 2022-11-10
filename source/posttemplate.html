@@ -14,53 +14,65 @@
         }
         .post_header{
             display:flex;
+            padding: 0.4rem;
             flex-direction: row;
             border-bottom: 1px solid white;
             justify-content: space-between;
         }
         .post_meta{
+            padding: .3rem;
             display: flex;
             flex-direction: row;
-            padding: 10px;
+        }
+        .post_label {
+            padding: .37rem 1rem;
+            border: white solid;
+            border-radius: 2rem;
+        
+        }
+        .dates {
+            display: flex;
+            padding: .5rem;
+        }
+        .dates p {
+            margin: 0 1rem;
         }
         .post_buttons{
-            padding: .2rem;
             display: flex;
             flex-direction: row;
         }
         .post_buttons * {
-            margin: .2rem;
+            margin: 0 .25rem;
+            padding: 0 .5rem;
             border-radius: .5rem;
             background-color: #686c6c;
             font-weight: 300;
+            font-size: large;
             color: white;
             border-color: white;
         }
-        .post_text{
-            padding: 10px;
+        .post_text {
+            padding: .1rem .5rem;
         }
-        .post_label{
-            padding-right: 10px;
-        }
-        .create_date{
-            padding-right: 10px;
-        }
+
     </style>
 
     <article>
-        <div class="post_header">
+        <span class="post_header">
             <div class="post_meta">
-                <div class="post_label">Label</div>
-                <div>Date Created :</div>
-                <div class="create_date">MM/DD/YYYY</div>
-                <div>Last Updated :</div>
-                <div class="update_date">MM/DD/YYYY</div>
+                <span class="post_label">Label</span>
+                <span class="dates">
+                    <p>Date Created:</p>
+                    <date class="create_date">MM/DD/YYYY</date>
+                    <p>Last Updated:</p>
+                    <date class="update_date">MM/DD/YYYY</date>
+            </span>
             </div>
             <div class="post_buttons">
                 <button class="post_edit">Edit</button>
                 <button class="post_delete">Delete</button>
             </div>
-        </div>
-        <p class="post_text">Post Text</p>
+        </span>
+        <p class="post_text">I had a bad day</p>
     </article>
 </body>
