@@ -68,7 +68,7 @@ main {
     flex-direction: column;
 }
 /*Sets the post area as well as the line to the left of it*/
-.posts {
+#posts {
     grid-area: posts;
     border-left: 1px solid white;
 }

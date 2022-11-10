@@ -4,6 +4,7 @@
 <head>
     <!-- Reference to stylesheet -->
     <link rel="stylesheet" href="main.css" />
+    <script src="scripts/JournalPost.js" type="module"></script>
     <meta chartset="UTF-8"/>
     <title>My Journal</title>
 </head>
@@ -22,7 +23,7 @@
     <main>
         <!-- Create button -->
         <div class="left_create">
-            <button class="create" value="Create">
+            <button class="create" id="create_button" value="Create">
                 <img src="/source/images/create_black.svg" alt="create_image" height="30">
                 Create
             </button>
@@ -58,7 +59,7 @@
             </form>
         </div>
         <!-- Posts will contain all posts from local storage -->
-        <div class="posts">
+        <div id="posts">
             <h2>Posts</h2>
         </div>
     </main>

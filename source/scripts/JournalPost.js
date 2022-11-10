@@ -65,7 +65,25 @@ class JournalPost extends HTMLElement{
         <p>text = ${data["text"]}</p>
         <p>Created = ${data["dateCreated"]}</p>
         <p>Modified = ${data["dateModified"]}</p>
+        <button id="delete_button">Delete</button>
+        <button id="edit_button">Edit</button>
         `;
+
+        //add delete event listener
+        //TODO when integrating the above innerHTML with the outline provided by the frontend team, make sure
+        //     to update the getElementById to refer to whatever they named the delete and edit buttons
+        let del_button = this.shadowRoot.getElementById("delete_button");
+        del_button.addEventListener("click", () => {
+            delete_post(data["id"]);
+        });
+
+        let edit_button = this.shadowRoot.getElementById("edit_button");
+        edit_button.addEventListener("click", () => {
+            edit_post(data["id"], {
+                "label" : "Happiness",
+                "text"  : "This is an edit test!"
+            });
+        });
     }
 
    
@@ -92,8 +110,16 @@ window.addEventListener("DOMContentLoaded", init);
  */
 function init(){
     post_container = document.getElementById("posts"); 
+    refresh_posts();
 
+    document.getElementById("create_button").addEventListener("click", () => {
+        create_post(
+            {"label":"Happiness", 
+            "text" : "this is a test post"
+            })
+        });
     //VvV TESTING VvV
+
     
 }
 
@@ -184,8 +210,8 @@ function delete_post(post_id){
 
     //add all posts that do not match id to a new updated post array
     let updated_post_array = [];
-    for(index in posts){
-        if(posts[index].data["post_id"] == post_id){
+    for(let index in posts){
+        if(posts[index]["id"] == post_id){
             continue;
         }
         else{
@@ -219,14 +245,14 @@ function edit_post(post_id, data){
     let posts = load_posts();
 
     //iterate through posts, looking for post to edit:
-    for(post_index in posts){
-        let curr_post = post[post_index];
-        if(curr_post["post_id"] == post_id){
+    for(let index in posts){
+        let curr_post = posts[index];
+        if(curr_post["id"] == post_id){
             //found correct post:
             //update label, text, and dateModified
-            post[post_index]["label"] = data["label"];
-            post[post_index]["text"]  = data["text"];
-            post[post_index]["dateModified"] = Date.now();
+            posts[index]["label"] = data["label"];
+            posts[index]["text"]  = data["text"];
+            posts[index]["dateModified"] = Date.now();
         }
     }
 
