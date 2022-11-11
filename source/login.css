@@ -14,22 +14,26 @@ html {
     font-family: 'Courier New', Courier, monospace;
     font-size: large;
 }
+/*Sets heading text size*/
 h1 {
     font-size: xxx-large;
 }
-/*Sets input text to be black and font weight*/
+/*Sets input text to be black, font weight, and height*/
 input {
     color: black;
     font-weight: 600;
     height: 1.5rem;
 }
-input[type="text"],input[type="password"] {
+/*Adds small spacing to textboxes*/
+input[type="text"], input[type="password"] {
     padding-left: 1rem;
 }
+/*Sets button styling*/
 input[type="button"], input[type="submit"] {
     border-radius: 0.5rem;
     border: none;
 }
+/*Centers items and sets spacing between text and form*/
 body {
     display: flex;
     flex-direction: column;
@@ -38,6 +42,7 @@ body {
     height: 100vh;
     gap: 4rem;
 }
+/*Fomats textboxes and buttons*/
 form {
     display: flex;
     flex-direction: column;
