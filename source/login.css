@@ -55,4 +55,7 @@ form {
         font-size: var(--mobile-textsize);
     }
     /* we have to work on design of the smaller mobile design */
+    input {
+        height:auto;
+    }
 }
