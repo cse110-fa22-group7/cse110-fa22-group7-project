@@ -13,6 +13,7 @@ html {
     color: white;
     font-family: 'Courier New', Courier, monospace;
 }
+
 /*Sets input text to be black and font weight*/
 input {
     color: black;
@@ -24,8 +25,8 @@ button {
     color: black;
     font-weight: 600;
     border-radius: 2rem;
-    width: 150px;
-    height: 50px;
+    width: 14rem;
+    height: 4rem;
 }
 /*Displays app name and logo in header next to each other*/
 .appinfo {
