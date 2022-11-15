@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/cse110-fa22-group7/cse110-fa22-group7-project#readme",
   "devDependencies": {
-    "eslint": "^8.27.0"
+    "eslint": "^8.27.0",
+    "html-validator": "^6.0.1",
+    "jsdoc": "^4.0.0",
+    "prettier": "^2.7.1"
   }
 }
