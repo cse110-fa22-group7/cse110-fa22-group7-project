@@ -15,7 +15,7 @@ jobs:
     - name: install modules
       run: npm install
     - name: run ESLint
-      run: npx eslint . --ext .js,.jsx,.ts,.tsx
+      run: npx eslint ./source --ext .js,.jsx,.ts,.tsx
     - name: run JSDoc
       run: npx jsdoc -r ./source -d ./docs
   lint-html:
