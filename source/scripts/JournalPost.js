@@ -15,10 +15,10 @@
  */
 class JournalPost extends HTMLElement {
   /**
-	 * sets up shadow dom
-	 * @TODO should setup css for post object
-	 * @constructor
-	 */
+   * sets up shadow dom
+   * @TODO should setup css for post object
+   * @constructor
+   */
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -29,16 +29,16 @@ class JournalPost extends HTMLElement {
   }
 
   /**Fill out the innerHTML of the article element under the shadowRoot with the data passed in
-	 *
-	 *
-	 * @param data should be of the format {
-	 *      "id"    :
-	 *      "label" :
-	 *      "text"  :
-	 *      "dateCreated"  :
-	 *      "dateModified" :
-	 * }
-	 */
+   *
+   *
+   * @param data should be of the format {
+   *      "id"    :
+   *      "label" :
+   *      "text"  :
+   *      "dateCreated"  :
+   *      "dateModified" :
+   * }
+   */
   set data(data) {
     let article = this.shadowRoot.getElementById("post-article");
     article.innerHTML = `
