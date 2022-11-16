@@ -28,7 +28,7 @@ class JournalPost extends HTMLElement {
     this.shadowRoot.appendChild(article);
   }
 
-  /**Fill out the innerHTML of the article element under the shadowRoot with the data passed in
+  /* Fill out the innerHTML of the article element under the shadowRoot with the data passed in
    *
    *
    * @param data should be of the format {
@@ -149,7 +149,7 @@ function store_posts(posts) {
   window.localStorage.setItem(curr_user + post_key, JSON.stringify(posts));
 }
 
-/**Creates a new post object and adds it to the array
+/* Creates a new post object and adds it to the array
  *  in local storage
  *  @param data {
  *       "label": label
@@ -203,7 +203,7 @@ function delete_all_posts() {
   window.localStorage.setItem(post_id_key, "0");
 }
 
-/**Updates the data of a post object
+/* Updates the data of a post object
  * @param post - object to update
  * @param data - new data to use of the format {
  *      label :
