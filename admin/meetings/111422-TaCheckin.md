@@ -1,21 +1,34 @@
-# Starting Pitch 
-### Date and Time
-11/14/2022 8:00 pm
+# TA Checkin 11/14
 
-### Attendance
+from 8:03 - 
+
+## Attendance
+
+- Anh
+- Neal
+- Rita
 - Lucas
 - Jacob
-- Rita
-- Neal
-- Anh
-- Jenny
-## What was discussed 
 
-### Build Documentation
-We need build docuemntation use js docs. It should be in the read me.
+## 
 
-### Everything on github
-Everything should be on github from sprints, to meeting notes, adrs, etc
+### Documentation
 
-### Issues
-Issues should be labeled, copmlete coverage for pull requests, unfinihsed issues should go to the backlog.
+Everything in README:
+    
+- Build Documentation:
+    - Installing dependencies
+    - How to setup linting and validation
+- Link to source docs: JSDocs
+- Explanation of functionality for user
+- Link to videos/live project
+
+ADRS 
+    - Need to have for each feature
+    - 
+
+
+
+
+
+
