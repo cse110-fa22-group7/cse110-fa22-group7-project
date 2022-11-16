@@ -28,8 +28,7 @@ class JournalPost extends HTMLElement {
     this.shadowRoot.appendChild(article);
 
     let style = document.createElement("style");
-    style.innerText = 
-    `
+    style.innerText = `
     article {
       display: grid;
       background-color: #686c6c;
@@ -80,10 +79,8 @@ class JournalPost extends HTMLElement {
     .post_text {
       padding: 0.1rem 0.5rem;
     }
-    `
+    `;
     this.shadowRoot.appendChild(style);
-
-
   }
 
   /* Fill out the innerHTML of the article element under the shadowRoot with the data passed in
@@ -99,12 +96,11 @@ class JournalPost extends HTMLElement {
    */
   set data(data) {
     let mod_date = data["dateModified"];
-    if(!mod_date){
+    if (!mod_date) {
       mod_date = "Never";
     }
     let article = this.shadowRoot.getElementById("post-article");
-    article.innerHTML = 
-    `
+    article.innerHTML = `
     <span class="post_header">
       <div class="post_meta">
         <span class="post_label">${data["label"]}</span>
