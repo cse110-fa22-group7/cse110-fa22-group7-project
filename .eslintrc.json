@@ -10,7 +10,7 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "ignorePatterns":["/source/tests/*", "/docs/*"],
+    "ignorePatterns":["/source/tests/*", "/docs/*", "/node_modules/*"],
     "rules": {
         "indent": [
             "error",
