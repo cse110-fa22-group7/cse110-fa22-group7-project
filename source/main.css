@@ -1,94 +1,94 @@
 /*Initializes*/
 :root {
-  margin: 0;
-  padding: 0;
-  --mobile-textsize: 10px;
+	margin: 0;
+	padding: 0;
+	--mobile-textsize: 10px;
 }
 /*Makes the background color of the whole document grey*/
 html {
-  background-color: #686c6c;
+	background-color: #686c6c;
 }
 /*Sets all text to be white*/
 * {
-  color: white;
-  font-family: "Courier New", Courier, monospace;
+	color: white;
+	font-family: "Courier New", Courier, monospace;
 }
 /*Sets input text to be black and font weight*/
 input {
-  color: black;
-  font-weight: 600;
+	color: black;
+	font-weight: 600;
 }
 
 /*Only used on the create button to shape it*/
 button {
-  color: black;
-  font-weight: 600;
-  border-radius: 2rem;
-  width: 150px;
-  height: 50px;
+	color: black;
+	font-weight: 600;
+	border-radius: 2rem;
+	width: 150px;
+	height: 50px;
 }
 /*Displays app name and logo in header next to each other*/
 .appinfo {
-  display: flex;
-  flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 /*Aligns elements to the left or right*/
 header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  border-bottom: 1px solid white;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	border-bottom: 1px solid white;
 }
 /*Sections the page into two rows on the left and one on the right*/
 main {
-  display: grid;
-  grid-template-columns: 3fr 7fr;
-  grid-template-rows: 5rem auto;
-  /*Sets the left rows to be create and filter sets the right ot be posts*/
-  grid-template-areas:
-    "left_create posts"
-    "filters     posts";
+	display: grid;
+	grid-template-columns: 3fr 7fr;
+	grid-template-rows: 5rem auto;
+	/*Sets the left rows to be create and filter sets the right ot be posts*/
+	grid-template-areas:
+		"left_create posts"
+		"filters     posts";
 }
 /*Aligns the create button in the create section*/
 .left_create {
-  display: flex;
-  flex-direction: row;
-  grid-area: left_create;
-  border-bottom: 1px solid white;
-  padding-left: 20px;
-  align-items: center;
+	display: flex;
+	flex-direction: row;
+	grid-area: left_create;
+	border-bottom: 1px solid white;
+	padding-left: 20px;
+	align-items: center;
 }
 /*Makes it so that element in filters section are sectioned*/
 .filters {
-  grid-area: filters;
+	grid-area: filters;
 }
 /*Display label elements in rows*/
 .labels {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 /*Sets the post area as well as the line to the left of it*/
 #posts {
-  grid-area: posts;
-  border-left: 1px solid white;
+	grid-area: posts;
+	border-left: 1px solid white;
 }
 /*Displays "Filter by" text next to the filter image*/
 .filter_by {
-  display: flex;
-  flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 /*Aligns the filter image with the text*/
 .filter_img {
-  padding-top: 15px;
+	padding-top: 15px;
 }
 /*Media query*/
 @media screen and (max-width: 700px) {
-  :root {
-    font-size: var(--mobile-textsize);
-  }
-  /* we have to work on design of the smaller mobile design */
+	:root {
+		font-size: var(--mobile-textsize);
+	}
+	/* we have to work on design of the smaller mobile design */
 }
 .post_configuration {
-  overflow-y: auto;
-  height: 790px;
+	overflow-y: auto;
+	height: 790px;
 }

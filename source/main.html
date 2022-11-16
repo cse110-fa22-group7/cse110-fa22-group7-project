@@ -1,102 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- Main Stylesheet & Scripts -->
-  <head>
-    <!-- Reference to stylesheet -->
-    <link rel="stylesheet" href="main.css" />
-    <meta chartset="UTF-8" />
-    <title>My Journal</title>
-  </head>
-  <body>
-    <!-- Header holds logo, appname, username, signout button -->
-    <header>
-      <div class="appinfo">
-        <img src="" alt="logo" />
-        <h1 class="app_title">MyJournal</h1>
-      </div>
-      <div class="user_info">
-        <h2 class="user_name">User Name</h2>
-        <input type="button" class="sign_out" value="Sign Out" />
-      </div>
-    </header>
-    <!-- Main holds rest of page components (sidebar, posts) -->
-    <main>
-      <!-- Create button -->
-      <div class="left_create">
-        <button class="create" value="Create">
-          <img
-            src="/source/images/create_black.svg"
-            alt="create_image"
-            height="30"
-          />
-          Create
-        </button>
-      </div>
-      <!-- Filter by date and by label -->
-      <div class="filters">
-        <div class="filter_by">
-          <img
-            src="/source/images/filter_white.svg"
-            alt="filter_image"
-            height="30"
-            class="filter_img"
-          />
-          <h2>Filter by</h2>
-        </div>
-        <h3>Label</h3>
-        <!-- Labels holds 5 preset label buttons -->
-        <div class="labels">
-          <input
-            type="checkbox"
-            id="label1"
-            class="filterby_label"
-            value="Hapiness"
-          />
-          <label for="label1">Happiness</label>
-          <input
-            type="checkbox"
-            id="label2"
-            class="filterby_label"
-            value="Sadness"
-          />
-          <label for="label2">Sadness</label>
-          <input
-            type="checkbox"
-            id="label3"
-            class="filterby_label"
-            value="Anger"
-          />
-          <label for="label3">Anger</label>
-          <input
-            type="checkbox"
-            id="label4"
-            class="filterby_label"
-            value="Fear"
-          />
-          <label for="label4">Fear</label>
-          <input
-            type="checkbox"
-            id="label5"
-            class="filterby_label"
-            value="Surprise"
-          />
-          <label for="label5">Surprise</label>
-        </div>
-        <h3 class="filterby_date">Date</h3>
-        <!-- Form holds text input to filter from a date and to a date -->
-        <form>
-          <h4>From:</h4>
-          <input type="textbox" class="filterby_date_from" value="MM/DD/YYYY" />
-          <h4>To:</h4>
-          <input type="textbox" class="filterby_date_to" value="MM/DD/YYYY" />
-          <input type="submit" class="submit" />
-        </form>
-      </div>
-      <!-- Posts will contain all posts from local storage -->
-      <div class="posts">
-        <h2>Posts</h2>
-        <div class="post_configuration"></div>
-      </div>
-    </main>
-  </body>
+	<!-- Main Stylesheet & Scripts -->
+	<head>
+		<!-- Reference to stylesheet -->
+		<link rel="stylesheet" href="main.css" />
+		<meta chartset="UTF-8" />
+		<title>My Journal</title>
+	</head>
+	<body>
+		<!-- Header holds logo, appname, username, signout button -->
+		<header>
+			<div class="appinfo">
+				<img src="" alt="logo" />
+				<h1 class="app_title">MyJournal</h1>
+			</div>
+			<div class="user_info">
+				<h2 class="user_name">User Name</h2>
+				<input type="button" class="sign_out" value="Sign Out" />
+			</div>
+		</header>
+		<!-- Main holds rest of page components (sidebar, posts) -->
+		<main>
+			<!-- Create button -->
+			<div class="left_create">
+				<button class="create" value="Create">
+					<img
+						src="/source/images/create_black.svg"
+						alt="create_image"
+						height="30"
+					/>
+					Create
+				</button>
+			</div>
+			<!-- Filter by date and by label -->
+			<div class="filters">
+				<div class="filter_by">
+					<img
+						src="/source/images/filter_white.svg"
+						alt="filter_image"
+						height="30"
+						class="filter_img"
+					/>
+					<h2>Filter by</h2>
+				</div>
+				<h3>Label</h3>
+				<!-- Labels holds 5 preset label buttons -->
+				<div class="labels">
+					<input
+						type="checkbox"
+						id="label1"
+						class="filterby_label"
+						value="Hapiness"
+					/>
+					<label for="label1">Happiness</label>
+					<input
+						type="checkbox"
+						id="label2"
+						class="filterby_label"
+						value="Sadness"
+					/>
+					<label for="label2">Sadness</label>
+					<input
+						type="checkbox"
+						id="label3"
+						class="filterby_label"
+						value="Anger"
+					/>
+					<label for="label3">Anger</label>
+					<input
+						type="checkbox"
+						id="label4"
+						class="filterby_label"
+						value="Fear"
+					/>
+					<label for="label4">Fear</label>
+					<input
+						type="checkbox"
+						id="label5"
+						class="filterby_label"
+						value="Surprise"
+					/>
+					<label for="label5">Surprise</label>
+				</div>
+				<h3 class="filterby_date">Date</h3>
+				<!-- Form holds text input to filter from a date and to a date -->
+				<form>
+					<h4>From:</h4>
+					<input type="textbox" class="filterby_date_from" value="MM/DD/YYYY" />
+					<h4>To:</h4>
+					<input type="textbox" class="filterby_date_to" value="MM/DD/YYYY" />
+					<input type="submit" class="submit" />
+				</form>
+			</div>
+			<!-- Posts will contain all posts from local storage -->
+			<div class="posts">
+				<h2>Posts</h2>
+				<div class="post_configuration"></div>
+			</div>
+		</main>
+	</body>
 </html>
