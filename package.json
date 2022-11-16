@@ -4,7 +4,7 @@
   "description": "[meet the team](admin/team.md)",
   "main": "index.js",
   "scripts": {
-    "eslint": "./node_modules/.bin/eslint . --ext js",
+    "eslint": "./node_modules/.bin/eslint ./source --ext js",
     "eslint-fix": "./node_modules/.bin/eslint --fix . --ext js",
     "prettier-fix": "./node_modules/.bin/prettier --write ./source",
     "prettier-check": "./node_modules/.bin/prettier --check ./source",
