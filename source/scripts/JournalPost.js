@@ -26,6 +26,64 @@ class JournalPost extends HTMLElement {
     let article = document.createElement("article");
     article.id = "post-article";
     this.shadowRoot.appendChild(article);
+
+    let style = document.createElement("style");
+    style.innerText = 
+    `
+    article {
+      display: grid;
+      background-color: #686c6c;
+      color: white;
+      font-family: "Courier New", Courier, monospace;
+      grid-template-rows:
+        ".post_header"
+        "post_text";
+    }
+    .post_header {
+      display: flex;
+      padding: 0.4rem;
+      flex-direction: row;
+      border-bottom: 1px solid white;
+      justify-content: space-between;
+    }
+    .post_meta {
+      padding: 0.3rem;
+      display: flex;
+      flex-direction: row;
+    }
+    .post_label {
+      padding: 0.37rem 1rem;
+      border: white solid;
+      border-radius: 2rem;
+    }
+    .dates {
+      display: flex;
+      padding: 0.5rem;
+    }
+    .dates p {
+      margin: 0 1rem;
+    }
+    .post_buttons {
+      display: flex;
+      flex-direction: row;
+    }
+    .post_buttons * {
+      margin: 0 0.25rem;
+      padding: 0 0.5rem;
+      border-radius: 0.5rem;
+      background-color: #686c6c;
+      font-weight: 300;
+      font-size: large;
+      color: white;
+      border-color: white;
+    }
+    .post_text {
+      padding: 0.1rem 0.5rem;
+    }
+    `
+    this.shadowRoot.appendChild(style);
+
+
   }
 
   /* Fill out the innerHTML of the article element under the shadowRoot with the data passed in
@@ -40,16 +98,30 @@ class JournalPost extends HTMLElement {
    * }
    */
   set data(data) {
+    let mod_date = data["dateModified"];
+    if(!mod_date){
+      mod_date = "Never";
+    }
     let article = this.shadowRoot.getElementById("post-article");
-    article.innerHTML = `
-        <p>ID = ${data["id"]}</p>
-        <p>label = ${data["label"]}</p>
-        <p>text = ${data["text"]}</p>
-        <p>Created = ${data["dateCreated"]}</p>
-        <p>Modified = ${data["dateModified"]}</p>
-        <button id="delete_button">Delete</button>
-        <button id="edit_button">Edit</button>
-        `;
+    article.innerHTML = 
+    `
+    <span class="post_header">
+      <div class="post_meta">
+        <span class="post_label">${data["label"]}</span>
+        <span class="dates">
+          <p>Date Created:</p>
+          <date class="create_date">${data["dateCreated"]}</date>
+          <p>Last Updated:</p>
+          <date class="update_date">${mod_date}</date>
+        </span>
+      </div>
+      <div class="post_buttons">
+        <button id="edit_button" class="post_edit">Edit</button>
+        <button id="delete_button" class="post_delete">Delete</button>
+      </div>
+    </span>
+    <p class="post_text">${data["text"]}</p>
+    `;
 
     //add delete event listener
     //TODO when integrating the above innerHTML with the outline provided by the frontend team, make sure
@@ -86,7 +158,7 @@ window.addEventListener("DOMContentLoaded", init);
  * Code can be added here to test the functionality of the script
  */
 function init() {
-  post_container = document.getElementById("posts");
+  post_container = document.getElementsByClassName("posts")[0];
   refresh_posts();
 
   document.getElementById("create_button").addEventListener("click", () => {
