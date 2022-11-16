@@ -6,7 +6,7 @@
   "scripts": {
     "eslint": "./node_modules/.bin/eslint . --ext js",
     "eslint-fix": "./node_modules/.bin/eslint --fix . --ext js",
-    "prettier-fix": "./node_modules/.bin/prettier --fix ./source",
+    "prettier-fix": "./node_modules/.bin/prettier --write ./source",
     "prettier-check": "./node_modules/.bin/prettier --check ./source",
     "test": "jest"
   },
