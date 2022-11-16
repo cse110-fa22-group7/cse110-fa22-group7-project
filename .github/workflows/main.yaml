@@ -1,40 +1,29 @@
-name: Lint
-
-on:
-  # Trigger the workflow on push or pull request,
-  # but only for the main branch
+name: CI
+on: 
   pull_request:
     branches:
-      - main
-
+      main
+  
 jobs:
-  lint-javascript:
+  deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: install modules
       run: npm install
     - name: run ESLint
-      run: npx eslint ./source --ext .js,.jsx,.ts,.tsx
+      run: npm run eslint
+    - name: run Prettier
+      run: npm run prettier-check
+    - name: Validate HTML
+      run: npx html-validate --ext html ./source/main.html
     - name: run JSDoc
       run: npx jsdoc -r ./source -d ./docs
-  lint-html:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: install modules
-      run: npm install
-    - name: run Prettier
-      run: npx prettier --check ./source
-    - name: validate html
-      run: npx html-validate --ext html ./source
-  run-tests:
-    runs-on: ubuntu-latest
-    steps:
-    - run: echo @todo setup testing
-  quality-control:
-    runs-on: ubuntu-latest
-    steps:
-    - run: echo @todo code climate
-
-      
+    - name: run Code Quality
+      run: echo "look into code climate or other source"
+    - name: run Jest Tests
+      run: npm run test
+    - name: check Jest test coverage
+      run: echo "still working on it"
+    - name: Cypress Testing
+      run: echo "still working on it"
