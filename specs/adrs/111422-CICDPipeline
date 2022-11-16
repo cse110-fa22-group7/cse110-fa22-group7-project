@@ -1,0 +1,37 @@
+# CI-CD Pipeline
+
+## Problem Statement
+
+We need a CICD Pipeline in order to make sure our code is clean and functional before merging into the main branch.
+
+## Discussed Solutions
+
+- Linting
+    - Eslint for javascript
+    - prettier for html/css
+
+- Documentation
+    - Source Documentation
+        - Code Comments
+        - JSDocs
+    - Build Documentation
+        - Write up in README.md
+    - ADRs:
+        - any archiectural change should come with an ADR explaining the change and providing opportunity to discuss
+
+- Testing ? IDK figure out after we do the lab setup in phase 2.
+    - Jest
+    - Cypress
+
+- Code Qualit:
+    - Code Climate
+    - Pull Requests
+        - Do we need them for any branch that isn't main?
+        - Manual Review 
+            - send a message on slack or email.
+            - request a review ^^^
+
+
+
+
+

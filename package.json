@@ -1,0 +1,32 @@
+{
+  "name": "cse110-fa22-group7-project",
+  "version": "1.0.0",
+  "description": "[meet the team](admin/team.md)",
+  "main": "index.js",
+  "scripts": {
+    "eslint": "./node_modules/.bin/eslint . --ext js",
+    "eslint-fix": "./node_modules/.bin/eslint --fix . --ext js",
+    "prettier-fix": "./node_modules/.bin/prettier --write ./source",
+    "prettier-check": "./node_modules/.bin/prettier --check ./source",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cse110-fa22-group7/cse110-fa22-group7-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cse110-fa22-group7/cse110-fa22-group7-project/issues"
+  },
+  "homepage": "https://github.com/cse110-fa22-group7/cse110-fa22-group7-project#readme",
+  "devDependencies": {
+    "eslint": "^8.27.0",
+    "html-validate-prettier": "^1.0.3",
+    "html-validator": "^6.0.1",
+    "jest": "^28.1.3",
+    "jsdoc": "^4.0.0",
+    "prettier": "2.7.1",
+    "prettier-eslint": "^15.0.1"
+  }
+}
