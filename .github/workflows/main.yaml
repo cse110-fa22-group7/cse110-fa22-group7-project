@@ -1,0 +1,33 @@
+name: CI
+on: 
+  pull_request:
+    branches:
+      main
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: install modules
+      run: npm install
+    - name: run ESLint
+      run: npm run eslint
+    - name: run Prettier
+      run: npm run prettier-check
+    - name: Validate HTML
+      run: npx html-validate --ext html ./source
+    - name: Validate CSS
+      run: echo "look into validate css and find good package"
+    - name: Validate JS
+      run: echo "look into validate js and find good package" 
+    - name: run JSDoc
+      run: npx jsdoc -r ./source -d ./docs
+    - name: run Code Quality
+      run: echo "look into code climate or other source"
+    - name: run Jest Tests
+      run: npm run test
+    - name: check Jest test coverage
+      run: echo "still working on it"
+    - name: Cypress Testing
+      run: echo "still working on it"

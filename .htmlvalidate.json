@@ -1,0 +1,8 @@
+{
+    "plugins": [
+      "html-validate-prettier"
+    ],
+    "rules": {
+      "prettier/prettier": "error"
+    }
+  }
