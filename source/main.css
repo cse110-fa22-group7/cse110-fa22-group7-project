@@ -92,12 +92,12 @@ main {
   /* we have to work on design of the smaller mobile design */
 }
 
-.logo{
+.logo {
   height: 3em;
 }
-#create_button{
-  display:flex;
+#create_button {
+  display: flex;
   align-items: center;
-  gap:10px;
-  font-size: 20px;;
+  gap: 10px;
+  font-size: 20px;
 }
