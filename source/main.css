@@ -31,6 +31,7 @@ button {
 .appinfo {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 /*Aligns elements to the left or right*/
 header {
@@ -68,9 +69,11 @@ main {
   flex-direction: column;
 }
 /*Sets the post area as well as the line to the left of it*/
-#posts {
+.posts {
   grid-area: posts;
   border-left: 1px solid white;
+  overflow-y: auto;
+  height: 790px;
 }
 /*Displays "Filter by" text next to the filter image*/
 .filter_by {
@@ -88,7 +91,13 @@ main {
   }
   /* we have to work on design of the smaller mobile design */
 }
-.post_configuration {
-  overflow-y: auto;
-  height: 790px;
+
+.logo {
+  height: 3em;
+}
+#create_button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
 }
