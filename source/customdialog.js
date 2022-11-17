@@ -20,6 +20,7 @@ export function fill(message, isYesButton, isTextField) {
     return dialogEl;
 }
 
+// closing the dialog
 export function closeDialog() {
     let dialog = document.querySelector('#output > #warning-dialog');
     dialog.close();
