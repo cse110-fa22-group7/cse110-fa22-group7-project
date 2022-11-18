@@ -84,13 +84,13 @@ class JournalPost extends HTMLElement {
 
   /** Fill out the innerHTML of the article element under the shadowRoot with the data passed in
    *
-   * @param {Object} data 
+   * @param {Object} data
    * @param {Number} data."id" - ID of the post
    * @param {String} data."label" - Label of the post
    * @param {String} data."text" - Actual text content of the post
    * @param {String} data."dateCreated" - MM/DD/YYYY formated date of the post's creation
    * @param {String} data."dateModified" - MM/DD/YYYY formatted date of the post's last modification
-   * 
+   *
    * @TODO add popups to event listeners
    */
   set data(data) {
@@ -188,10 +188,10 @@ function init() {
 /**
  * Displays on the posts of a specified label on the page.
  * Call with label = "Reset" to show all posts.
- * 
- * @param {String} [label = "Reset"] - label to filter by 
+ *
+ * @param {String} [label = "Reset"] - label to filter by
  */
-function filter_posts(label="Reset") {
+function filter_posts(label = "Reset") {
   if (label == "Reset") {
     refresh_posts();
     return;
@@ -220,8 +220,8 @@ function refresh_posts() {
 /**
  * Helper function to display posts on the page.
  * Used by refresh_posts and filter_posts to display the loaded posts
- * 
- * @param {Object[]} post_array - array of posts to display on the page 
+ *
+ * @param {Object[]} post_array - array of posts to display on the page
  */
 function display_posts(post_array) {
   //remove all current posts from post_container
@@ -260,7 +260,7 @@ function load_posts() {
   }
 }
 
-/** 
+/**
  * Stores a new array of posts for the current user
  *
  *  @param {Object[]} posts - array of post object to store
@@ -271,7 +271,7 @@ function store_posts(posts) {
 
 /**
  *  Creates a new post object and adds it to the array in local storage.
- * 
+ *
  *  @param {Object} data - data to create post object from
  *  @param {String} data."label" - label of new post
  *  @param {String} data."text" - text content of new post
@@ -313,7 +313,7 @@ function delete_post(post_id) {
   refresh_posts();
 }
 
-/** 
+/**
  * Deletes All Posts under the current user
  *
  */
@@ -351,9 +351,9 @@ function edit_post(post_id, data) {
   refresh_posts();
 }
 
-/** 
+/**
  * Pulls the next post_id from storage, pushing post_id + 1 back into storage
- * 
+ *
  * @return {Integer} id to use when creating a new post
  */
 function get_new_post_id() {
