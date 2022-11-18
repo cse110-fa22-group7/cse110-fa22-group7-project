@@ -144,7 +144,6 @@ const post_id_key = "NEXT_POST_ID";
 
 var post_container;
 var curr_user = "";
-
 //runs the init function upon page being fully loaded
 window.addEventListener("DOMContentLoaded", init);
 
@@ -155,15 +154,55 @@ window.addEventListener("DOMContentLoaded", init);
  */
 function init() {
   post_container = document.getElementsByClassName("posts")[0];
+  
+  //add event listeners to filter buttons
+  var labels = document.getElementsByClassName("filterby_label");
+  for(var i = 0; i<labels.length; i++){
+    let value = labels[i].value;
+    let label = labels[i];
+    label.addEventListener("click", () => {filter_posts(value);});
+  }
+
+
   refresh_posts();
 
+
   document.getElementById("create_button").addEventListener("click", () => {
-    create_post({ label: "Happiness", text: "this is a test post" });
+    let num = Math.random()
+    console.log(num);
+    let label = "Happiness"
+    if (num <=.2){
+        label = "Anger";
+    }
+    else if (num <= .4){
+      label = "Sadness";
+    }
+    else if (num <= .6){
+      label = "Fear";
+    }
+    else if (num <= .8){
+      label = "Surprise";
+    }
+    create_post({ label: label, text: "this is a test post" });
   });
 
   //VvV TESTING VvV
 }
-
+function filter_posts(label){
+  if(label == "Reset"){
+    refresh_posts();
+    return;
+  }
+  let post_array = load_posts();
+  let output = [];
+  for(var i in post_array){
+    let post = post_array[i];
+    if(post["label"] == label){
+      output.push(post);
+    }
+  }
+  display_posts(output);
+}
 /**Refreshes display of posts to match what is currently in storage
  * posts are loaded from storage, elements are created from the post data loaded, and they are appended to the
  * post_container
@@ -173,7 +212,9 @@ function refresh_posts() {
   let post_array = JSON.parse(
     window.localStorage.getItem(curr_user + post_key)
   );
-
+  display_posts(post_array);
+}
+function display_posts(post_array){
   //remove all current posts from post_container
   let curr_child = post_container.firstChild;
   while (curr_child) {
