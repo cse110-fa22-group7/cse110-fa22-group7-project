@@ -154,33 +154,30 @@ window.addEventListener("DOMContentLoaded", init);
  */
 function init() {
   post_container = document.getElementsByClassName("posts")[0];
-  
+
   //add event listeners to filter buttons
   var labels = document.getElementsByClassName("filterby_label");
-  for(var i = 0; i<labels.length; i++){
+  for (var i = 0; i < labels.length; i++) {
     let value = labels[i].value;
     let label = labels[i];
-    label.addEventListener("click", () => {filter_posts(value);});
+    label.addEventListener("click", () => {
+      filter_posts(value);
+    });
   }
-
 
   refresh_posts();
 
-
   document.getElementById("create_button").addEventListener("click", () => {
-    let num = Math.random()
+    let num = Math.random();
     console.log(num);
-    let label = "Happiness"
-    if (num <=.2){
-        label = "Anger";
-    }
-    else if (num <= .4){
+    let label = "Happiness";
+    if (num <= 0.2) {
+      label = "Anger";
+    } else if (num <= 0.4) {
       label = "Sadness";
-    }
-    else if (num <= .6){
+    } else if (num <= 0.6) {
       label = "Fear";
-    }
-    else if (num <= .8){
+    } else if (num <= 0.8) {
       label = "Surprise";
     }
     create_post({ label: label, text: "this is a test post" });
@@ -188,16 +185,16 @@ function init() {
 
   //VvV TESTING VvV
 }
-function filter_posts(label){
-  if(label == "Reset"){
+function filter_posts(label) {
+  if (label == "Reset") {
     refresh_posts();
     return;
   }
   let post_array = load_posts();
   let output = [];
-  for(var i in post_array){
+  for (var i in post_array) {
     let post = post_array[i];
-    if(post["label"] == label){
+    if (post["label"] == label) {
       output.push(post);
     }
   }
@@ -214,7 +211,7 @@ function refresh_posts() {
   );
   display_posts(post_array);
 }
-function display_posts(post_array){
+function display_posts(post_array) {
   //remove all current posts from post_container
   let curr_child = post_container.firstChild;
   while (curr_child) {
