@@ -2,12 +2,12 @@
  * as well as methods for interfacing with these posts, saving and loading them to local storage
  * and appending them to an element with id="posts" on the page.
  *
- * TODO : loading and saving posts is done at curr_user + post_key in local storage, curr_user is currently hardcoded as the empty string,
+ * @TODO : loading and saving posts is done at curr_user + post_key in local storage, curr_user is currently hardcoded as the empty string,
  *        however as we implement the login page, we will need to figure out how to keep track of the current user.
  *
- * TODO : Find a better way of handing post ids.
+ * @TODO : Find a better way of handing post ids.
  *
- * TODO : Handle dates correctly, Date.now() gives milliseconds since something IDRK, we would prefer something like MM/DD/YYYY I think
+ * @TODO : Handle dates correctly, Date.now() gives milliseconds since something IDRK, we would prefer something like MM/DD/YYYY I think
  */
 
 /** Post Class for custom web-component post
@@ -16,7 +16,6 @@
 class JournalPost extends HTMLElement {
   /**
    * sets up shadow dom
-   * @TODO should setup css for post object
    * @constructor
    */
   constructor() {
@@ -83,16 +82,16 @@ class JournalPost extends HTMLElement {
     this.shadowRoot.appendChild(style);
   }
 
-  /* Fill out the innerHTML of the article element under the shadowRoot with the data passed in
+  /** Fill out the innerHTML of the article element under the shadowRoot with the data passed in
    *
-   *
-   * @param data should be of the format {
-   *      "id"    :
-   *      "label" :
-   *      "text"  :
-   *      "dateCreated"  :
-   *      "dateModified" :
-   * }
+   * @param {Object} data 
+   * @param {Number} data."id" - ID of the post
+   * @param {String} data."label" - Label of the post
+   * @param {String} data."text" - Actual text content of the post
+   * @param {String} data."dateCreated" - MM/DD/YYYY formated date of the post's creation
+   * @param {String} data."dateModified" - MM/DD/YYYY formatted date of the post's last modification
+   * 
+   * @TODO add popups to event listeners
    */
   set data(data) {
     let mod_date = data["dateModified"];
@@ -120,13 +119,12 @@ class JournalPost extends HTMLElement {
     `;
 
     //add delete event listener
-    //TODO when integrating the above innerHTML with the outline provided by the frontend team, make sure
-    //     to update the getElementById to refer to whatever they named the delete and edit buttons
     let del_button = this.shadowRoot.getElementById("delete_button");
     del_button.addEventListener("click", () => {
       delete_post(data["id"]);
     });
 
+    //add edit event listener
     let edit_button = this.shadowRoot.getElementById("edit_button");
     edit_button.addEventListener("click", () => {
       edit_post(data["id"], {
@@ -147,7 +145,8 @@ var curr_user = "";
 //runs the init function upon page being fully loaded
 window.addEventListener("DOMContentLoaded", init);
 
-/**Called on page load,
+/**
+ * Called on page load,
  * initalizes variables for this file, and loads the current posts
  *
  * Code can be added here to test the functionality of the script
@@ -185,7 +184,14 @@ function init() {
 
   //VvV TESTING VvV
 }
-function filter_posts(label) {
+
+/**
+ * Displays on the posts of a specified label on the page.
+ * Call with label = "Reset" to show all posts.
+ * 
+ * @param {String} [label = "Reset"] - label to filter by 
+ */
+function filter_posts(label="Reset") {
   if (label == "Reset") {
     refresh_posts();
     return;
@@ -200,9 +206,8 @@ function filter_posts(label) {
   }
   display_posts(output);
 }
-/**Refreshes display of posts to match what is currently in storage
- * posts are loaded from storage, elements are created from the post data loaded, and they are appended to the
- * post_container
+/**
+ * Refreshes display of posts to match what is currently in storage
  */
 function refresh_posts() {
   //load the post array from storage
@@ -211,6 +216,13 @@ function refresh_posts() {
   );
   display_posts(post_array);
 }
+
+/**
+ * Helper function to display posts on the page.
+ * Used by refresh_posts and filter_posts to display the loaded posts
+ * 
+ * @param {Object[]} post_array - array of posts to display on the page 
+ */
 function display_posts(post_array) {
   //remove all current posts from post_container
   let curr_child = post_container.firstChild;
@@ -234,9 +246,10 @@ function display_posts(post_array) {
   }
 }
 
-/** loads the current posts from storage and appends them to their post_container
+/** '
+ * loads the current posts from storage and appends them to their post_container
  *
- *  @return {Array} Post Array object from local storage or null if missing
+ *  @return {Object[]|null} Post Array object from local storage or null if missing
  */
 function load_posts() {
   let posts = JSON.parse(window.localStorage.getItem(curr_user + post_key));
@@ -247,21 +260,21 @@ function load_posts() {
   }
 }
 
-/* Stores a new array of posts for the current user:
+/** 
+ * Stores a new array of posts for the current user
  *
- *  @param posts {Array} object to store
+ *  @param {Object[]} posts - array of post object to store
  */
 function store_posts(posts) {
   window.localStorage.setItem(curr_user + post_key, JSON.stringify(posts));
 }
 
-/* Creates a new post object and adds it to the array
- *  in local storage
- *  @param data {
- *       "label": label
- *       "text": text
- *  }
- *
+/**
+ *  Creates a new post object and adds it to the array in local storage.
+ * 
+ *  @param {Object} data - data to create post object from
+ *  @param {String} data."label" - label of new post
+ *  @param {String} data."text" - text content of new post
  */
 function create_post(data) {
   let posts = load_posts();
@@ -277,9 +290,10 @@ function create_post(data) {
   refresh_posts();
 }
 
-/*  Removes a post from the post array in local storage
+/**
+ * Removes a post from the post array in local storage
  *
- *  @param post_id of post to delete
+ *  @param {Integer} post_id - id of post to delete
  */
 function delete_post(post_id) {
   //get current posts
@@ -299,7 +313,8 @@ function delete_post(post_id) {
   refresh_posts();
 }
 
-/** Deletes All Posts under the current user
+/** 
+ * Deletes All Posts under the current user
  *
  */
 function delete_all_posts() {
@@ -309,12 +324,12 @@ function delete_all_posts() {
   window.localStorage.setItem(post_id_key, "0");
 }
 
-/* Updates the data of a post object
- * @param post - object to update
- * @param data - new data to use of the format {
- *      label :
- *      text :
- * }
+/**
+ * Updates the data of a post object
+ * @param {Integer} post_id - id of post to update
+ * @param {Object} data - new data to add to post
+ * @param {String} data."label" - label of edited post
+ * @param {String} data."text"  - text content of edited post
  */
 function edit_post(post_id, data) {
   //get posts from storage
@@ -336,8 +351,10 @@ function edit_post(post_id, data) {
   refresh_posts();
 }
 
-/** Pulls the next post_id from storage and returns it, pushing post_id + 1 back into storage
- *
+/** 
+ * Pulls the next post_id from storage, pushing post_id + 1 back into storage
+ * 
+ * @return {Integer} id to use when creating a new post
  */
 function get_new_post_id() {
   let id_from_storage = window.localStorage.getItem(post_id_key);
