@@ -42,6 +42,9 @@ describe("Test Filter Functionality", () => {
     for (let i = 0; i < posts.length; i++) {
       post_totals[posts[i]["label"]] += 1;
     }
+    //Open Drop Down:
+    let dropDown = await page.$("#label_option");
+    await dropDown.click();
 
     //Check each filter button
     let filterButtons = await page.$$(".filterby_label");
