@@ -7,7 +7,7 @@ describe("Test Delete Functionality", () => {
   it("Add Posts to LocalStorage", async () => {
     //click the create button 20 times to create 20 random posts
     //@todo - when the popup is implemented this test will fail as it won't be creating posts propperly
-    
+
     for (let i = 0; i < 5; i++) {
       let button = await page.$("#create_button");
       await button.click();
