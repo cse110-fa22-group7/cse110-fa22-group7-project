@@ -46,7 +46,7 @@ describe('Test Filter Functionality', () => {
         let button = await filterButtons[i];
         let label = await button.getProperty("value");
         label = await label.jsonValue();
-        console.log(`Checking ${label} posts`);
+        console.log(`Checking posts after pressing ${label} button`);
         await button.click();
         //get number of posts displayed:
         let filtered_posts = await page.$$("journal-post");
