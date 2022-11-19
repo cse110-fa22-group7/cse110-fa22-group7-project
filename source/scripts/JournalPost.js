@@ -137,7 +137,6 @@ class JournalPost extends HTMLElement {
       });
     });
 
-
     let edit_button = this.shadowRoot.getElementById("edit_button");
     edit_button.addEventListener("click", () => {
       edit_post(data["id"], {
@@ -167,8 +166,6 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
   post_container = document.getElementsByClassName("posts")[0];
   refresh_posts();
-
-  
 
   document.getElementById("create_button").addEventListener("click", () => {
     create_post({ label: "Happiness", text: "this is a test post" });

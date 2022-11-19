@@ -12,10 +12,12 @@ describe("Test Delete Functionality", () => {
       let button = await page.$("#create_button");
       await button.click();
     }
-    let posts = await page.evaluate('window.localStorage.getItem("_post_array")');
+    let posts = await page.evaluate(
+      'window.localStorage.getItem("_post_array")'
+    );
     posts = JSON.parse(posts);
     let len = posts.length;
-    
+
     expect(len).toBe(5);
   });
 
@@ -37,7 +39,7 @@ describe("Test Delete Functionality", () => {
     expect(popup).toBe(null);
   });
 
-  it("Check that post is deleted after clicking yes on popup", async () =>{
+  it("Check that post is deleted after clicking yes on popup", async () => {
     let journalPost = await page.$("journal-post");
     let shadow = await journalPost.getProperty("shadowRoot");
     let button = await shadow.$("#delete_button");
