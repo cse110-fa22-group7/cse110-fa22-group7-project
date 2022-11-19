@@ -134,8 +134,6 @@ class JournalPost extends HTMLElement {
         text: "This is an edit test!",
       });
     });
-
-
   }
 }
 customElements.define("journal-post", JournalPost);
@@ -234,7 +232,9 @@ function create_post(data) {
   const date = new Date();
   let post_data = {
     id: get_new_post_id(),
-    dateCreated: `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`,
+    dateCreated: `${
+      date.getMonth() + 1
+    }-${date.getDate()}-${date.getFullYear()}`,
     dateModified: null,
     label: data["label"],
     text: data["text"],
@@ -295,7 +295,9 @@ function edit_post(post_id, data) {
       //update label, text, and dateModified
       posts[index]["label"] = data["label"];
       posts[index]["text"] = data["text"];
-      posts[index]["dateModified"] = `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`;
+      posts[index]["dateModified"] = `${
+        date.getMonth() + 1
+      }-${date.getDate()}-${date.getFullYear()}`;
     }
   }
 
