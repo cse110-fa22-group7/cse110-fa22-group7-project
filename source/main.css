@@ -8,7 +8,7 @@
 html {
   background-color: #686c6c;
 }
-/*Sets all text to be white*/
+/*Sets all text to be white and certain font*/
 * {
   color: white;
   font-family: "Courier New", Courier, monospace;
@@ -95,9 +95,36 @@ main {
 .logo {
   height: 3em;
 }
+/*Styling for the button that creates posts*/
 #create_button {
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 20px;
+}
+/*Makes it so that when the "Label" text in filter by seems clickable*/
+details summary {
+  cursor: pointer;
+}
+/*Makes the label buttons circular and matching the website colors*/
+.filterby_label {
+  padding: 0.37rem 1rem;
+  border: white solid;
+  border-radius: 2rem;
+  color: white;
+  background-color: #686c6c;
+  margin-top: 10px;
+}
+/*Darkens the label buttons when hovered*/
+.filterby_label:hover {
+  transition: 0.2s ease-in;
+  background-color: #373b3b;
+}
+/*Keeps label and date inline with the arrow in filter by section*/
+details summary > * {
+  display: inline;
+}
+/*Spaces betwee the label and date*/
+#date_option {
+  margin-top: 20px;
 }
