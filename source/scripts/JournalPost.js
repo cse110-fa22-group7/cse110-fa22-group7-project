@@ -137,7 +137,7 @@ class JournalPost extends HTMLElement {
 customElements.define("journal-post", JournalPost);
 
 // Define variables needed for this file
-const post_key = "_post_arrray";
+const post_key = "_post_array";
 const post_id_key = "NEXT_POST_ID";
 
 var post_container;
