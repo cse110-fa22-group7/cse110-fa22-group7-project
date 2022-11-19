@@ -30,7 +30,7 @@ describe('Test Filter Functionality', () => {
       let post_totals = {
         "Happiness": 0,
         "Fear": 0,
-        "Surpries": 0,
+        "Surprise": 0,
         "Anger": 0,
         "Sadness": 0
       };
@@ -43,8 +43,10 @@ describe('Test Filter Functionality', () => {
       let filterButtons = await page.$$(".filterby_label");
       for(let i = 0; i < filterButtons.length; i++){
         //click filter button
-        let button = filterButtons[i];
-        let label = await button.value;
+        let button = await filterButtons[i];
+        let label = await button.getProperty("value");
+        label = await label.jsonValue();
+        console.log(`Checking ${label} posts`);
         await button.click();
         //get number of posts displayed:
         let filtered_posts = await page.$$("journal-post");
