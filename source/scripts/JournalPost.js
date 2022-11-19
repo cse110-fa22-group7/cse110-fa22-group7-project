@@ -134,6 +134,8 @@ class JournalPost extends HTMLElement {
         text: "This is an edit test!",
       });
     });
+
+
   }
 }
 customElements.define("journal-post", JournalPost);
@@ -227,9 +229,12 @@ function store_posts(posts) {
  */
 function create_post(data) {
   let posts = load_posts();
+
+  //
+  const date = new Date();
   let post_data = {
     id: get_new_post_id(),
-    dateCreated: Date.now(),
+    dateCreated: `${date.getMonth()+1}-${date.getDate()}-${date.getFullYear()}`,
     dateModified: null,
     label: data["label"],
     text: data["text"],
@@ -281,7 +286,7 @@ function delete_all_posts() {
 function edit_post(post_id, data) {
   //get posts from storage
   let posts = load_posts();
-
+  const date = new Date();
   //iterate through posts, looking for post to edit:
   for (let index in posts) {
     let curr_post = posts[index];
@@ -290,7 +295,7 @@ function edit_post(post_id, data) {
       //update label, text, and dateModified
       posts[index]["label"] = data["label"];
       posts[index]["text"] = data["text"];
-      posts[index]["dateModified"] = Date.now();
+      posts[index]["dateModified"] = `${date.getMonth()+1}-${date.getDate()}-${date.getFullYear()}`;
     }
   }
 
