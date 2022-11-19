@@ -6,6 +6,42 @@
     <link rel="stylesheet" href="main.css" />
     <script src="scripts/main.js" type="module"></script>
     <script src="scripts/JournalPost.js" type="module"></script>
+    <script type="module">
+      import * as myDialog from "./scripts/customdialog.js";
+      // Are you sure dialog or Warning
+      const warningDialog = document.querySelector(".warning-buttons");
+      document.addEventListener("DOMContentLoaded", () => {
+        // Make sure that the user really wants to sign out
+        warningDialog.addEventListener("click", function openWarning() {
+          const warningDialogEl = myDialog.fill("Are you sure?", true, false);
+          const okButtonEl = document.querySelector("#yes-button");
+          const noButtonEl = document.querySelector("#no-button");
+          noButtonEl.addEventListener("click", function denyAction() {
+            myDialog.closeDialog(warningDialog);
+          });
+          okButtonEl.addEventListener("click", function confirmAction() {
+            myDialog.closeDialog(warningDialog);
+            window.location.href = "./login.html";
+          });
+        });
+      });
+    </script>
+    <!-- template for custom dialog -->
+    <template id="dialog-template">
+      <dialog id="warning-dialog">
+        <form method="dialog">
+          <!-- below text will not be shown -->
+          <p>Are you sure?</p>
+          <input type="text" style="display: none" id="prompt-message" />
+          <div>
+            <button id="no-button" value="no">Cancel</button>
+            <button id="yes-button" value="default" style="display: none">
+              Confirm
+            </button>
+          </div>
+        </form>
+      </dialog>
+    </template>
     <meta chartset="UTF-8" />
     <title>MyJournal</title>
   </head>
@@ -18,7 +54,12 @@
       </div>
       <div class="user_info">
         <h2 class="user_name">User Name</h2>
-        <input type="button" class="sign_out" value="Sign Out" />
+        <input
+          type="button"
+          id="sign_out"
+          class="warning-buttons"
+          value="Sign Out"
+        />
       </div>
     </header>
     <!-- Main contains rest of page components (sidebar, posts) -->
@@ -112,6 +153,7 @@
         <h2>Posts</h2>
         <div class="post_configuration"></div>
       </div>
+      <output id="output"></output>
     </main>
   </body>
 </html>
