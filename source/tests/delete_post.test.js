@@ -1,4 +1,4 @@
-const PATH = "http://127.0.0.1:5501/source/main.html";
+const PATH = "http://localhost:9999";
 describe("Test Delete Functionality", () => {
   beforeAll(async () => {
     await page.goto(PATH);
