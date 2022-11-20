@@ -13,6 +13,7 @@
 /** Post Class for custom web-component post
  *
  */
+import * as myDialog from "./customdialog.js";
 class JournalPost extends HTMLElement {
   /**
    * sets up shadow dom
@@ -119,9 +120,20 @@ class JournalPost extends HTMLElement {
     `;
 
     //add delete event listener
-    let del_button = this.shadowRoot.getElementById("delete_button");
-    del_button.addEventListener("click", () => {
-      delete_post(data["id"]);
+
+    //setup delete popup
+    const warningDialog = this.shadowRoot.querySelector("#delete_button");
+    warningDialog.addEventListener("click", function openWarning() {
+      myDialog.fill("Are you sure?", true, false);
+      const okButtonEl = document.querySelector("#yes-button");
+      const noButtonEl = document.querySelector("#no-button");
+      noButtonEl.addEventListener("click", function denyAction() {
+        myDialog.closeDialog(warningDialog);
+      });
+      okButtonEl.addEventListener("click", function confirmAction() {
+        myDialog.closeDialog(warningDialog);
+        delete_post(data["id"]);
+      });
     });
 
     //add edit event listener
