@@ -10,6 +10,7 @@
  * TODO : Handle dates correctly, Date.now() gives milliseconds since something IDRK, we would prefer something like MM/DD/YYYY I think
  */
 
+ import {answer, create_popup} from './Popup.js';
 /** Post Class for custom web-component post
  *
  */
@@ -124,11 +125,15 @@ class JournalPost extends HTMLElement {
     //     to update the getElementById to refer to whatever they named the delete and edit buttons
     let del_button = this.shadowRoot.getElementById("delete_button");
     del_button.addEventListener("click", () => {
-      delete_post(data["id"]);
+      // popup appear
+      create_popup({title:'Delete'});
+      // check the popup for delete
+      if ( answer) delete_post(data["id"]);
     });
 
     let edit_button = this.shadowRoot.getElementById("edit_button");
-    edit_button.addEventListener("click", () => {
+      edit_button.addEventListener("click", () => {
+      // checck the popup for edit
       edit_post(data["id"], {
         label: "Happiness",
         text: "This is an edit test!",
@@ -158,9 +163,12 @@ function init() {
   refresh_posts();
 
   document.getElementById("create_button").addEventListener("click", () => {
+    // check popup for create
+    // receive label, text, date from popup
+
     create_post({ label: "Happiness", text: "this is a test post" });
   });
-
+ 
   //VvV TESTING VvV
 }
 
