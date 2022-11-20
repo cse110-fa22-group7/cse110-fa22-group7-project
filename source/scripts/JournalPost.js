@@ -158,8 +158,8 @@ class JournalPost extends HTMLElement {
       //the current value of textContent in the textbox
       var textContent = textBox.value;
 
-      var cancel_but = document.querySelector('button[type="cancel"]');
-      var update_but = document.querySelector('button[type="submit"]');
+      var cancel_but = document.querySelector("button[type=\"cancel\"]");
+      var update_but = document.querySelector("button[type=\"submit\"]");
 
       //update the label
       select.addEventListener("change", () => {
