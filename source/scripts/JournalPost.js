@@ -13,6 +13,7 @@
 /** Post Class for custom web-component post
  *
  */
+import * as myDialog from "./customdialog.js";
 class JournalPost extends HTMLElement {
   /**
    * sets up shadow dom
@@ -120,11 +121,20 @@ class JournalPost extends HTMLElement {
     `;
 
     //add delete event listener
-    //TODO when integrating the above innerHTML with the outline provided by the frontend team, make sure
-    //     to update the getElementById to refer to whatever they named the delete and edit buttons
-    let del_button = this.shadowRoot.getElementById("delete_button");
-    del_button.addEventListener("click", () => {
-      delete_post(data["id"]);
+
+    //setup delete popup
+    const warningDialog = this.shadowRoot.querySelector("#delete_button");
+    warningDialog.addEventListener("click", function openWarning() {
+      myDialog.fill("Are you sure?", true, false);
+      const okButtonEl = document.querySelector("#yes-button");
+      const noButtonEl = document.querySelector("#no-button");
+      noButtonEl.addEventListener("click", function denyAction() {
+        myDialog.closeDialog(warningDialog);
+      });
+      okButtonEl.addEventListener("click", function confirmAction() {
+        myDialog.closeDialog(warningDialog);
+        delete_post(data["id"]);
+      });
     });
 
     let edit_button = this.shadowRoot.getElementById("edit_button");
@@ -139,7 +149,7 @@ class JournalPost extends HTMLElement {
 customElements.define("journal-post", JournalPost);
 
 // Define variables needed for this file
-const post_key = "_post_arrray";
+const post_key = "_post_array";
 const post_id_key = "NEXT_POST_ID";
 
 var post_container;
