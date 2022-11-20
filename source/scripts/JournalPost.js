@@ -152,26 +152,39 @@ class JournalPost extends HTMLElement {
 
       //the current value of emote
       var emote = select.value;
-      var pre_emote = emote;
+      if (select.value == "Choose a label"){
+        emote = "What are you feeling?";
+
+      }
       //the current value of textContent in the textbox
       var textContent = textBox.value;
 
       var cancel_but = document.querySelector('button[type="cancel"]');
       var update_but = document.querySelector('button[type="submit"]');
 
-
+      //update the label
       select.addEventListener('change', () => {
+        
+        if (select.value == "Choose a label"){
+          emote = "What are you feeling?";
 
-        emote = select.value;
-
+        }
+        else{
+          emote = select.value;
+        }
+        
+      
       });
 
+
+      //update the text
       textBox.addEventListener('change', () => {
         textContent = textBox.value;
 
 
       })
 
+      //advance the change if update button is clicked
       update_but.addEventListener('click', () => {
         console.log("This is update");
         edit_post(data["id"], {
@@ -182,6 +195,7 @@ class JournalPost extends HTMLElement {
         popup.style.visibility = "hidden";
       });
 
+      //do nothing if cancel button is clicked
       cancel_but.addEventListener('click', () => {
 
         popup.style.visibility = "hidden";
