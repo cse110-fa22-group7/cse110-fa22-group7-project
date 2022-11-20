@@ -139,11 +139,57 @@ class JournalPost extends HTMLElement {
 
     let edit_button = this.shadowRoot.getElementById("edit_button");
     edit_button.addEventListener("click", () => {
-      edit_post(data["id"], {
-        label: "Happiness",
-        text: "This is an edit test!",
+
+      //select the popup
+      let popup = document.querySelector("div.edit_popup");
+      popup.style.visibility = "visible";
+
+      //select the options of emote 
+      var select = document.querySelector("select");
+
+      //select the textbox
+      var textBox = document.querySelector("textarea");
+
+      //the current value of emote
+      var emote = select.value;
+      var pre_emote = emote;
+      //the current value of textContent in the textbox
+      var textContent = textBox.value;
+
+      var cancel_but = document.querySelector('button[type="cancel"]');
+      var update_but = document.querySelector('button[type="submit"]');
+
+
+      select.addEventListener('change', () => {
+
+        emote = select.value;
+
       });
+
+      textBox.addEventListener('change', () => {
+        textContent = textBox.value;
+
+
+      })
+
+      update_but.addEventListener('click', () => {
+        console.log("This is update");
+        edit_post(data["id"], {
+
+          label: emote,
+          text: textContent
+        });
+        popup.style.visibility = "hidden";
+      });
+
+      cancel_but.addEventListener('click', () => {
+
+        popup.style.visibility = "hidden";
+      });
+
     });
+
+
   }
 }
 customElements.define("journal-post", JournalPost);
@@ -242,9 +288,8 @@ function create_post(data) {
   const date = new Date();
   let post_data = {
     id: get_new_post_id(),
-    dateCreated: `${
-      date.getMonth() + 1
-    }-${date.getDate()}-${date.getFullYear()}`,
+    dateCreated: `${date.getMonth() + 1
+      }-${date.getDate()}-${date.getFullYear()}`,
     dateModified: null,
     label: data["label"],
     text: data["text"],
@@ -305,9 +350,8 @@ function edit_post(post_id, data) {
       //update label, text, and dateModified
       posts[index]["label"] = data["label"];
       posts[index]["text"] = data["text"];
-      posts[index]["dateModified"] = `${
-        date.getMonth() + 1
-      }-${date.getDate()}-${date.getFullYear()}`;
+      posts[index]["dateModified"] = `${date.getMonth() + 1
+        }-${date.getDate()}-${date.getFullYear()}`;
     }
   }
 
