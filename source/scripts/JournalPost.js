@@ -139,9 +139,51 @@ class JournalPost extends HTMLElement {
 
     let edit_button = this.shadowRoot.getElementById("edit_button");
     edit_button.addEventListener("click", () => {
-      edit_post(data["id"], {
-        label: "Happiness",
-        text: "This is an edit test!",
+      //select the popup
+      let popup = document.querySelector(".edit_popup");
+      popup.style.visibility = "visible";
+
+      //select the options of emote
+      var select = document.querySelector("select");
+
+      //select the textbox
+      var textBox = document.querySelector("textarea");
+
+      //the current value of emote
+      var emote = select.value;
+      //other value for "choose a label"
+
+      //the current value of textContent in the textbox
+      select.value = data["label"];
+      textBox.value = data["text"];
+      var textContent = textBox.value;
+
+      var cancel_but = document.querySelector("#cancel");
+      var update_but = document.querySelector("#update");
+
+      //update the label
+      select.addEventListener("change", () => {
+        emote = select.value;
+      });
+
+      //update the text
+      textBox.addEventListener("change", () => {
+        textContent = textBox.value;
+      });
+
+      //advance the change and close the popup if update button is clicked
+      update_but.addEventListener("click", () => {
+        console.log("This is update");
+        edit_post(data["id"], {
+          label: emote,
+          text: textContent,
+        });
+        popup.style.visibility = "hidden";
+      });
+
+      //do nothing if cancel button is clicked
+      cancel_but.addEventListener("click", () => {
+        popup.style.visibility = "hidden";
       });
     });
   }
