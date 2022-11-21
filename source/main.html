@@ -10,8 +10,9 @@
     <script type="module">
       import * as myDialog from "./scripts/customdialog.js";
       // Are you sure dialog or Warning
-      const warningDialog = document.querySelector(".warning-buttons");
+
       document.addEventListener("DOMContentLoaded", () => {
+        const warningDialog = document.querySelector(".warning-buttons");
         // Make sure that the user really wants to sign out
         warningDialog.addEventListener("click", function openWarning() {
           const warningDialogEl = myDialog.fill("Are you sure?", true, false);

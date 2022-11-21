@@ -8,7 +8,7 @@
     "eslint-fix": "./node_modules/.bin/eslint --fix . --ext js",
     "prettier-fix": "./node_modules/.bin/prettier --write ./source",
     "prettier-check": "./node_modules/.bin/prettier --check ./source",
-    "test": "jest"
+    "test": "npx parcel source/main.html --port 9999 & npx jest"
   },
   "repository": {
     "type": "git",
