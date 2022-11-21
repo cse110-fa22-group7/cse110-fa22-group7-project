@@ -19,7 +19,6 @@ input {
   font-weight: 600;
 }
 
-
 /*Only used on the create button to shape it*/
 button {
   color: black;
@@ -132,12 +131,12 @@ details summary > * {
 
 /* popup css */
 
-.edit_popup{
+.edit_popup {
   visibility: hidden;
 }
 
 /*The content of popup*/
-.edit_popup .content{
+.edit_popup .content {
   position: absolute;
   width: 802px;
   height: 480px;
@@ -149,9 +148,8 @@ details summary > * {
   text-align: center;
   justify-content: center;
   align-items: center;
-  
+
   z-index: 2;
-  
 }
 h1.popup {
   font-family: "Inter";
@@ -206,8 +204,7 @@ button.popup {
 }
 
 /*the gray out background*/
-.edit_popup .background{
-
+.edit_popup .background {
   position: fixed;
   top: 0px;
   left: 0px;

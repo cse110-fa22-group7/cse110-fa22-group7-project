@@ -157,17 +157,13 @@ class JournalPost extends HTMLElement {
       select.value = data["label"];
       textBox.value = data["text"];
       var textContent = textBox.value;
-      
 
       var cancel_but = document.querySelector("#cancel");
       var update_but = document.querySelector("#update");
 
-
       //update the label
       select.addEventListener("change", () => {
-        
         emote = select.value;
-
       });
 
       //update the text
@@ -288,7 +284,8 @@ function create_post(data) {
   const date = new Date();
   let post_data = {
     id: get_new_post_id(),
-    dateCreated: `${date.getMonth() + 1
+    dateCreated: `${
+      date.getMonth() + 1
     }-${date.getDate()}-${date.getFullYear()}`,
     dateModified: null,
     label: data["label"],
@@ -350,7 +347,8 @@ function edit_post(post_id, data) {
       //update label, text, and dateModified
       posts[index]["label"] = data["label"];
       posts[index]["text"] = data["text"];
-      posts[index]["dateModified"] = `${date.getMonth() + 1
+      posts[index]["dateModified"] = `${
+        date.getMonth() + 1
       }-${date.getDate()}-${date.getFullYear()}`;
     }
   }
