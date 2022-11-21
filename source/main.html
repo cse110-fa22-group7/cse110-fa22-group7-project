@@ -1,162 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- Main Stylesheet & Scripts -->
-  <head>
-    <!-- Reference to stylesheet -->
-    <link rel="stylesheet" href="main.css" />
-    <script src="scripts/main.js" type="module"></script>
-    <script src="scripts/JournalPost.js" type="module"></script>
-    <script type="module">
-      import * as myDialog from "./scripts/customdialog.js";
-      // Are you sure dialog or Warning
-      const warningDialog = document.querySelector(".warning-buttons");
-      document.addEventListener("DOMContentLoaded", () => {
-        // Make sure that the user really wants to sign out
-        warningDialog.addEventListener("click", function openWarning() {
-          const warningDialogEl = myDialog.fill("Are you sure?", true, false);
-          const okButtonEl = document.querySelector("#yes-button");
-          const noButtonEl = document.querySelector("#no-button");
-          noButtonEl.addEventListener("click", function denyAction() {
-            myDialog.closeDialog(warningDialog);
-          });
-          okButtonEl.addEventListener("click", function confirmAction() {
-            myDialog.closeDialog(warningDialog);
-            window.location.href = "./login.html";
-          });
+<!-- Main Stylesheet & Scripts -->
+
+<head>
+  <!-- Reference to stylesheet -->
+  <link rel="stylesheet" href="main.css" />
+  <script src="scripts/main.js" type="module"></script>
+  <script src="scripts/JournalPost.js" type="module"></script>
+  <script type="module">
+    import * as myDialog from "./scripts/customdialog.js";
+    // Are you sure dialog or Warning
+    const warningDialog = document.querySelector(".warning-buttons");
+    document.addEventListener("DOMContentLoaded", () => {
+      // Make sure that the user really wants to sign out
+      warningDialog.addEventListener("click", function openWarning() {
+        const warningDialogEl = myDialog.fill("Are you sure?", true, false);
+        const okButtonEl = document.querySelector("#yes-button");
+        const noButtonEl = document.querySelector("#no-button");
+        noButtonEl.addEventListener("click", function denyAction() {
+          myDialog.closeDialog(warningDialog);
+        });
+        okButtonEl.addEventListener("click", function confirmAction() {
+          myDialog.closeDialog(warningDialog);
+          window.location.href = "./login.html";
         });
       });
-    </script>
-    <!-- template for custom dialog -->
-    <template id="dialog-template">
-      <dialog id="warning-dialog">
-        <form method="dialog">
-          <!-- below text will not be shown -->
-          <p>Are you sure?</p>
-          <input type="text" style="display: none" id="prompt-message" />
-          <div>
-            <button id="no-button" value="no">Cancel</button>
-            <button id="yes-button" value="default" style="display: none">
-              Confirm
-            </button>
-          </div>
-        </form>
-      </dialog>
-    </template>
-    <meta chartset="UTF-8" />
-    <title>MyJournal</title>
-  </head>
-  <body>
-    <!-- Header holds logo, appname, username, signout button -->
-    <header>
-      <div class="appinfo">
-        <img class="logo" src="/source/images/logo.svg" alt="logo" />
-        <h1 class="app_title">MyJournal</h1>
-      </div>
-      <div class="user_info">
-        <h2 class="user_name">User Name</h2>
-        <input
-          type="button"
-          id="sign_out"
-          class="warning-buttons"
-          value="Sign Out"
-        />
-      </div>
-    </header>
-    <!-- Main contains rest of page components (sidebar, posts) -->
-    <main>
-      <!-- Create button -->
-      <div class="left_create">
-        <button id="create_button" class="create" value="Create">
-          <img
-            src="/source/images/create_black.svg"
-            alt="create_image"
-            height="30"
-          />
-          Create
-        </button>
-      </div>
-      <!-- Filter by date and by label -->
-      <div class="filters">
-        <div class="filter_by">
-          <img
-            src="/source/images/filter_white.svg"
-            alt="filter_image"
-            height="30"
-            class="filter_img"
-          />
-          <h2>Filter by</h2>
+    });
+  </script>
+  <!-- template for custom dialog -->
+  <template id="dialog-template">
+    <dialog id="warning-dialog">
+      <form method="dialog">
+        <!-- below text will not be shown -->
+        <p>Are you sure?</p>
+        <input type="text" style="display: none" id="prompt-message" />
+        <div>
+          <button id="no-button" value="no">Cancel</button>
+          <button id="yes-button" value="default" style="display: none">
+            Confirm
+          </button>
         </div>
-        <!-- Labels holds 5 preset label buttons shown by clicking the text "Label"-->
-        <details>
-          <summary class="filterby_option" id="label_option">
-            <h3>Label</h3>
-          </summary>
-          <div class="labels">
-            <input
-              type="button"
-              id="label1"
-              class="filterby_label"
-              value="Happiness"
-            />
-            <input
-              type="button"
-              id="label2"
-              class="filterby_label"
-              value="Sadness"
-            />
-            <input
-              type="button"
-              id="label3"
-              class="filterby_label"
-              value="Anger"
-            />
-            <input
-              type="button"
-              id="label4"
-              class="filterby_label"
-              value="Fear"
-            />
-            <input
-              type="button"
-              id="label5"
-              class="filterby_label"
-              value="Surprise"
-            />
-            <input
-              type="button"
-              id="label6"
-              class="filterby_label"
-              value="Reset"
-            />
-          </div>
-        </details>
-        <!-- Form holds text input to filter from a date and to a date -->
-        <details>
-          <summary class="filterby_option" id="date_option">
-            <h3>Date</h3>
-          </summary>
-          <form>
-            <h4>From:</h4>
-            <input
-              type="textbox"
-              class="filterby_date_from"
-              value="MM/DD/YYYY"
-            />
-            <h4>To:</h4>
-            <input type="textbox" class="filterby_date_to" value="MM/DD/YYYY" />
-            <input type="submit" class="submit" />
-          </form>
-        </details>
-      </div>
-      <!-- Posts will contain all posts from local storage -->
-      <div class="posts">
-        <h2>Posts</h2>
-        <div class="post_configuration"></div>
-      </div>
-      <output id="output"></output>
+      </form>
+    </dialog>
+  </template>
+  <meta chartset="UTF-8" />
+  <title>MyJournal</title>
+</head>
 
-      <!-- Edit popup  -->
-      <div class="edit_popup">
+<body>
+  <!-- Header holds logo, appname, username, signout button -->
+  <header>
+    <div class="appinfo">
+      <img class="logo" src="/source/images/logo.svg" alt="logo" />
+      <h1 class="app_title">MyJournal</h1>
+    </div>
+    <div class="user_info">
+      <h2 class="user_name">User Name</h2>
+      <input type="button" id="sign_out" class="warning-buttons" value="Sign Out" />
+    </div>
+  </header>
+  <!-- Main contains rest of page components (sidebar, posts) -->
+  <main>
+    <!-- Create button -->
+    <div class="left_create">
+      <button id="create_button" class="create" value="Create">
+        <img src="/source/images/create_black.svg" alt="create_image" height="30" />
+        Create
+      </button>
+    </div>
+    <!-- Filter by date and by label -->
+    <div class="filters">
+      <div class="filter_by">
+        <img src="/source/images/filter_white.svg" alt="filter_image" height="30" class="filter_img" />
+        <h2>Filter by</h2>
+      </div>
+      <!-- Labels holds 5 preset label buttons shown by clicking the text "Label"-->
+      <details>
+        <summary class="filterby_option" id="label_option">
+          <h3>Label</h3>
+        </summary>
+        <div class="labels">
+          <input type="button" id="label1" class="filterby_label" value="Happiness" />
+          <input type="button" id="label2" class="filterby_label" value="Sadness" />
+          <input type="button" id="label3" class="filterby_label" value="Anger" />
+          <input type="button" id="label4" class="filterby_label" value="Fear" />
+          <input type="button" id="label5" class="filterby_label" value="Surprise" />
+          <input type="button" id="label6" class="filterby_label" value="Reset" />
+        </div>
+      </details>
+      <!-- Form holds text input to filter from a date and to a date -->
+      <details>
+        <summary class="filterby_option" id="date_option">
+          <h3>Date</h3>
+        </summary>
+        <form>
+          <h4>From:</h4>
+          <input type="textbox" class="filterby_date_from" value="MM/DD/YYYY" />
+          <h4>To:</h4>
+          <input type="textbox" class="filterby_date_to" value="MM/DD/YYYY" />
+          <input type="submit" class="submit" />
+        </form>
+      </details>
+    </div>
+    <!-- Posts will contain all posts from local storage -->
+    <div class="posts">
+      <h2>Posts</h2>
+      <div class="post_configuration"></div>
+    </div>
+    <output id="output"></output>
+
+    <!-- Edit popup  -->
+
+    <div class="edit_popup">
+
+      <div class="background"></div>
+
+      <div class="content">
         <h1 class="popup">Edit Post</h1>
         <hr />
         <form>
@@ -164,8 +123,8 @@
           <hr />
           <div class="label_and_button">
             <select>
-              <option value="Choose a label">
-                <label>Choose a label</label>
+              <option value="Choose a label" disabled>
+                <label>What are you feeling?</label>
               </option>
               <option value="Happiness">
                 <label>Happiness</label>
@@ -187,9 +146,16 @@
             <button type="submit" value="update" class="popup" id="update">
               Update
             </button>
-          </div>
         </form>
       </div>
-    </main>
-  </body>
+
+    </div>
+  </main>
+
+
+  </div>
+
+
+</body>
+
 </html>

@@ -140,7 +140,7 @@ class JournalPost extends HTMLElement {
     let edit_button = this.shadowRoot.getElementById("edit_button");
     edit_button.addEventListener("click", () => {
       //select the popup
-      let popup = document.querySelector("div.edit_popup");
+      let popup = document.querySelector(".edit_popup");
       popup.style.visibility = "visible";
 
       //select the options of emote
@@ -152,23 +152,22 @@ class JournalPost extends HTMLElement {
       //the current value of emote
       var emote = select.value;
       //other value for "choose a label"
-      if (select.value == "Choose a label") {
-        emote = "What are you feeling?";
-      }
+
       //the current value of textContent in the textbox
+      select.value = data["label"];
+      textBox.value = data["text"];
       var textContent = textBox.value;
+      
 
       var cancel_but = document.querySelector("#cancel");
       var update_but = document.querySelector("#update");
 
+
       //update the label
       select.addEventListener("change", () => {
-        //other value for "choose a label"
-        if (select.value == "Choose a label") {
-          emote = "What are you feeling?";
-        } else {
-          emote = select.value;
-        }
+        
+        emote = select.value;
+
       });
 
       //update the text
@@ -289,8 +288,7 @@ function create_post(data) {
   const date = new Date();
   let post_data = {
     id: get_new_post_id(),
-    dateCreated: `${
-      date.getMonth() + 1
+    dateCreated: `${date.getMonth() + 1
     }-${date.getDate()}-${date.getFullYear()}`,
     dateModified: null,
     label: data["label"],
@@ -352,8 +350,7 @@ function edit_post(post_id, data) {
       //update label, text, and dateModified
       posts[index]["label"] = data["label"];
       posts[index]["text"] = data["text"];
-      posts[index]["dateModified"] = `${
-        date.getMonth() + 1
+      posts[index]["dateModified"] = `${date.getMonth() + 1
       }-${date.getDate()}-${date.getFullYear()}`;
     }
   }
