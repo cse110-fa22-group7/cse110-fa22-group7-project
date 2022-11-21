@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <style>
+      .create_popup {
+        position: absolute;
+        width: 802px;
+        height: 480px;
+        left: 531px;
+        top: 288px;
+        background-color: #60686a;
+        border-radius: 30px;
+        text-align: center;
+      }
+      h1 {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 64px;
+        line-height: 10px;
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+      }
+      textarea {
+        background: transparent;
+        width: 750px;
+        height: 250px;
+        color: white;
+        resize: none;
+      }
+      textarea::placeholder {
+        color: white;
+      }
+      .label_and_button {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      select {
+        width: 246px;
+        height: 52px;
+        background: transparent;
+        font-family: "Inter";
+        color: white;
+        border-color: white;
+        font-family: "Inter";
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        color: white;
+      }
+      button {
+        width: 150px;
+        height: 48px;
+        background: transparent;
+        border-radius: 30px;
+        border-color: white;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 36px;
+        color: white;
+      }
+    </style>
+
+    <div class="create_popup">
+      <h1>New Post</h1>
+      <hr />
+      <form>
+        <textarea placeholder="What would you like to say?"></textarea>
+        <hr />
+        <div class="label_and_button">
+          <select>
+            <option value="Choose a label">
+              <label>Choose a label</label>
+            </option>
+            <option value="Happiness">
+              <label>Happiness</label>
+            </option>
+            <option value="Sadness">
+              <label>Sadness</label>
+            </option>
+            <option value="Anger">
+              <label>Anger</label>
+            </option>
+            <option value="Fear">
+              <label>Fear</label>
+            </option>
+            <option value="Surprise">
+              <label>Surprise</label>
+            </option>
+          </select>
+          <button type="submit" value="create">Create</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
