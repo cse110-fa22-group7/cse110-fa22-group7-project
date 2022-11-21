@@ -136,6 +136,7 @@ details summary > * {
   visibility: hidden;
 }
 
+/*The content of popup*/
 .edit_popup .content{
   position: absolute;
   width: 802px;
@@ -204,6 +205,7 @@ button.popup {
   color: white;
 }
 
+/*the gray out background*/
 .edit_popup .background{
 
   position: fixed;
@@ -211,6 +213,6 @@ button.popup {
   left: 0px;
   width: 200vw;
   height: 200vh;
-  background: rgb(0, 0, 0, 0.6);
+  background: rgba(9, 8, 8, 0.6);
   z-index: 1;
 }
