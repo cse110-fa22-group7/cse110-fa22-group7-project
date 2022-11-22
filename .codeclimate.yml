@@ -6,4 +6,8 @@ plugins:
     - ".eslintrc.json"
 exclude_patterns:
 - "**/.github/*"
+- "**/.vscode/*"
+- "**/docs/*"
+- "**/specs/*"
 - "**/source/tests/*"
+- "**/*.json"
