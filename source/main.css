@@ -144,7 +144,7 @@ main {
 .filter_by {
   display: flex;
   flex-direction: row;
-  padding: 5px 22px 5px 22px;
+  padding: 5px 22px 10px 22px;
   gap: 18px;
   font-size: 15px;
   height: 35px;
@@ -293,14 +293,7 @@ details summary > * {
   display: inline;
 }
 
-
-/*Spaces betwee the label and date*/
-#date_option {
-  margin-top: 20px;
-}
-
 /*Popup css*/
-
 .edit_popup {
   visibility: hidden;
   max-height: 0;
