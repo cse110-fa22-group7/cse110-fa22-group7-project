@@ -1,0 +1,8 @@
+## other configuration excluded from example...
+exclude_patterns:
+- "**/.github/*"
+- "**/.vscode/*"
+- "**/docs/*"
+- "**/specs/*"
+- "**/source/tests/*"
+- "**/*.json"
