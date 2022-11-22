@@ -24,7 +24,7 @@ jobs:
     - name: run JSDoc
       run: npx jsdoc -r ./source -d ./docs
     - name: run Code Quality
-      uses: echo "synced code climate to repository"
+      uses: echo "synced Code Climate to repository"
     - name: run Jest Tests
       run: npm run test
     - name: check Jest test coverage
