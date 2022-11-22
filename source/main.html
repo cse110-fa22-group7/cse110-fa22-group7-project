@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <!-- Main Stylesheet & Scripts -->
+
   <head>
     <!-- Reference to stylesheet -->
     <link rel="stylesheet" href="main.css" />
     <script src="scripts/main.js" type="module"></script>
     <script src="scripts/JournalPost.js" type="module"></script>
-
     <meta chartset="UTF-8" />
     <title>MyJournal</title>
   </head>
+
   <body>
     <!-- Header holds logo, appname, username, signout button -->
     <header>
       <div class="appinfo">
-        <img class="logo" src="/source/images/logo_1.svg" alt="logo" />
+        <img class="logo" src="/source/images/logo.svg" alt="logo" />
         <h1 class="app_title">MyJournal</h1>
       </div>
       <div class="user_info">
@@ -52,49 +53,67 @@
           />
           <h2>Filter by</h2>
         </div>
-        <h3>Label</h3>
-        <!-- Labels holds 5 preset label buttons -->
-        <div class="labels">
-          <input
-            type="button"
-            id="label1"
-            class="filterby_label"
-            value="Hapiness"
-          />
-          <input
-            type="button"
-            id="label2"
-            class="filterby_label"
-            value="Sadness"
-          />
-          <input
-            type="button"
-            id="label3"
-            class="filterby_label"
-            value="Anger"
-          />
-          <input
-            type="button"
-            id="label4"
-            class="filterby_label"
-            value="Fear"
-          />
-          <input
-            type="button"
-            id="label5"
-            class="filterby_label"
-            value="Surprise"
-          />
-        </div>
-        <h3 class="filterby_date">Date</h3>
+        <!-- Labels holds 5 preset label buttons shown by clicking the text "Label"-->
+        <details>
+          <summary class="filterby_option" id="label_option">
+            <h3>Label</h3>
+          </summary>
+          <div class="labels">
+            <input
+              type="button"
+              id="label1"
+              class="filterby_label"
+              value="Happiness"
+            />
+            <input
+              type="button"
+              id="label2"
+              class="filterby_label"
+              value="Sadness"
+            />
+            <input
+              type="button"
+              id="label3"
+              class="filterby_label"
+              value="Anger"
+            />
+            <input
+              type="button"
+              id="label4"
+              class="filterby_label"
+              value="Fear"
+            />
+            <input
+              type="button"
+              id="label5"
+              class="filterby_label"
+              value="Surprise"
+            />
+            <input
+              type="button"
+              id="label6"
+              class="filterby_label"
+              value="Reset"
+            />
+          </div>
+        </details>
         <!-- Form holds text input to filter from a date and to a date -->
-        <form>
-          <h4>From:</h4>
-          <input type="textbox" class="filterby_date_from" value="MM/DD/YYYY" />
-          <h4>To:</h4>
-          <input type="textbox" class="filterby_date_to" value="MM/DD/YYYY" />
-          <input type="submit" class="submit" />
-        </form>
+        <details>
+          <summary class="filterby_option" id="date_option">
+            <h3>Date</h3>
+          </summary>
+          <form>
+            <h4>From:</h4>
+            <input
+              type="textbox"
+              class="filterby_date_from"
+              value="MM/DD/YYYY"
+            />
+            <h4>To:</h4>
+            <input type="textbox" class="filterby_date_to" value="MM/DD/YYYY" />
+            <input type="submit" class="submit" />
+          </form>
+        </details>
       </div>
       <!-- Posts will contain all posts from local storage -->
       <div class="posts">
@@ -102,6 +121,47 @@
         <div class="post_configuration"></div>
       </div>
       <output id="output"></output>
+
+      <!-- Edit popup  -->
+
+      <div class="edit_popup">
+        <div class="background"></div>
+
+        <div class="content">
+          <h1 class="popup">Edit Post</h1>
+          <hr />
+          <form>
+            <textarea placeholder="What would you like to say?"></textarea>
+            <hr />
+            <div class="label_and_button">
+              <select>
+                <option value="Choose a label" disabled>
+                  <label>What are your feelings</label>
+                </option>
+                <option value="Happiness">
+                  <label>Happiness</label>
+                </option>
+                <option value="Sadness">
+                  <label>Sadness</label>
+                </option>
+                <option value="Anger">
+                  <label>Anger</label>
+                </option>
+                <option value="Fear">
+                  <label>Fear</label>
+                </option>
+                <option value="Surprise">
+                  <label>Surprise</label>
+                </option>
+              </select>
+              <button type="cancel" class="popup" id="cancel">Cancel</button>
+              <button type="submit" value="update" class="popup" id="update">
+                Update
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </main>
   </body>
 </html>
