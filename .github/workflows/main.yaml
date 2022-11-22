@@ -24,7 +24,7 @@ jobs:
     - name: run JSDoc
       run: npx jsdoc -r ./source -d ./docs
     - name: run Code Quality
-      run: echo "look into code climate or other source"
+      uses: codacy/codacy-analysis-cli-action@master
     - name: run Jest Tests
       run: npm run test
     - name: check Jest test coverage
