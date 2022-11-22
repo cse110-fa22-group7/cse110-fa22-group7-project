@@ -101,12 +101,13 @@ class Popup extends HTMLElement {
     set data(data) {
         let popup = this.shadowRoot.querySelector('#popup');
         let button_approval = data.popup_title;
+        let textContent = data.popup_title =='Add'? "" : data.popup_text ;
         // Create / Edit
         popup.innerHTML = `
         <h1>${data["popup_title"]} Post</h1>
         <hr />
         <form>
-          <textarea placeholder="What would you like to say?"></textarea>
+          <textarea placeholder="What would you like to say?">${textContent}</textarea>
           <hr />
           <div class="label_and_button">
             <select>
@@ -165,7 +166,7 @@ class Popup extends HTMLElement {
             const select = formEl.querySelector('select');
             const textBox = formEl.querySelector('textarea');
             let emote =  select.value;
-            let textContent = textBox.value;
+            textContent = textBox.value;
             if (data["popup_title"] == 'Add')    create_post(data["popup_id"], {label: emote, text: textContent});
             if (data["popup_title"] == 'Edit')   edit_post(data["popup_id"],{label: emote, text: textContent});
           }
@@ -195,6 +196,7 @@ export function create_popup(data) {
     let popup_data = {
         popup_title: data.title,
         popup_id: data.id,
+        popup_text: data.text
     };
     const output = document.querySelector('#output');
     const popup = document.createElement('popup-dialog');
