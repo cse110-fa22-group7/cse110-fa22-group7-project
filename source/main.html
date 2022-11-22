@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <!-- Main Stylesheet & Scripts -->
+
   <head>
     <!-- Reference to stylesheet -->
     <link rel="stylesheet" href="main.css" />
@@ -9,8 +10,9 @@
     <script type="module">
       import * as myDialog from "./scripts/customdialog.js";
       // Are you sure dialog or Warning
-      const warningDialog = document.querySelector(".warning-buttons");
+
       document.addEventListener("DOMContentLoaded", () => {
+        const warningDialog = document.querySelector(".warning-buttons");
         // Make sure that the user really wants to sign out
         warningDialog.addEventListener("click", function openWarning() {
           const warningDialogEl = myDialog.fill("Are you sure?", true, false);
@@ -45,6 +47,7 @@
     <meta chartset="UTF-8" />
     <title>MyJournal</title>
   </head>
+
   <body>
     <!-- Header holds logo, appname, username, signout button -->
     <header>
@@ -150,6 +153,47 @@
         <div class="post_configuration"></div>
       </div>
       <output id="output"></output>
+
+      <!-- Edit popup  -->
+
+      <div class="edit_popup">
+        <div class="background"></div>
+
+        <div class="content">
+          <h1 class="popup">Edit Post</h1>
+          <hr />
+          <form>
+            <textarea placeholder="What would you like to say?"></textarea>
+            <hr />
+            <div class="label_and_button">
+              <select>
+                <option value="Choose a label" disabled>
+                  <label>What are your feelings</label>
+                </option>
+                <option value="Happiness">
+                  <label>Happiness</label>
+                </option>
+                <option value="Sadness">
+                  <label>Sadness</label>
+                </option>
+                <option value="Anger">
+                  <label>Anger</label>
+                </option>
+                <option value="Fear">
+                  <label>Fear</label>
+                </option>
+                <option value="Surprise">
+                  <label>Surprise</label>
+                </option>
+              </select>
+              <button type="cancel" class="popup" id="cancel">Cancel</button>
+              <button type="submit" value="update" class="popup" id="update">
+                Update
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </main>
   </body>
 </html>

@@ -1,6 +1,6 @@
 # TA Checkin 11/14
 
-from 8:03 - 
+from 8:03 - 10:03
 
 ## Attendance
 
@@ -10,7 +10,7 @@ from 8:03 -
 - Lucas
 - Jacob
 
-## 
+## What we discussed
 
 ### Documentation
 
@@ -24,8 +24,7 @@ Everything in README:
 - Link to videos/live project
 
 ADRS 
-    - Need to have for each feature
-    - 
+    - Need to have for every feature.
 
 
 

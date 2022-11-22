@@ -289,10 +289,109 @@ output {
   
 }
 
+/*Spaces betwee the label and date*/
+#date_option {
+  margin-top: 20px;
+}
+
+/* popup css */
+
+.edit_popup {
+  visibility: hidden;
+}
+
+/*The content of popup*/
+.edit_popup .content {
+  position: absolute;
+  width: 802px;
+  height: 480px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #60686a;
+  border-radius: 30px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 2;
+}
+h1.popup {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 10px;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+textarea {
+  background: transparent;
+  width: 750px;
+  height: 250px;
+  color: white;
+  resize: none;
+}
+textarea::placeholder {
+  color: white;
+}
+.label_and_button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+select {
+  width: 246px;
+  height: 52px;
+  background: transparent;
+  font-family: "Inter";
+  color: white;
+  border-color: white;
+  font-family: "Inter";
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  color: white;
+}
+button.popup {
+  width: 150px;
+  height: 48px;
+  background: transparent;
+  border-radius: 30px;
+  border-color: white;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  color: white;
+}
+
+/*the gray out background*/
+.edit_popup .background {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 200vw;
+  height: 200vh;
+  background: rgba(9, 8, 8, 0.6);
+  z-index: 1;
+}
+
 /*Media query*/
 @media screen and (max-width: 700px) {
   :root {
     font-size: var(--mobile-textsize);
   }
   /* we have to work on design of the smaller mobile design */
+}
+
+/*popup button to shape it*/
+button {
+  color: black;
+  font-weight: 600;
+  border-radius: 2rem;
+  width: 150px;
+  height: 50px;
 }
