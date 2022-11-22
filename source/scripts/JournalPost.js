@@ -150,14 +150,12 @@ class JournalPost extends HTMLElement {
       var textBox = document.querySelector("textarea");
 
       //the current value of emote
-      var emote = select.value;
-      //other value for "choose a label"
+      select.value = data["label"];
 
       //the current value of textContent in the textbox
-      select.value = data["label"];
       textBox.value = data["text"];
       var textContent = textBox.value;
-
+      var emote = select.value;
       var cancel_but = document.querySelector("#cancel");
       var update_but = document.querySelector("#update");
 
