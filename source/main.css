@@ -4,22 +4,33 @@
   padding: 0;
   --mobile-textsize: 10px;
 }
-/*Makes the background color of the whole document grey*/
+/*Sets the background color of document*/
 html {
-  background-color: #686c6c;
+  background-color: #101010;
 }
+header,
+.left_create,
+.filters {
+  background-color: #202020;
+}
+
 /*Sets all text to be white and certain font*/
 * {
   color: white;
-  font-family: "Courier New", Courier, monospace;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 /*Sets input text to be black and font weight*/
 input {
   color: black;
   font-weight: 600;
 }
-
-/*Only used on the create button to shape it*/
+/*Removes margin around page*/
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+/*Style buttons*/
 button {
   color: black;
   font-weight: 600;
@@ -27,112 +38,273 @@ button {
   width: 150px;
   height: 50px;
 }
-/*Displays app name and logo in header next to each other*/
-.appinfo {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
+
 /*Aligns elements to the left or right*/
 header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid rgb(87, 87, 87);
+  height: 60px;
 }
+/*Adjust logo height*/
+.logo {
+  height: 2.5em;
+}
+/*Displays app name and logo in header next to each other*/
+.appinfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  margin: 0 20px;
+  font-size: 14px;
+}
+
+/*Aligns username and sign out button*/
+.user_info {
+  display: grid;
+  justify-items: end;
+  font-size: 12px;
+  margin: 5px 10px;
+}
+/*Styles username*/
+.user_name {
+  margin: 0;
+  font-weight: 100;
+}
+/*Styles sign out button*/
+#sign_out {
+  height: 25px;
+  border-radius: 50vh;
+  background-color: #444444;
+  color: white;
+  border: 0px solid white;
+  width: 90px;
+  transition: background-color 0.2s;
+}
+/*Colors "Sign Out" button on hover*/
+#sign_out:hover {
+  background-color: rgb(208, 51, 51);
+}
+
 /*Sections the page into two rows on the left and one on the right*/
 main {
   display: grid;
-  grid-template-columns: 3fr 7fr;
-  grid-template-rows: 5rem auto;
+  grid-template-columns: 250px auto;
+  grid-template-rows: 70px auto 0;
+  height: calc(100vh - 61px);
   /*Sets the left rows to be create and filter sets the right ot be posts*/
   grid-template-areas:
     "left_create posts"
-    "filters     posts";
+    "filters     posts"
+    "edit_popup  output";
 }
+
+/*Adds right border to sidebar*/
+.left_create,
+.filters {
+  border-right: 1px solid rgb(87, 87, 87);
+}
+
 /*Aligns the create button in the create section*/
 .left_create {
-  display: flex;
-  flex-direction: row;
-  grid-area: left_create;
-  border-bottom: 1px solid white;
-  padding-left: 20px;
+  display: grid;
   align-items: center;
+  justify-items: center;
+  border-right: 1px solid rgb(87, 87, 87);
 }
+/*Styling for the button that creates posts*/
+#create_button {
+  /*Centers and spaces icon and text*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  /*Styles button and text*/
+  background-color: #3191ff00;
+  border: 4px solid #3191ff;
+  border-radius: 50vh;
+  color: white;
+  padding: 5px 22px;
+  font-size: 22px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+/*Colors create and submit button on hover*/
+#create_button:hover {
+  border: solid #3191ff;
+  background-color: #3191ff;
+}
+
 /*Makes it so that element in filters section are sectioned*/
 .filters {
-  grid-area: filters;
-}
-/*Display label elements in rows*/
-.labels {
   display: flex;
   flex-direction: column;
+  border-top: 1px solid rgb(87, 87, 87);
 }
-/*Sets the post area as well as the line to the left of it*/
-.posts {
-  grid-area: posts;
-  border-left: 1px solid white;
-  overflow-y: auto;
-  height: 790px;
-}
+
 /*Displays "Filter by" text next to the filter image*/
 .filter_by {
   display: flex;
   flex-direction: row;
-}
-/*Aligns the filter image with the text*/
-.filter_img {
-  padding-top: 15px;
-}
-/*Media query*/
-@media screen and (max-width: 700px) {
-  :root {
-    font-size: var(--mobile-textsize);
-  }
-  /* we have to work on design of the smaller mobile design */
+  padding: 5px 22px 10px 22px;
+  gap: 18px;
+  font-size: 15px;
+  height: 35px;
+  align-items: flex-end;
 }
 
-.logo {
-  height: 3em;
+/*Aligns "Label" and "Date" drop down text */
+.filterby_option {
+  font-size: 15px;
+  padding: 5px 30px 5px 30px;
+  transition: background-color 0.2s;
 }
-/*Styling for the button that creates posts*/
-#create_button {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 20px;
+.filterby_option:hover {
+  background-color: #444444;
 }
-/*Makes it so that when the "Label" text in filter by seems clickable*/
+/*Makes "Label" and "Date" text seem clickable*/
 details summary {
   cursor: pointer;
 }
-/*Makes the label buttons circular and matching the website colors*/
-.filterby_label {
-  padding: 0.37rem 1rem;
-  border: white solid;
+
+/*Display label and date elements in rows*/
+.labels,
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px 20px 10px 20px;
+}
+/*Makes the label, reset, and submit buttons circular and matching the website colors*/
+.filterby_label,
+input[type="submit"] {
+  height: 28px;
   border-radius: 2rem;
+  border: 3px solid white;
   color: white;
-  background-color: #686c6c;
-  margin-top: 10px;
+  background-color: #00000000;
+  font-size: 12px;
+  transition: all 0.2s;
 }
-/*Darkens the label buttons when hovered*/
-.filterby_label:hover {
-  transition: 0.2s ease-in;
-  background-color: #373b3b;
+/*Colors "Happiness" label*/
+#label1 {
+  border: 3px solid #a79d13;
+  background-color: #a79d13;
 }
+#label1:hover {
+  color: #ede35f;
+  border: 3px solid #ede35f;
+  background-color: #686210;
+}
+/*Colors "Sadness" label*/
+#label2 {
+  border: 3px solid #1e5595;
+  background-color: #1e5595;
+}
+/*Colors "Sadness" label when hovered*/
+#label2:hover {
+  color: #2189ff;
+  border: 3px solid #2189ff;
+  background-color: #153356;
+}
+/*Colors "Anger" label*/
+#label3 {
+  border: 3px solid #951e1e;
+  background-color: #951e1e;
+}
+/*Colors "Anger" label when hovered*/
+#label3:hover {
+  color: #ef5353;
+  border: 3px solid #ef5353;
+  background-color: #561515;
+}
+/*Colors "Fear" label*/
+#label4 {
+  border: 3px solid #257f25;
+  background-color: #257f25;
+}
+/*Colors "Fear" label when hovered*/
+#label4:hover {
+  color: #57cd57;
+  border: 3px solid #57cd57;
+  background-color: #155a15;
+}
+/*Colors "Surprise" label*/
+#label5 {
+  border: 3px solid #99299b;
+  background-color: #99299b;
+}
+/*Colors "Fear" label when hovered*/
+#label5:hover {
+  color: #ea59ed;
+  border: 3px solid #ea59ed;
+  background-color: #4c144d;
+}
+/*Colors reset and submit buttons when hovered*/
+#label6:hover,
+input[type="submit"]:hover {
+  color: #3191ff;
+  border: 3px solid #3191ff;
+}
+
+/*Set form font size*/
+form {
+  font-size: 14px;
+}
+/*Styles textboxes*/
+input[type="textbox"] {
+  background-color: #444444;
+  border: none;
+  color: white;
+  border-radius: 1.5vh;
+  padding: 2px 7px;
+}
+/*Styles textboxes when focused*/
+input[type="textbox"]:focus {
+  outline: 2px solid white;
+}
+/*Removes margin from "Filter by," "From," and "To" text*/
+h2,
+h4 {
+  margin: 0;
+}
+
+/*Sets the post area as well as the line to the left of it*/
+.posts {
+  grid-area: posts;
+  margin: 20px;
+  border: 1px solid rgb(87, 87, 87);
+  border-radius: 10px;
+  background-color: #202020;
+  overflow-y: auto;
+}
+
+/*Sets scrollbar size*/
+::-webkit-scrollbar {
+  width: 12px;
+}
+/*Sets thumb style*/
+::-webkit-scrollbar-thumb {
+  background: #444444;
+  border-radius: 1rem;
+  border: 1px solid #101010;
+}
+/*Sets corner color*/
+::-webkit-scrollbar-corner {
+  background: #202020;
+}
+
 /*Keeps label and date inline with the arrow in filter by section*/
 details summary > * {
   display: inline;
 }
-/*Spaces betwee the label and date*/
-#date_option {
-  margin-top: 20px;
-}
 
-/* popup css */
-
+/*Popup css*/
 .edit_popup {
   visibility: hidden;
+  max-height: 0;
 }
 
 /*The content of popup*/
@@ -212,4 +384,12 @@ button.popup {
   height: 200vh;
   background: rgba(9, 8, 8, 0.6);
   z-index: 1;
+}
+
+/*Media query*/
+@media screen and (max-width: 700px) {
+  :root {
+    font-size: var(--mobile-textsize);
+  }
+  /* we have to work on design of the smaller mobile design */
 }
