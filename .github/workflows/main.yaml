@@ -18,9 +18,9 @@ jobs:
     - name: Validate HTML
       run: npx html-validate --ext html ./source
     - name: Validate CSS
-      run: echo "look into validate css and find good package"
+      run: echo "look into validate css and find a good package"
     - name: Validate JS
-      run: echo "look into validate js and find good package" 
+      run: echo "look into validate js and find a good package" 
     - name: run JSDoc
       run: npx jsdoc -r ./source -d ./docs
     - name: run Code Quality
