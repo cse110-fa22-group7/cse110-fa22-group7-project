@@ -2,6 +2,7 @@
 plugins:
   eslint:
     enabled: true
+    exclude_patterns:
+    - ".eslintrc.json"
 exclude_patterns:
-- "**/*.json"
 - "**/source/tests/*"
