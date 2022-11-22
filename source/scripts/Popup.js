@@ -7,7 +7,6 @@
  */
 
  import {delete_post} from './JournalPost.js';
-
 class Popup extends HTMLElement {
     /**
      * sets up shadow dom
@@ -101,10 +100,10 @@ class Popup extends HTMLElement {
      */
     set data(data) {
         let popup = this.shadowRoot.querySelector('#popup');
-        let button_approval = 'Edit';
+        let button_approval = data.popup_title;
         // Create / Edit
         popup.innerHTML = `
-        <h1>${data["title"]} Post</h1>
+        <h1>${data["popup_title"]} Post</h1>
         <hr />
         <form>
           <textarea placeholder="What would you like to say?"></textarea>
@@ -159,13 +158,14 @@ class Popup extends HTMLElement {
         // add yes event listener
         let yes_button = this.shadowRoot.querySelector('#yes-button');
         yes_button.addEventListener('click', () => {
-            answer = true; // yes button is clicked'
-            delete_post(data["popup_id"]);
+          if (data["popup_title"] == 'Add')    create_post(data["popup_id"]);
+          if (data["popup_title"] == 'Delete') delete_post(data["popup_id"]);
+          if (data["popup_title"] == 'Edit')   edit_post(data["popup_id"]);
         });
         // add no event listen 
         let no_button = this.shadowRoot.querySelector('#no-button');
         no_button.addEventListener('click', () => {
-            answer = false; // no button is clicked just close the modal
+          // no button is clicked just close the modal
         });
     }
     displayDialog(message) {
@@ -193,6 +193,4 @@ export function create_popup(data) {
     popup.data = popup_data;
     output.appendChild(popup);
     popup.displayDialog("yoyo");
-}
-
-export var answer;
+};

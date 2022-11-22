@@ -9,7 +9,7 @@
  *
  * TODO : Handle dates correctly, Date.now() gives milliseconds since something IDRK, we would prefer something like MM/DD/YYYY I think
  */
- import {answer, create_popup} from './Popup.js';
+ import {create_popup} from './Popup.js';
 /** Post Class for custom web-component post
  *
  */
@@ -126,19 +126,18 @@ class JournalPost extends HTMLElement {
     del_button.addEventListener("click", () => {
       // popup appear
       create_popup({title:'Delete', id: data["id"]});
-      // check the popup for delete
-      
-      // I cannot delete here I should move it
-      // if ( answer ) delete_post(data["id"]);
     });
+
+ 
 
     let edit_button = this.shadowRoot.getElementById("edit_button");
       edit_button.addEventListener("click", () => {
       // checck the popup for edit
-      edit_post(data["id"], {
-        label: "Happiness",
-        text: "This is an edit test!",
-      });
+      create_popup({title:'Edit', id: data.id})
+      // edit_post(data["id"], {
+      //   label: "Happiness",
+      //   text: "This is an edit test!",
+      // });
     });
   }
 }
@@ -162,12 +161,13 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
   post_container = document.getElementsByClassName("posts")[0];
   refresh_posts();
-
+  
   document.getElementById("create_button").addEventListener("click", () => {
     // check popup for create
     // receive label, text, date from popup
-
-    create_post({ label: "Happiness", text: "this is a test post" });
+    create_popup({title: 'Add', id: get_new_post_id()});
+    
+    // create_post({ label: "Happiness", text: "this is a test post" });
   });
  
   //VvV TESTING VvV
@@ -234,7 +234,7 @@ function store_posts(posts) {
  *  }
  *
  */
-function create_post(data) {
+export function create_post(data) {
   let posts = load_posts();
   let post_data = {
     id: get_new_post_id(),
@@ -287,7 +287,7 @@ function delete_all_posts() {
  *      text :
  * }
  */
-function edit_post(post_id, data) {
+export function edit_post(post_id, data) {
   //get posts from storage
   let posts = load_posts();
 
