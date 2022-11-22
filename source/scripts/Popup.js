@@ -158,6 +158,14 @@ class Popup extends HTMLElement {
         // add yes event listener
         let yes_button = this.shadowRoot.querySelector('#yes-button');
         yes_button.addEventListener('click', () => {
+          
+          let post_data = {
+            id: get_new_post_id(),
+            dateCreated: Date.now(),
+            dateModified: null,
+            label: data["label"],
+            text: data["text"],
+          };
           if (data["popup_title"] == 'Add')    create_post(data["popup_id"]);
           if (data["popup_title"] == 'Delete') delete_post(data["popup_id"]);
           if (data["popup_title"] == 'Edit')   edit_post(data["popup_id"]);
