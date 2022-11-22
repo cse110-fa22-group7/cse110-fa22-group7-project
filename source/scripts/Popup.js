@@ -6,6 +6,7 @@
  *        delete      button click => delete post => delete post
  */
 
+ import {delete_post} from './JournalPost.js';
 class Popup extends HTMLElement {
     /**
      * sets up shadow dom
@@ -99,10 +100,10 @@ class Popup extends HTMLElement {
      */
     set data(data) {
         let popup = this.shadowRoot.querySelector('#popup');
-        let button_approval = 'Edit';
+        let button_approval = data.popup_title;
         // Create / Edit
         popup.innerHTML = `
-        <h1>${data["title"]} Post</h1>
+        <h1>${data["popup_title"]} Post</h1>
         <hr />
         <form>
           <textarea placeholder="What would you like to say?"></textarea>
@@ -133,68 +134,63 @@ class Popup extends HTMLElement {
           </div>
         </form>
         `;
-
         // Delete popup fill in and style
-        if( data.title == 'Delete' ) {
+        if( data.popup_title == 'Delete' ) {
             popup.innerHTML = `
-            <h1>${data["title"]} Post</h1>
+            <h1>${data["popup_title"]} Post</h1>
             <hr />
-            <form method="dialog">
+            <form method="dialog" id="${data["popup_id"]}">
             <p>Delete?</p>
             <input type="text" style="display: none" id="prompt-message" />
             <div>
               <button id="no-button" value="no" type="cancel">Cancel</button>
-              <button id="yes-button" value="default" style="display: none">
+              <button id="yes-button" value="default" >
                 Confirm
               </button>
             </div>
           </form>
             `;
             popup.style = `
-             *{
                  background-color: black;
-             }
             `; // TODO: work on delete popup style
         }
 
         // add yes event listener
         let yes_button = this.shadowRoot.querySelector('#yes-button');
         yes_button.addEventListener('click', () => {
-            answer = true; // yes button is clicked
+          if (data["popup_title"] == 'Add')    create_post(data["popup_id"]);
+          if (data["popup_title"] == 'Delete') delete_post(data["popup_id"]);
+          if (data["popup_title"] == 'Edit')   edit_post(data["popup_id"]);
         });
         // add no event listen 
         let no_button = this.shadowRoot.querySelector('#no-button');
         no_button.addEventListener('click', () => {
-            answer = false; // no button is clicked just close the modal
-            alert('no_button is clicked');
+          // no button is clicked just close the modal
         });
     }
     displayDialog(message) {
-        let dialogEl = this.shadowRoot.querySelector('dialog');
-        dialogEl.style = `background-color: black; color: white;`;
-        dialogEl.showModal("message");
+      let dialogEl = this.shadowRoot.querySelector('dialog');
+      dialogEl.style = `background-color: black; color: white;`;
+      dialogEl.showModal();
     }
+    // closing the dialog
+    closeDialog() {
+      let dialog = document.querySelector("dialog");
+      dialog.close();
+      DelayNode(dialogEl);
+  }
+  
 }
 customElements.define('popup-dialog', Popup);
 
 export function create_popup(data) {
     let popup_data = {
-        title: data.title,
+        popup_title: data.title,
+        popup_id: data.id,
     };
     const output = document.querySelector('#output');
     const popup = document.createElement('popup-dialog');
     popup.data = popup_data;
     output.appendChild(popup);
     popup.displayDialog("yoyo");
-}
-
-export var answer;
-  
-  // closing the dialog
-  export function closeDialog() {
-    let dialog = document.querySelector("#output > #warning-dialog");
-    dialog.close();
-  }
-  
-
-  
+};
