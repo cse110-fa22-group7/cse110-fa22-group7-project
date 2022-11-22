@@ -8,7 +8,9 @@
 html {
   background-color: #101010;
 }
-header, .left_create, .filters {
+header,
+.left_create,
+.filters {
   background-color: #202020;
 }
 
@@ -23,7 +25,8 @@ input {
   font-weight: 600;
 }
 /*Removes margin around page*/
-html, body {
+html,
+body {
   margin: 0;
   height: 100%;
 }
@@ -99,8 +102,9 @@ main {
 }
 
 /*Adds right border to sidebar*/
-.left_create, .filters {
-  border-right:1px solid rgb(87, 87, 87);
+.left_create,
+.filters {
+  border-right: 1px solid rgb(87, 87, 87);
 }
 
 /*Aligns the create button in the create section*/
@@ -108,7 +112,7 @@ main {
   display: grid;
   align-items: center;
   justify-items: center;
-  border-right:1px solid rgb(87, 87, 87);
+  border-right: 1px solid rgb(87, 87, 87);
 }
 /*Styling for the button that creates posts*/
 #create_button {
@@ -166,14 +170,16 @@ details summary {
 }
 
 /*Display label and date elements in rows*/
-.labels, form {
+.labels,
+form {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 5px 20px 10px 20px;
 }
 /*Makes the label, reset, and submit buttons circular and matching the website colors*/
-.filterby_label, input[type="submit"]  {
+.filterby_label,
+input[type="submit"] {
   height: 28px;
   border-radius: 2rem;
   border: 3px solid white;
@@ -237,7 +243,8 @@ details summary {
   background-color: #4c144d;
 }
 /*Colors reset and submit buttons when hovered*/
-#label6:hover, input[type="submit"]:hover {
+#label6:hover,
+input[type="submit"]:hover {
   color: #3191ff;
   border: 3px solid #3191ff;
 }
@@ -259,7 +266,8 @@ input[type="textbox"]:focus {
   outline: 2px solid white;
 }
 /*Removes margin from "Filter by," "From," and "To" text*/
-h2, h4 {
+h2,
+h4 {
   margin: 0;
 }
 
