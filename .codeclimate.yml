@@ -5,4 +5,5 @@ plugins:
     exclude_patterns:
     - ".eslintrc.json"
 exclude_patterns:
+- "**/.github/*"
 - "**/source/tests/*"
