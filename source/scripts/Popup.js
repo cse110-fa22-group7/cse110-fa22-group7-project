@@ -22,12 +22,7 @@ class Popup extends HTMLElement {
         this.shadowRoot.appendChild(popupDialog);
         var style_text = `
         .popup {
-          position: absolute;
-          width: 802px;
-          height: 480px;
-          left: 531px;
-          top: 288px;
-          background-color: #60686a;
+          background-color: #60686a; !important
           border-radius: 30px;
           text-align: center;
         }
@@ -158,9 +153,7 @@ class Popup extends HTMLElement {
             </div>
           </form>
             `;
-            popup.style = `
-                 background-color: black;
-            `; // TODO: work on delete popup style
+//            popup.style += `background-color: black;`; // TODO: work on delete popup style
         }
 
         // add yes event listener
@@ -174,19 +167,18 @@ class Popup extends HTMLElement {
             const textBox = formEl.querySelector('textarea');
             let emote =  select.value;
             textContent = textBox.value;
-            if (data["popup_title"] == 'Add')    create_post(data["popup_id"], {label: emote, text: textContent});
-            if (data["popup_title"] == 'Edit')   edit_post(data["popup_id"],{label: emote, text: textContent});
+            if (data["popup_title"] == 'Add' )   create_post(data["popup_id"], {label: emote, text: textContent});
+            if (data["popup_title"] == 'Edit')   edit_post(data["popup_id"],   {label: emote, text: textContent});
           }
         });
         // add no event listen 
         let no_button = this.shadowRoot.querySelector('#no-button');
         no_button.addEventListener('click', () => {
-          // no button is clicked just close the modal
+          // no button is clicked just close the modal which is default
         });
     }
     displayDialog() {
       let dialogEl = this.shadowRoot.querySelector('dialog');
-      dialogEl.style = `background-color: black; color: white;`;
       dialogEl.showModal();
     }
     // closing the dialog
