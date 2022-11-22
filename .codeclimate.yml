@@ -1,4 +1,7 @@
 ## other configuration excluded from example...
+plugins:
+  eslint:
+    enabled: true
 exclude_patterns:
-- "./*.json"
+- "**/*.json"
 - "**/source/tests/*"
