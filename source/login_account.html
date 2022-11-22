@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="Yaosen Zhang">
+    <title>Login Account Page</title>
+    <!-- Login Acccount JavaScript -->
+    <script src="scripts/user.js" type="module"></script>
+    <script src="scripts/main.js" type="module"></script>
+  </head>
+  <body>
+    <style>
+      .login_account {
+        width: 400px;
+        height: 200px;
+        left: 500px;
+        position: sticky;
+        padding: 5px;
+        background-color: #60686a;
+        border-radius: 30px;
+        text-align: center;
+        font-size: 22px;
+      }
+      .choose_username {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 200;
+        font-size: 18px;
+        line-height: 25px;
+        margin-top: 30px;
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+      }
+      #username {
+        margin-left: 10px;
+      }
+      .choose_password {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 200;
+        font-size: 18px;
+        line-height: 25px; 
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+      }
+      #password {
+        margin-left: 10px;
+      }
+      h1 {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 200;
+        font-size: 20px;
+        line-height: 10px;
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+      }
+      button {
+        width: 80px;
+        height: 40px;
+        background: transparent;
+        border-radius: 30px;
+        border-color: white;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 22px;
+        color: white;
+      }
+    </style>
+    <form action="" method="get" class="login_account">
+      <div class="login_account">
+        <h1>Login to your user account</h1>
+        <div class="choose_username">
+          <label for="username">Enter your username: </label> <!-- for=id -->
+          <input type="text" id="username" required>
+        </div><br/>
+        <div class="choose_password">
+          <label for="password">Enter your password: </label>
+          <input type="password" id="password" required>
+        </div><br/>
+        <!-- <hr/> -->
+        <div class="login_my_account">
+            <button type="submit" value="login_account_button">Login</button>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
