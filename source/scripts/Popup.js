@@ -20,11 +20,7 @@ class Popup extends HTMLElement {
         let popupDialog = document.createElement("dialog");
         popupDialog.id = "popup"
         this.shadowRoot.appendChild(popupDialog);
-
-        let style = document.createElement("style");
-
-        // style for Create and Edit popups
-        style.innerText = `
+        var style_text = `
         .popup {
           position: absolute;
           width: 802px;
@@ -87,6 +83,12 @@ class Popup extends HTMLElement {
           color: white;
         }
         `;
+        let style = document.createElement("style");
+
+        // style for Create and Edit popups
+
+        style.innerText = style_text;
+
 
         this.shadowRoot.appendChild(style);
     }
@@ -103,6 +105,7 @@ class Popup extends HTMLElement {
         let button_approval = data.popup_title;
         let textContent = data.popup_title =='Add'? "" : data.popup_text ;
         // Create / Edit
+        popup.className = 'popup';
         popup.innerHTML = `
         <h1>${data["popup_title"]} Post</h1>
         <hr />
@@ -135,7 +138,8 @@ class Popup extends HTMLElement {
           </div>
         </form>
         `;
-        if( data.popup_title == 'Edit' ) popup.querySelector(`option[value=${data.popup_label}]`).selected= true;;
+        
+        if( data.popup_title == 'Edit' && data.popup_label != 'Choose a label') popup.querySelector(`option[value=${data.popup_label}]`).selected= true;;
         
         
         // Delete popup fill in and style
