@@ -166,6 +166,7 @@ class Popup extends HTMLElement {
         let no_button = this.shadowRoot.querySelector('#no-button');
         no_button.addEventListener('click', () => {
             answer = false; // no button is clicked just close the modal
+            alert('no_button is clicked');
         });
     }
     displayDialog(message) {
