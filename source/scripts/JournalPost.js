@@ -131,8 +131,11 @@ class JournalPost extends HTMLElement {
     let edit_button = this.shadowRoot.getElementById("edit_button");
     edit_button.addEventListener("click", () => {
       // checck the popup for edit
-      let textContent = (edit_button.parentElement.parentElement.parentElement).querySelector('.post_text').textContent;
-      create_popup({title:'Edit', id: data.id, text: textContent})
+      const postEl = (edit_button.parentElement.parentElement.parentElement);
+
+      let textContent = postEl.querySelector('.post_text').textContent;
+      let emote = postEl.querySelector('.post_label').textContent;
+      create_popup({title:'Edit', id: data.id, text: textContent, label: emote })
     });
   }
 }

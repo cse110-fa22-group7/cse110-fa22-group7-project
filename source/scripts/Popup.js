@@ -135,6 +135,9 @@ class Popup extends HTMLElement {
           </div>
         </form>
         `;
+        if( data.popup_title == 'Edit' ) popup.querySelector(`option[value=${data.popup_label}]`).selected= true;;
+        
+        
         // Delete popup fill in and style
         if( data.popup_title == 'Delete' ) {
             popup.innerHTML = `
@@ -177,7 +180,7 @@ class Popup extends HTMLElement {
           // no button is clicked just close the modal
         });
     }
-    displayDialog(message) {
+    displayDialog() {
       let dialogEl = this.shadowRoot.querySelector('dialog');
       dialogEl.style = `background-color: black; color: white;`;
       dialogEl.showModal();
@@ -196,11 +199,12 @@ export function create_popup(data) {
     let popup_data = {
         popup_title: data.title,
         popup_id: data.id,
-        popup_text: data.text
+        popup_text: data.text,
+        popup_label: data.label,
     };
     const output = document.querySelector('#output');
     const popup = document.createElement('popup-dialog');
     popup.data = popup_data;
     output.appendChild(popup);
-    popup.displayDialog("yoyo");
+    popup.displayDialog();
 };
