@@ -128,8 +128,6 @@ class JournalPost extends HTMLElement {
       create_popup({title:'Delete', id: data["id"]});
     });
 
- 
-
     let edit_button = this.shadowRoot.getElementById("edit_button");
       edit_button.addEventListener("click", () => {
       // checck the popup for edit
@@ -269,13 +267,12 @@ function store_posts(posts) {
  *  @param {String} data."label" - label of new post
  *  @param {String} data."text" - text content of new post
  */
-export function create_post(data) {
+export function create_post(post_id, data) {
   let posts = load_posts();
-
   //
   const date = new Date();
   let post_data = {
-    id: get_new_post_id(),
+    id: post_id,
     dateCreated: `${
       date.getMonth() + 1
     }-${date.getDate()}-${date.getFullYear()}`,

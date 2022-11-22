@@ -6,7 +6,7 @@
  *        delete      button click => delete post => delete post
  */
 
- import {delete_post} from './JournalPost.js';
+ import {create_post, edit_post, delete_post} from './JournalPost.js';
 class Popup extends HTMLElement {
     /**
      * sets up shadow dom
@@ -158,17 +158,17 @@ class Popup extends HTMLElement {
         // add yes event listener
         let yes_button = this.shadowRoot.querySelector('#yes-button');
         yes_button.addEventListener('click', () => {
-          
-          let post_data = {
-            id: get_new_post_id(),
-            dateCreated: Date.now(),
-            dateModified: null,
-            label: data["label"],
-            text: data["text"],
-          };
-          if (data["popup_title"] == 'Add')    create_post(data["popup_id"]);
-          if (data["popup_title"] == 'Delete') delete_post(data["popup_id"]);
-          if (data["popup_title"] == 'Edit')   edit_post(data["popup_id"]);
+          if (data["popup_title"] == 'Delete') {
+            delete_post(data["popup_id"])
+          } else {
+            const formEl = yes_button.parentElement.parentElement;
+            const select = formEl.querySelector('select');
+            const textBox = formEl.querySelector('textarea');
+            let emote =  select.value;
+            let textContent = textBox.value;
+            if (data["popup_title"] == 'Add')    create_post(data["popup_id"], {label: emote, text: textContent});
+            if (data["popup_title"] == 'Edit')   edit_post(data["popup_id"],{label: emote, text: textContent});
+          }
         });
         // add no event listen 
         let no_button = this.shadowRoot.querySelector('#no-button');
