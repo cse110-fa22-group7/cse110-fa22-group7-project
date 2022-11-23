@@ -26,7 +26,7 @@ class Popup extends HTMLElement {
           border-radius: 30px;
           text-align: center;
           width:60%;
-          height: 70vh;
+          height: 30rem;
           left: 15rem;
           top: 10%;
         }
@@ -34,8 +34,8 @@ class Popup extends HTMLElement {
           font-family: "Inter";
           font-style: normal;
           font-weight: 400;
-          font-size: 64px;
-          line-height: 10px;
+          font-size: 3rem;
+          line-height: 1rem;
           color: #ffffff;
           display: flex;
           justify-content: center;
@@ -43,7 +43,7 @@ class Popup extends HTMLElement {
         textarea {
           background: transparent;
           width: 99%;
-          height: 250px;
+          height: 19rem;
           color: white;
           resize: none;
         }
@@ -57,7 +57,7 @@ class Popup extends HTMLElement {
         }
         select {
           width: 246px;
-          height: 52px;
+          height: 2.5rem;
           background: transparent;
           font-family: "Inter";
           color: white;
@@ -66,19 +66,22 @@ class Popup extends HTMLElement {
           font-family: "Inter";
           font-style: normal;
           font-weight: 400;
-          font-size: 24px;
+          font-size: 2rem;
           color: white;
         }
+        select option {
+          color: black;
+        }
         button {
-          width: 150px;
-          height: 48px;
+          width: 8rem;
+          height: 2.5rem;
           background: transparent;
           border-radius: 30px;
           border-color: white;
           font-family: "Inter";
           font-style: normal;
           font-weight: 400;
-          font-size: 36px;
+          font-size: 2rem;
           color: white;
         }
         `;
