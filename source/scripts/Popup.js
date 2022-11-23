@@ -22,9 +22,13 @@ class Popup extends HTMLElement {
         this.shadowRoot.appendChild(popupDialog);
         var style_text = `
         .popup {
-          background-color: #60686a; !important
+          background-color: #60686a;
           border-radius: 30px;
           text-align: center;
+          width:60%;
+          height: 70vh;
+          left: 15rem;
+          top: 10%;
         }
         h1 {
           font-family: "Inter";
@@ -38,7 +42,7 @@ class Popup extends HTMLElement {
         }
         textarea {
           background: transparent;
-          width: 750px;
+          width: 99%;
           height: 250px;
           color: white;
           resize: none;
@@ -143,7 +147,7 @@ class Popup extends HTMLElement {
             <h1>${data["popup_title"]} Post</h1>
             <hr />
             <form method="dialog" id="${data["popup_id"]}">
-            <p>Delete?</p>
+            <p>warning: The deleted content cannot be retrieved.</p>
             <input type="text" style="display: none" id="prompt-message" />
             <div>
               <button id="no-button" value="no" type="cancel">Cancel</button>
@@ -170,23 +174,35 @@ class Popup extends HTMLElement {
             if (data["popup_title"] == 'Add' )   create_post(data["popup_id"], {label: emote, text: textContent});
             if (data["popup_title"] == 'Edit')   edit_post(data["popup_id"],   {label: emote, text: textContent});
           }
+          this.closeDialog();
         });
         // add no event listen 
         let no_button = this.shadowRoot.querySelector('#no-button');
-        no_button.addEventListener('click', () => {
+        no_button.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          this.closeDialog();
           // no button is clicked just close the modal which is default
         });
+
+        let dialogEl = this.shadowRoot.querySelector('dialog');
+        dialogEl.addEventListener('close',() => {
+                // un blur posts
+      const posts_container = document.querySelector('div.posts');
+      posts_container.style.filter = 'none';
+        })
     }
     displayDialog() {
       let dialogEl = this.shadowRoot.querySelector('dialog');
       dialogEl.showModal();
+      // blur posts
+      const posts_container = document.querySelector('div.posts');
+      posts_container.style.filter = 'blur(.25rem)';
     }
     // closing the dialog
     closeDialog() {
-      let dialog = document.querySelector("dialog");
-      dialog.close();
-      DelayNode(dialogEl);
-  }
+      let dialogEl = this.shadowRoot.querySelector("dialog");
+      dialogEl.close();
+    }
   
 }
 customElements.define('popup-dialog', Popup);
@@ -204,3 +220,5 @@ export function create_popup(data) {
     output.appendChild(popup);
     popup.displayDialog();
 };
+
+
