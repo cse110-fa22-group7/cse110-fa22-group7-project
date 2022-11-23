@@ -7,27 +7,6 @@
     <link rel="stylesheet" href="main.css" />
     <script src="scripts/main.js" type="module"></script>
     <script src="scripts/JournalPost.js" type="module"></script>
-    <script type="module">
-      import * as myDialog from "./scripts/customdialog.js";
-      // Are you sure dialog or Warning
-
-      document.addEventListener("DOMContentLoaded", () => {
-        const warningDialog = document.querySelector(".warning-buttons");
-        // Make sure that the user really wants to sign out
-        warningDialog.addEventListener("click", function openWarning() {
-          const warningDialogEl = myDialog.fill("Are you sure?", true, false);
-          const okButtonEl = document.querySelector("#yes-button");
-          const noButtonEl = document.querySelector("#no-button");
-          noButtonEl.addEventListener("click", function denyAction() {
-            myDialog.closeDialog(warningDialog);
-          });
-          okButtonEl.addEventListener("click", function confirmAction() {
-            myDialog.closeDialog(warningDialog);
-            window.location.href = "./login.html";
-          });
-        });
-      });
-    </script>
     <!-- template for custom dialog -->
     <template id="dialog-template">
       <dialog id="warning-dialog">
@@ -37,9 +16,7 @@
           <input type="text" style="display: none" id="prompt-message" />
           <div>
             <button id="no-button" value="no">Cancel</button>
-            <button id="yes-button" value="default" style="display: none">
-              Confirm
-            </button>
+            <button id="yes-button" value="default" style="display: none">Confirm</button>
           </div>
         </form>
       </dialog>
@@ -54,15 +31,6 @@
       <div class="appinfo">
         <img class="logo" src="/source/images/logo.svg" alt="logo" />
         <h1 class="app_title">MyJournal</h1>
-      </div>
-      <div class="user_info">
-        <h2 class="user_name">User Name</h2>
-        <input
-          type="button"
-          id="sign_out"
-          class="warning-buttons"
-          value="Sign Out"
-        />
       </div>
     </header>
     <!-- Main contains rest of page components (sidebar, posts) -->
@@ -195,9 +163,7 @@
                 </option>
               </select>
               <button type="cancel" class="popup" id="cancel">Cancel</button>
-              <button type="submit" value="update" class="popup" id="update">
-                Update
-              </button>
+              <button type="submit" value="update" class="popup" id="update">Update</button>
             </div>
           </form>
         </div>

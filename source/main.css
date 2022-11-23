@@ -61,33 +61,6 @@ header {
   font-size: 14px;
 }
 
-/*Aligns username and sign out button*/
-.user_info {
-  display: grid;
-  justify-items: end;
-  font-size: 12px;
-  margin: 5px 10px;
-}
-/*Styles username*/
-.user_name {
-  margin: 0;
-  font-weight: 100;
-}
-/*Styles sign out button*/
-#sign_out {
-  height: 25px;
-  border-radius: 50vh;
-  background-color: #444444;
-  color: white;
-  border: 0px solid white;
-  width: 90px;
-  transition: background-color 0.2s;
-}
-/*Colors "Sign Out" button on hover*/
-#sign_out:hover {
-  background-color: rgb(208, 51, 51);
-}
-
 /*Sections the page into two rows on the left and one on the right*/
 main {
   display: grid;
