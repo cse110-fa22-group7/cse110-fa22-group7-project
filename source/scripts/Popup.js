@@ -1,26 +1,26 @@
 /**Popup.js contains the Popup class defining the HTML element popup-dialog
- * as well as methods for interfacing with buttons. 
- * 
- * TODO : create/edit button click => create/edit post to 
+ * as well as methods for interfacing with buttons.
+ *
+ * TODO : create/edit button click => create/edit post to
  *        create/edit button click => create/edit popup => create/edit post
  *        delete      button click => delete post => delete post
  */
 
- import {create_post, edit_post, delete_post} from './JournalPost.js';
+import { create_post, edit_post, delete_post } from "./JournalPost.js";
 class Popup extends HTMLElement {
-    /**
-     * sets up shadow dom
-     * @TODO css for popup object
-     * @constructor
-     */
-    constructor() {
-        super();
-        this.attachShadow({ mode: "open" });
+  /**
+   * sets up shadow dom
+   * @TODO css for popup object
+   * @constructor
+   */
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
 
-        let popupDialog = document.createElement("dialog");
-        popupDialog.id = "popup"
-        this.shadowRoot.appendChild(popupDialog);
-        var style_text = `
+    let popupDialog = document.createElement("dialog");
+    popupDialog.id = "popup";
+    this.shadowRoot.appendChild(popupDialog);
+    var style_text = `
         .popup {
           background-color: #60686a;
           border-radius: 30px;
@@ -85,30 +85,29 @@ class Popup extends HTMLElement {
           color: white;
         }
         `;
-        let style = document.createElement("style");
+    let style = document.createElement("style");
 
-        // style for Create and Edit popups
+    // style for Create and Edit popups
 
-        style.innerText = style_text;
+    style.innerText = style_text;
 
+    this.shadowRoot.appendChild(style);
+  }
 
-        this.shadowRoot.appendChild(style);
-    }
-
-    /** Fill out the innerHTML of the popup element under the shadowRoot with the data passed in
-     * 
-     * 
-     *  @param data should be of the format {
-     *         "title": "Create" / "Edit" / "Delete" / ( "Signin" / "Signout" )
-     * }
-     */
-    set data(data) {
-        let popup = this.shadowRoot.querySelector('#popup');
-        let button_approval = data.popup_title;
-        let textContent = data.popup_title =='Add'? "" : data.popup_text ;
-        // Create / Edit
-        popup.className = 'popup';
-        popup.innerHTML = `
+  /** Fill out the innerHTML of the popup element under the shadowRoot with the data passed in
+   *
+   *
+   *  @param data should be of the format {
+   *         "title": "Create" / "Edit" / "Delete" / ( "Signin" / "Signout" )
+   * }
+   */
+  set data(data) {
+    let popup = this.shadowRoot.querySelector("#popup");
+    let button_approval = data.popup_title;
+    let textContent = data.popup_title == "Add" ? "" : data.popup_text;
+    // Create / Edit
+    popup.className = "popup";
+    popup.innerHTML = `
         <h1>${data["popup_title"]} Post</h1>
         <hr />
         <form>
@@ -140,13 +139,13 @@ class Popup extends HTMLElement {
           </div>
         </form>
         `;
-        
-        if( data.popup_title == 'Edit' && data.popup_label != 'Choose a label') popup.querySelector(`option[value=${data.popup_label}]`).selected= true;;
-        
-        
-        // Delete popup fill in and style
-        if( data.popup_title == 'Delete' ) {
-            popup.innerHTML = `
+
+    if (data.popup_title == "Edit" && data.popup_label != "Choose a label")
+      popup.querySelector(`option[value=${data.popup_label}]`).selected = true;
+
+    // Delete popup fill in and style
+    if (data.popup_title == "Delete") {
+      popup.innerHTML = `
             <h1>${data["popup_title"]} Post</h1>
             <hr />
             <form method="dialog" id="${data["popup_id"]}">
@@ -160,68 +159,67 @@ class Popup extends HTMLElement {
             </div>
           </form>
             `;
-//            popup.style += `background-color: black;`; // TODO: work on delete popup style
-        }
+      //            popup.style += `background-color: black;`; // TODO: work on delete popup style
+    }
 
-        // add yes event listener
-        let yes_button = this.shadowRoot.querySelector('#yes-button');
-        yes_button.addEventListener('click', () => {
-          if (data["popup_title"] == 'Delete') {
-            delete_post(data["popup_id"])
-          } else {
-            const formEl = yes_button.parentElement.parentElement;
-            const select = formEl.querySelector('select');
-            const textBox = formEl.querySelector('textarea');
-            let emote =  select.value;
-            textContent = textBox.value;
-            if (data["popup_title"] == 'Add' )   create_post(data["popup_id"], {label: emote, text: textContent});
-            if (data["popup_title"] == 'Edit')   edit_post(data["popup_id"],   {label: emote, text: textContent});
-          }
-          this.closeDialog();
-        });
-        // add no event listen 
-        let no_button = this.shadowRoot.querySelector('#no-button');
-        no_button.addEventListener('click', (ev) => {
-          ev.preventDefault();
-          this.closeDialog();
-          // no button is clicked just close the modal which is default
-        });
+    // add yes event listener
+    let yes_button = this.shadowRoot.querySelector("#yes-button");
+    yes_button.addEventListener("click", () => {
+      if (data["popup_title"] == "Delete") {
+        delete_post(data["popup_id"]);
+      } else {
+        const formEl = yes_button.parentElement.parentElement;
+        const select = formEl.querySelector("select");
+        const textBox = formEl.querySelector("textarea");
+        let emote = select.value;
+        textContent = textBox.value;
+        if (data["popup_title"] == "Add")
+          create_post(data["popup_id"], { label: emote, text: textContent });
+        if (data["popup_title"] == "Edit")
+          edit_post(data["popup_id"], { label: emote, text: textContent });
+      }
+      this.closeDialog();
+    });
+    // add no event listen
+    let no_button = this.shadowRoot.querySelector("#no-button");
+    no_button.addEventListener("click", (ev) => {
+      ev.preventDefault();
+      this.closeDialog();
+      // no button is clicked just close the modal which is default
+    });
 
-        let dialogEl = this.shadowRoot.querySelector('dialog');
-        dialogEl.addEventListener('close',() => {
-                // un blur posts
-      const posts_container = document.querySelector('div.posts');
-      posts_container.style.filter = 'none';
-        })
-    }
-    displayDialog() {
-      let dialogEl = this.shadowRoot.querySelector('dialog');
-      dialogEl.showModal();
-      // blur posts
-      const posts_container = document.querySelector('div.posts');
-      posts_container.style.filter = 'blur(.25rem)';
-    }
-    // closing the dialog
-    closeDialog() {
-      let dialogEl = this.shadowRoot.querySelector("dialog");
-      dialogEl.close();
-    }
-  
+    let dialogEl = this.shadowRoot.querySelector("dialog");
+    dialogEl.addEventListener("close", () => {
+      // un blur posts
+      const posts_container = document.querySelector("div.posts");
+      posts_container.style.filter = "none";
+    });
+  }
+  displayDialog() {
+    let dialogEl = this.shadowRoot.querySelector("dialog");
+    dialogEl.showModal();
+    // blur posts
+    const posts_container = document.querySelector("div.posts");
+    posts_container.style.filter = "blur(.25rem)";
+  }
+  // closing the dialog
+  closeDialog() {
+    let dialogEl = this.shadowRoot.querySelector("dialog");
+    dialogEl.close();
+  }
 }
-customElements.define('popup-dialog', Popup);
+customElements.define("popup-dialog", Popup);
 
 export function create_popup(data) {
-    let popup_data = {
-        popup_title: data.title,
-        popup_id: data.id,
-        popup_text: data.text,
-        popup_label: data.label,
-    };
-    const output = document.querySelector('#output');
-    const popup = document.createElement('popup-dialog');
-    popup.data = popup_data;
-    output.appendChild(popup);
-    popup.displayDialog();
-};
-
-
+  let popup_data = {
+    popup_title: data.title,
+    popup_id: data.id,
+    popup_text: data.text,
+    popup_label: data.label,
+  };
+  const output = document.querySelector("#output");
+  const popup = document.createElement("popup-dialog");
+  popup.data = popup_data;
+  output.appendChild(popup);
+  popup.displayDialog();
+}

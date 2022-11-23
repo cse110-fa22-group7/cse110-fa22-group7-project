@@ -9,7 +9,7 @@
  *
  * @TODO : Handle dates correctly, Date.now() gives milliseconds since something IDRK, we would prefer something like MM/DD/YYYY I think
  */
- import {create_popup} from './Popup.js';
+import { create_popup } from "./Popup.js";
 /** Post Class for custom web-component post
  *
  */
@@ -125,17 +125,22 @@ class JournalPost extends HTMLElement {
     let del_button = this.shadowRoot.getElementById("delete_button");
     del_button.addEventListener("click", () => {
       // popup appear
-      create_popup({title:'Delete', id: data["id"]});
+      create_popup({ title: "Delete", id: data["id"] });
     });
 
     let edit_button = this.shadowRoot.getElementById("edit_button");
     edit_button.addEventListener("click", () => {
       // checck the popup for edit
-      const postEl = (edit_button.parentElement.parentElement.parentElement);
+      const postEl = edit_button.parentElement.parentElement.parentElement;
 
-      let textContent = postEl.querySelector('.post_text').textContent;
-      let emote = postEl.querySelector('.post_label').textContent;
-      create_popup({title:'Edit', id: data.id, text: textContent, label: emote })
+      let textContent = postEl.querySelector(".post_text").textContent;
+      let emote = postEl.querySelector(".post_label").textContent;
+      create_popup({
+        title: "Edit",
+        id: data.id,
+        text: textContent,
+        label: emote,
+      });
     });
   }
 }
@@ -170,16 +175,15 @@ function init() {
   }
 
   refresh_posts();
-  
+
   document.getElementById("create_button").addEventListener("click", () => {
     // check popup for create
     // receive label, text, date from popup
-    create_popup({title: 'Add', id: get_new_post_id()});
+    create_popup({ title: "Add", id: get_new_post_id() });
   });
 
-  const outputEl = document.querySelector('#output');
+  const outputEl = document.querySelector("#output");
 
- 
   //VvV TESTING VvV
 }
 
