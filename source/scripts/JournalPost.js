@@ -181,8 +181,6 @@ function init() {
     create_popup({ title: "Add", id: get_new_post_id() });
   });
 
-  const outputEl = document.querySelector("#output");
-
   //VvV TESTING VvV
 }
 

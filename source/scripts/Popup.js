@@ -100,10 +100,10 @@ class Popup extends HTMLElement {
    *  should be of the format {
    *  @param {Object} data             The popup data
    *  @param {Number} data.popup_id    The popup id
-   *  @param {String} data.popup_title The popup's title: "Add" / "Edit" / "Delete"       
+   *  @param {String} data.popup_title The popup's title: "Add" / "Edit" / "Delete"
    *  @param {String} data.popup_text  The popup's content
    *  @param {String} data.popup_label The popup's emotional indicator: "Choose a Label" / "Happy" / "Angry" / ...
-   * 
+   *
    * }
    */
   set data(data) {
