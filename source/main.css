@@ -247,11 +247,11 @@ h4 {
 /*Sets the post area as well as the line to the left of it*/
 .posts {
   grid-area: posts;
-  margin: 20px;
-  border: 1px solid rgb(87, 87, 87);
-  border-radius: 10px;
-  background-color: #202020;
+  padding: 20px;
   overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 /*Sets scrollbar size*/
