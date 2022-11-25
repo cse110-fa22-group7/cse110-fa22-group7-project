@@ -20,7 +20,7 @@ class Popup extends HTMLElement {
     let popupDialog = document.createElement("dialog");
     popupDialog.id = "popup";
     this.shadowRoot.appendChild(popupDialog);
-    var style_text = `
+    var popup_style_text = `
         .popup {
           background-color: #60686a;
           border-radius: 30px;
@@ -89,7 +89,7 @@ class Popup extends HTMLElement {
 
     // style for Create and Edit popups
 
-    style.innerText = style_text;
+    style.innerText = popup_style_text;
 
     this.shadowRoot.appendChild(style);
   }
