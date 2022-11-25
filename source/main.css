@@ -101,6 +101,7 @@ main {
     "left_create posts"
     "filters     posts"
     "edit_popup  output";
+  transition: .2s;
 }
 
 /*Adds right border to sidebar*/
