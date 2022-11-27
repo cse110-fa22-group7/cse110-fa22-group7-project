@@ -50,9 +50,9 @@ class JournalPost extends HTMLElement {
       gap: 1rem;
       align-items: center;
       padding: 0.4rem;
-      border: 0.25rem solid rgb(87, 87, 87);
+      border: 1px solid rgb(87, 87, 87);
       border-radius: 0.75rem 0.75rem 0 0;
-      background-color: rgb(87, 87, 87);
+      background-color: rgba(87, 87, 87, 0);
     }
     .post_label {
       grid-area: label;
