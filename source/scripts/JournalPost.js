@@ -285,6 +285,7 @@ function init() {
     create_post({ label: label, text: "this is a test post" });
   });
 
+  refresh_posts();
   //VvV TESTING VvV
 }
 
