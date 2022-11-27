@@ -13,6 +13,7 @@
 /** Post Class for custom web-component post
  *
  */
+import * as dateComp from './DateFilter.js';
 import * as myDialog from "./customdialog.js";
 class JournalPost extends HTMLElement {
   /**
@@ -245,9 +246,31 @@ function init() {
     let value = labels[i].value;
     let label = labels[i];
     label.addEventListener("click", () => {
-      filter_posts(value);
+      let posts = filter_posts(value);
+      display_posts(posts);
     });
   }
+
+  document.getElementById("dateSubmit").addEventListener("click", () => {
+    //check if date_range is valid first @todo
+
+
+    let a = document.getElementById("dateFrom").value;
+    let b = document.getElementById("dateTo").value;
+    if(dateComp.isEqualTo(b, a) || dateComp.isLessThan(b, a)){
+      //open warning dialogconst warningDialog = this.shadowRoot.querySelector("#delete_button");
+      myDialog.fill("Please enter a valid date range", false, false);
+      const noButtonEl = document.querySelector("#no-button");
+      noButtonEl.addEventListener("click", function denyAction() {
+        myDialog.closeDialog();
+      });
+      
+    }
+    else{
+      let posts = filter_post_array_by_date(a, b);
+      display_posts(posts);
+    }
+  });
 
   refresh_posts();
 
@@ -289,7 +312,26 @@ function filter_posts(label = "Reset") {
       output.push(post);
     }
   }
-  display_posts(output);
+  return output;
+}
+
+/**
+ *
+ */
+function filter_post_array_by_date(from, to){
+  let posts = load_posts();
+  let filtered_posts = [];
+  for (var i in posts){
+    let dateCreated = posts[i]["dateCreated"];
+    if(dateComp.isLessThan(dateCreated, from)){
+      continue;
+    }
+    if(dateComp.isGreaterThan(dateCreated, to)){
+      continue;
+    }
+    filtered_posts.push(posts[i]);
+  }
+  return filtered_posts;
 }
 /**
  * Refreshes display of posts to match what is currently in storage
