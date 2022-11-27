@@ -13,7 +13,7 @@
 /** Post Class for custom web-component post
  *
  */
-import * as dateComp from './DateFilter.js';
+import * as dateComp from "./DateFilter.js";
 import * as myDialog from "./customdialog.js";
 class JournalPost extends HTMLElement {
   /**
@@ -223,7 +223,7 @@ class JournalPost extends HTMLElement {
 customElements.define("journal-post", JournalPost);
 
 // Define variables needed for this file
-const post_key = "_post_array";
+const post_key = "post_array";
 const post_id_key = "NEXT_POST_ID";
 
 var post_container;
@@ -254,25 +254,20 @@ function init() {
   document.getElementById("dateSubmit").addEventListener("click", () => {
     //check if date_range is valid first @todo
 
-
     let a = document.getElementById("dateFrom").value;
     let b = document.getElementById("dateTo").value;
-    if(dateComp.isEqualTo(b, a) || dateComp.isLessThan(b, a)){
+    if (dateComp.isEqualTo(b, a) || dateComp.isLessThan(b, a)) {
       //open warning dialogconst warningDialog = this.shadowRoot.querySelector("#delete_button");
       myDialog.fill("Please enter a valid date range", false, false);
       const noButtonEl = document.querySelector("#no-button");
       noButtonEl.addEventListener("click", function denyAction() {
         myDialog.closeDialog();
       });
-      
-    }
-    else{
+    } else {
       let posts = filter_post_array_by_date(a, b);
       display_posts(posts);
     }
   });
-
-  refresh_posts();
 
   document.getElementById("create_button").addEventListener("click", () => {
     let num = Math.random();
@@ -300,11 +295,10 @@ function init() {
  * @param {String} [label = "Reset"] - label to filter by
  */
 function filter_posts(label = "Reset") {
-  if (label == "Reset") {
-    refresh_posts();
-    return;
-  }
   let post_array = load_posts();
+  if (label == "Reset") {
+    return post_array;
+  }
   let output = [];
   for (var i in post_array) {
     let post = post_array[i];
@@ -318,15 +312,15 @@ function filter_posts(label = "Reset") {
 /**
  *
  */
-function filter_post_array_by_date(from, to){
+function filter_post_array_by_date(from, to) {
   let posts = load_posts();
   let filtered_posts = [];
-  for (var i in posts){
+  for (var i in posts) {
     let dateCreated = posts[i]["dateCreated"];
-    if(dateComp.isLessThan(dateCreated, from)){
+    if (dateComp.isLessThan(dateCreated, from)) {
       continue;
     }
-    if(dateComp.isGreaterThan(dateCreated, to)){
+    if (dateComp.isGreaterThan(dateCreated, to)) {
       continue;
     }
     filtered_posts.push(posts[i]);
@@ -338,9 +332,7 @@ function filter_post_array_by_date(from, to){
  */
 function refresh_posts() {
   //load the post array from storage
-  let post_array = JSON.parse(
-    window.localStorage.getItem(curr_user + post_key)
-  );
+  let post_array = JSON.parse(window.localStorage.getItem(post_key));
   display_posts(post_array);
 }
 
@@ -379,7 +371,7 @@ function display_posts(post_array) {
  *  @return {Object[]|null} Post Array object from local storage or null if missing
  */
 function load_posts() {
-  let posts = JSON.parse(window.localStorage.getItem(curr_user + post_key));
+  let posts = JSON.parse(window.localStorage.getItem(post_key));
   if (!posts) {
     return [];
   } else {
@@ -393,7 +385,7 @@ function load_posts() {
  *  @param {Object[]} posts - array of post object to store
  */
 function store_posts(posts) {
-  window.localStorage.setItem(curr_user + post_key, JSON.stringify(posts));
+  window.localStorage.setItem(post_key, JSON.stringify(posts));
 }
 
 /**

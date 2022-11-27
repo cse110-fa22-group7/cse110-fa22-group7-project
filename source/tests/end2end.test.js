@@ -12,7 +12,7 @@ describe("Test Delete Functionality", () => {
       await button.click();
     }
     let posts = await page.evaluate(
-      'window.localStorage.getItem("_post_array")'
+      'window.localStorage.getItem("post_array")'
     );
     posts = JSON.parse(posts);
     let len = posts.length;
@@ -63,7 +63,7 @@ describe("Test Delete Functionality", () => {
       await button.click();
     }
     let posts = await page.evaluate(
-      'window.localStorage.getItem("_post_array")'
+      'window.localStorage.getItem("post_array")'
     );
     posts = JSON.parse(posts);
     let length = posts.length;
@@ -77,7 +77,7 @@ describe("Test Delete Functionality", () => {
 
   it("Check Filter Buttons", async () => {
     let posts = await page.evaluate(
-      'window.localStorage.getItem("_post_array")'
+      'window.localStorage.getItem("post_array")'
     );
     posts = JSON.parse(posts);
     //get total number of posts with each label:
