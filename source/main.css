@@ -57,7 +57,6 @@ header {
   flex-direction: row;
   align-items: center;
   gap: 12px;
-  margin: 0 20px;
   font-size: 14px;
 }
 
@@ -97,7 +96,7 @@ main {
   /*Styles button and text*/
   background-color: #3191ff00;
   border: 4px solid #3191ff;
-  border-radius: 50vh;
+  border-radius: 5rem;
   color: white;
   padding: 5px 22px;
   font-size: 22px;
@@ -161,6 +160,7 @@ input[type="submit"] {
   font-size: 12px;
   transition: all 0.2s;
 }
+
 /*Colors "Happiness" label*/
 #label1 {
   border: 3px solid #a79d13;
@@ -176,7 +176,6 @@ input[type="submit"] {
   border: 3px solid #1e5595;
   background-color: #1e5595;
 }
-/*Colors "Sadness" label when hovered*/
 #label2:hover {
   color: #2189ff;
   border: 3px solid #2189ff;
@@ -187,7 +186,6 @@ input[type="submit"] {
   border: 3px solid #951e1e;
   background-color: #951e1e;
 }
-/*Colors "Anger" label when hovered*/
 #label3:hover {
   color: #ef5353;
   border: 3px solid #ef5353;
@@ -198,7 +196,6 @@ input[type="submit"] {
   border: 3px solid #257f25;
   background-color: #257f25;
 }
-/*Colors "Fear" label when hovered*/
 #label4:hover {
   color: #57cd57;
   border: 3px solid #57cd57;
@@ -209,12 +206,12 @@ input[type="submit"] {
   border: 3px solid #99299b;
   background-color: #99299b;
 }
-/*Colors "Fear" label when hovered*/
 #label5:hover {
   color: #ea59ed;
   border: 3px solid #ea59ed;
   background-color: #4c144d;
 }
+
 /*Colors reset and submit buttons when hovered*/
 #label6:hover,
 input[type="submit"]:hover {
@@ -247,11 +244,12 @@ h4 {
 /*Sets the post area as well as the line to the left of it*/
 .posts {
   grid-area: posts;
-  padding: 20px;
   overflow-y: auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  padding: 25px;
+  gap: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(20rem, 1fr));
+  grid-auto-rows: min-content;
 }
 
 /*Sets scrollbar size*/
@@ -328,8 +326,6 @@ select {
   font-family: "Inter";
   color: white;
   border-color: white;
-  font-family: "Inter";
-  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
