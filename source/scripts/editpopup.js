@@ -1,12 +1,10 @@
 class EditPopup extends HTMLElement {
-
-    constructor() {
-
-        super();
-        this.attachShadow({ mode: 'open' });
-        let edit_popup_holder = document.createElement("div");
-        edit_popup_holder.className = "edit_popup";
-        edit_popup_holder.innerHTML = `
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+    let edit_popup_holder = document.createElement("div");
+    edit_popup_holder.className = "edit_popup";
+    edit_popup_holder.innerHTML = `
         <div class="background"></div>
 
         <div class="content">
@@ -46,9 +44,8 @@ class EditPopup extends HTMLElement {
         
         `;
 
-
-        let style = document.createElement("style");
-        style.textContent = `
+    let style = document.createElement("style");
+    style.textContent = `
         .edit_popup .content {
             position: absolute;
             width: 802px;
@@ -127,11 +124,9 @@ class EditPopup extends HTMLElement {
         
         `;
 
-        this.shadowRoot.appendChild(style);
-        this.shadowRoot.appendChild(edit_popup_holder);
-    }
-
-
+    this.shadowRoot.appendChild(style);
+    this.shadowRoot.appendChild(edit_popup_holder);
+  }
 }
 
 customElements.define("edit-popup", EditPopup);

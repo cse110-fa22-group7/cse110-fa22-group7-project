@@ -278,7 +278,6 @@ details summary > * {
   max-height: 0;
 }
 
-
 /*Media query*/
 @media screen and (max-width: 700px) {
   :root {

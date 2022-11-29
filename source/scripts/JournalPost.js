@@ -172,11 +172,11 @@ class JournalPost extends HTMLElement {
     //add edit event listener
     let edit_button = this.shadowRoot.getElementById("edit_button");
     edit_button.addEventListener("click", () => {
-      let main = document.querySelector('main');
+      let main = document.querySelector("main");
 
       //select the popup
       let popup = document.createElement("edit-popup");
-      
+
       main.appendChild(popup);
 
       var shadow = popup.shadowRoot;
@@ -209,7 +209,6 @@ class JournalPost extends HTMLElement {
 
       //advance the change and close the popup if update button is clicked
       update_but.addEventListener("click", () => {
-        
         edit_post(data["id"], {
           label: emote,
           text: textContent,
