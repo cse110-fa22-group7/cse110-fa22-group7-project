@@ -176,11 +176,12 @@ class JournalPost extends HTMLElement {
 
       //select the popup
       let popup = document.createElement("edit-popup");
-
+      //let the edit popup appear
       main.appendChild(popup);
 
+      //shadowroot of edit popup
       var shadow = popup.shadowRoot;
-      shadow.querySelector("select");
+      
       //select the options of emote
       var select = shadow.querySelector("select");
 
