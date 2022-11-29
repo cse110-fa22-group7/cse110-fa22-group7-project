@@ -7,6 +7,23 @@
     <link rel="stylesheet" href="main.css" />
     <script src="scripts/main.js"></script>
     <script src="scripts/JournalPost.js" type="module"></script>
+    <script src="scripts/editpopup.js" type="module"></script>
+    <!-- template for custom dialog -->
+    <template id="dialog-template">
+      <dialog id="warning-dialog">
+        <form method="dialog">
+          <!-- below text will not be shown -->
+          <p>Are you sure?</p>
+          <input type="text" style="display: none" id="prompt-message" />
+          <div>
+            <button id="no-button" value="no">Cancel</button>
+            <button id="yes-button" value="default" style="display: none">
+              Confirm
+            </button>
+          </div>
+        </form>
+      </dialog>
+    </template>
     <meta chartset="UTF-8" />
     <title>MyJournal</title>
   </head>
@@ -17,9 +34,6 @@
       <div class="appinfo">
         <img class="logo" src="/source/images/logo.svg" alt="logo" />
         <h1 class="app_title">MyJournal</h1>
-      </div>
-      <div class="user_info">
-        <h2 class="user_name">User Name</h2>
       </div>
     </header>
     <!-- Main contains rest of page components (sidebar, posts) -->
@@ -115,9 +129,9 @@
           </form>
         </details>
       </div>
+
       <!-- Posts will contain all posts from local storage -->
       <div class="posts">
-        <h2>Posts</h2>
         <div class="post_configuration"></div>
       </div>
       <output id="output"></output>

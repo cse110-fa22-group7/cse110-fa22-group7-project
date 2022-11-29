@@ -1,5 +1,6 @@
 {
   "name": "cse110-fa22-group7-project",
+  "type": "module",
   "version": "1.0.0",
   "description": "[meet the team](admin/team.md)",
   "main": "index.js",
@@ -8,7 +9,10 @@
     "eslint-fix": "./node_modules/.bin/eslint --fix . --ext js",
     "prettier-fix": "./node_modules/.bin/prettier --write ./source",
     "prettier-check": "./node_modules/.bin/prettier --check ./source",
-    "test": "npx parcel source/main.html --port 9999 & npx jest"
+    "test": "npx parcel source/main.html --port 9999 & npx jest",
+    "validate-css-no-warnings": "./node_modules/.bin/css-validator ./source/*.css --warning no",
+    "validate-css": "./node_modules/.bin/css-validator ./source/*.css",
+    "validate-js": "node --check ./source/scripts/*"
   },
   "repository": {
     "type": "git",
@@ -21,6 +25,7 @@
   },
   "homepage": "https://github.com/cse110-fa22-group7/cse110-fa22-group7-project#readme",
   "devDependencies": {
+    "css-validator": "^0.11.0",
     "eslint": "^8.27.0",
     "html-validate-prettier": "^1.0.3",
     "html-validator": "^6.0.1",

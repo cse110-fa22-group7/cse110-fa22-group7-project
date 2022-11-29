@@ -28,55 +28,92 @@ class JournalPost extends HTMLElement {
 
     let style = document.createElement("style");
     style.innerText = `
+    /*Styles posts*/
     article {
-      display: grid;
-      background-color: #686c6c;
-      color: white;
-      font-family: "Courier New", Courier, monospace;
-      grid-template-rows:
-        ".post_header"
-        "post_text";
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      word-wrap: break-word;
+      border-radius: 0.75rem;
+      background-color: #202020;
+      min-height: 15rem;
+      height: 100%;
     }
+
+    /*Styles header*/
     .post_header {
       display: flex;
-      padding: 0.4rem;
       flex-direction: row;
-      border-bottom: 1px solid white;
       justify-content: space-between;
-    }
-    .post_meta {
-      padding: 0.3rem;
-      display: flex;
-      flex-direction: row;
+      font-weight: 600;
+      gap: 1rem;
+      align-items: center;
+      padding: 0.4rem;
+      border: 1px solid rgb(87, 87, 87);
+      border-radius: 0.75rem 0.75rem 0 0;
+      background-color: rgba(87, 87, 87, 0);
     }
     .post_label {
-      padding: 0.37rem 1rem;
-      border: white solid;
-      border-radius: 2rem;
-    }
-    .dates {
-      display: flex;
-      padding: 0.5rem;
-    }
-    .dates p {
-      margin: 0 1rem;
+      grid-area: label;
+      padding: 0 0.25rem;
+      border-radius: 50vh;
+      font-size: 1rem;
     }
     .post_buttons {
+      grid-area: buttons;
       display: flex;
       flex-direction: row;
+      gap: 0.5rem;
     }
     .post_buttons * {
-      margin: 0 0.25rem;
-      padding: 0 0.5rem;
-      border-radius: 0.5rem;
-      background-color: #686c6c;
-      font-weight: 300;
-      font-size: large;
+      border-radius: 2rem;
+      background-color: #00000000;
       color: white;
-      border-color: white;
+      border: solid white;
+      padding: 0.25rem 0.75rem;
+      height: 100%;
+      width: 100%;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: 0.2s;
     }
+    .post_edit:hover {
+      color: #3191ff;
+      border: solid #3191ff;
+    }
+    .post_delete:hover {
+      color: rgb(227, 45, 45);
+      border: solid rgb(227, 45, 45);
+    }
+  
+    /*Styles footer*/
+    .post_meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      border-bottom: 1px solid rgb(87, 87, 87);
+      border-left: 1px solid rgb(87, 87, 87);
+      border-right: 1px solid rgb(87, 87, 87);
+      border-radius: 0 0 0.75rem 0.75rem;
+    }
+    .post_meta * {
+      font-size: 0.65rem;
+      color: #606060;
+    }
+  
+    /*Styles post text*/
     .post_text {
-      padding: 0.1rem 0.5rem;
+      grid-area: text;
+      flex: 1 1 auto;
+      margin: 0;
+      border-left: 1px solid rgb(87, 87, 87);
+      border-right: 1px solid rgb(87, 87, 87);
+      border-bottom: 1px solid rgb(87, 87, 87);
+      font-size: 1rem;
+      line-height: 1.5rem;
+      padding: 1rem;
+      white-space: pre-line;
     }
     `;
     this.shadowRoot.appendChild(style);
@@ -100,22 +137,18 @@ class JournalPost extends HTMLElement {
     }
     let article = this.shadowRoot.getElementById("post-article");
     article.innerHTML = `
-    <span class="post_header">
-      <div class="post_meta">
-        <span class="post_label">${data["label"]}</span>
-        <span class="dates">
-          <p>Date Created:</p>
-          <date class="create_date">${data["dateCreated"]}</date>
-          <p>Last Updated:</p>
-          <date class="update_date">${mod_date}</date>
-        </span>
-      </div>
+    <div class="post_header">
+      <div class="post_label">${data["label"]}</div>
       <div class="post_buttons">
         <button id="edit_button" class="post_edit">Edit</button>
         <button id="delete_button" class="post_delete">Delete</button>
       </div>
-    </span>
+    </div>
     <p class="post_text">${data["text"]}</p>
+    <div class="post_meta">
+      <div class="create_date">Date Created: ${data["dateCreated"]}</div>
+      <div class="update_date">Last Updated: ${mod_date}</div>
+    </div>
     `;
 
     //add delete event listener
@@ -129,16 +162,55 @@ class JournalPost extends HTMLElement {
 
     let edit_button = this.shadowRoot.getElementById("edit_button");
     edit_button.addEventListener("click", () => {
-      // checck the popup for edit
-      const postEl = edit_button.parentElement.parentElement.parentElement;
 
-      let textContent = postEl.querySelector(".post_text").textContent;
-      let emote = postEl.querySelector(".post_label").textContent;
-      create_popup({
-        title: "Edit",
-        id: data.id,
-        text: textContent,
-        label: emote,
+      let main = document.querySelector("main");
+
+      //select the popup
+      let popup = document.createElement("edit-popup");
+      //let the edit popup appear
+      main.appendChild(popup);
+
+      //shadowroot of edit popup
+      var shadow = popup.shadowRoot;
+
+      //select the options of emote
+      var select = shadow.querySelector("select");
+
+      //select the textbox
+      var textBox = shadow.querySelector("textarea");
+
+      //the current value of emote
+      select.value = data["label"];
+
+      //the current value of textContent in the textbox
+      textBox.value = data["text"];
+      var textContent = textBox.value;
+      var emote = select.value;
+      var cancel_but = shadow.querySelector("#cancel");
+      var update_but = shadow.querySelector("#update");
+
+      //update the label
+      select.addEventListener("change", () => {
+        emote = select.value;
+      });
+
+      //update the text
+      textBox.addEventListener("change", () => {
+        textContent = textBox.value;
+      });
+
+      //advance the change and close the popup if update button is clicked
+      update_but.addEventListener("click", () => {
+        edit_post(data["id"], {
+          label: emote,
+          text: textContent,
+        });
+        main.removeChild(main.lastChild);
+      });
+
+      //do nothing if cancel button is clicked
+      cancel_but.addEventListener("click", () => {
+        main.removeChild(main.lastChild);
       });
     });
   }
