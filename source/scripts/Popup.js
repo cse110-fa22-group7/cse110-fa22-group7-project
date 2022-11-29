@@ -1,9 +1,6 @@
 /**Popup.js contains the Popup class defining the HTML element popup-dialog
  * as well as methods for interfacing with buttons.
  *
- * TODO : create/edit button click => create/edit post to
- *        create/edit button click => create/edit popup => create/edit post
- *        delete      button click => delete post => delete post
  */
 
 import { create_post, edit_post, delete_post } from "./JournalPost.js";
