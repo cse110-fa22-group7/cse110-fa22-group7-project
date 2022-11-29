@@ -181,7 +181,7 @@ class JournalPost extends HTMLElement {
 
       //shadowroot of edit popup
       var shadow = popup.shadowRoot;
-      
+
       //select the options of emote
       var select = shadow.querySelector("select");
 
