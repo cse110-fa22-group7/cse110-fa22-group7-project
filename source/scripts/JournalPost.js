@@ -162,7 +162,6 @@ class JournalPost extends HTMLElement {
 
     let edit_button = this.shadowRoot.getElementById("edit_button");
     edit_button.addEventListener("click", () => {
-
       let main = document.querySelector("main");
 
       //select the popup
