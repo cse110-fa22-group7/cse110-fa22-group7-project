@@ -10,6 +10,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: install modules
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 16
       run: npm install
     - name: run ESLint
       run: npm run eslint
