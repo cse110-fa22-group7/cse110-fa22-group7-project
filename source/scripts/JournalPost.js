@@ -173,15 +173,21 @@ class JournalPost extends HTMLElement {
     //add edit event listener
     let edit_button = this.shadowRoot.getElementById("edit_button");
     edit_button.addEventListener("click", () => {
+      let main = document.querySelector("main");
+
       //select the popup
-      let popup = document.querySelector(".edit_popup");
-      popup.style.visibility = "visible";
+      let popup = document.createElement("edit-popup");
+      //let the edit popup appear
+      main.appendChild(popup);
+
+      //shadowroot of edit popup
+      var shadow = popup.shadowRoot;
 
       //select the options of emote
-      var select = document.querySelector("select");
+      var select = shadow.querySelector("select");
 
       //select the textbox
-      var textBox = document.querySelector("textarea");
+      var textBox = shadow.querySelector("textarea");
 
       //the current value of emote
       select.value = data["label"];
@@ -190,8 +196,8 @@ class JournalPost extends HTMLElement {
       textBox.value = data["text"];
       var textContent = textBox.value;
       var emote = select.value;
-      var cancel_but = document.querySelector("#cancel");
-      var update_but = document.querySelector("#update");
+      var cancel_but = shadow.querySelector("#cancel");
+      var update_but = shadow.querySelector("#update");
 
       //update the label
       select.addEventListener("change", () => {
@@ -205,17 +211,16 @@ class JournalPost extends HTMLElement {
 
       //advance the change and close the popup if update button is clicked
       update_but.addEventListener("click", () => {
-        console.log("This is update");
         edit_post(data["id"], {
           label: emote,
           text: textContent,
         });
-        popup.style.visibility = "hidden";
+        main.removeChild(main.lastChild);
       });
 
       //do nothing if cancel button is clicked
       cancel_but.addEventListener("click", () => {
-        popup.style.visibility = "hidden";
+        main.removeChild(main.lastChild);
       });
     });
   }
