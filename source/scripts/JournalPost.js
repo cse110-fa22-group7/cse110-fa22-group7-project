@@ -257,21 +257,35 @@ function init() {
   }
 
   document.getElementById("dateSubmit").addEventListener("click", () => {
-    //check if date_range is valid first @todo
-
+    
     let a = document.getElementById("dateFrom").value;
     let b = document.getElementById("dateTo").value;
-    if (dateComp.isEqualTo(b, a) || dateComp.isLessThan(b, a)) {
+
+    let dateA = dateComp.validateDate(a);
+    let dateB = dateComp.validateDate(b);
+
+    if(dateA == null || dateB == null){
       //open warning dialogconst warningDialog = this.shadowRoot.querySelector("#delete_button");
+      myDialog.fill("Date Must Be In the Format: MM-DD-YYYY", false, false);
+      const noButtonEl = document.querySelector("#no-button");
+      noButtonEl.addEventListener("click", function denyAction() {
+        myDialog.closeDialog();
+      });
+      return;
+    }
+
+
+    if (dateComp.isEqualTo(dateB, dateA) || dateComp.isLessThan(dateB, dateA)) {
       myDialog.fill("Please enter a valid date range", false, false);
       const noButtonEl = document.querySelector("#no-button");
       noButtonEl.addEventListener("click", function denyAction() {
         myDialog.closeDialog();
       });
-    } else {
-      let posts = filter_post_array_by_date(a, b);
-      display_posts(posts);
-    }
+      return;
+    } 
+
+    let posts = filter_post_array_by_date(dateA, dateB);
+    display_posts(posts);
   });
 
   document.getElementById("create_button").addEventListener("click", () => {
@@ -323,6 +337,11 @@ function filter_post_array_by_date(from, to) {
   let filtered_posts = [];
   for (var i in posts) {
     let dateCreated = posts[i]["dateCreated"];
+    dateCreated = dateComp.validateDate(dateCreated);
+    if(dateCreated == null){
+      console.error("Invalid Date found within post object, skipping for now");
+      continue;
+    }
     if (dateComp.isLessThan(dateCreated, from)) {
       continue;
     }
