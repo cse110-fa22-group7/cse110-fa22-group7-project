@@ -17,17 +17,15 @@ jobs:
       run: npm run prettier-check
     - name: Validate HTML
       run: npx html-validate --ext html ./source
-    - name: Validate CSS
-      run: echo "look into validate css and find a good package"
-    - name: Validate JS
-      run: echo "look into validate js and find a good package" 
+    - name: Validate CSS files
+      run: npm run validate-css-no-warnings
+    - name: Validate JS files
+      run: validate-js
     - name: run JSDoc
       run: npx jsdoc -r ./source -d ./docs
     - name: run Code Quality
       run: echo "synced Code Climate to repository, check pull request to see feedback from Code Climate"
-    - name: run Jest Tests
+    - name: run Jest/Pupetter Tests (unit and end-to-end)
       run: npm run test
     - name: check Jest test coverage
-      run: echo "still working on it"
-    - name: Cypress Testing
-      run: echo "still working on it"
+      run: npm run test --coverage
