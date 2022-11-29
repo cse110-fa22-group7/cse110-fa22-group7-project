@@ -6,11 +6,9 @@ class EditPopup extends HTMLElement {
     edit_popup_holder.className = "edit_popup";
     edit_popup_holder.innerHTML = `
         <div class="background"></div>
-
         <div class="content">
           <h1 class="popup">Edit Post</h1>
           <hr />
-          
             <textarea placeholder="What would you like to say?"></textarea>
             <hr />
             <div class="label_and_button">
@@ -39,9 +37,7 @@ class EditPopup extends HTMLElement {
                 Update
                 </button>
             </div>
-          
         </div>
-        
         `;
 
     let style = document.createElement("style");
@@ -109,8 +105,6 @@ class EditPopup extends HTMLElement {
             font-size: 36px;
             color: white;
           }
-          
-          /*the gray out background*/
           .edit_popup .background {
             position: fixed;
             top: 0px;
@@ -120,10 +114,7 @@ class EditPopup extends HTMLElement {
             background: rgba(9, 8, 8, 0.6);
             z-index: 1;
           }
-          
-        
         `;
-
     this.shadowRoot.appendChild(style);
     this.shadowRoot.appendChild(edit_popup_holder);
   }
