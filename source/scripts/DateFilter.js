@@ -50,15 +50,15 @@ function isValidDateArray(arr) {
   //if valid month: check date based on max day of given month:
   let lastDay = 31;
   switch (arr[0]) {
-  case 2:
-    lastDay = 29; //TODO handle leap years
-    break;
-  case 4:
-  case 6:
-  case 9:
-  case 11:
-    lastDay = 30;
-    break;
+    case 2:
+      lastDay = 29; //TODO handle leap years
+      break;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+      lastDay = 30;
+      break;
   }
   if (arr[1] < 1 || arr[0] > lastDay) {
     return false;
