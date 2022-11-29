@@ -23,7 +23,7 @@ jobs:
     - name: Validate CSS files
       run: npm run validate-css-no-warnings
     - name: Validate JS files
-      run: validate-js
+      run: npm run validate-js
     - name: run JSDoc
       run: npx jsdoc -r ./source -d ./docs
     - name: run Code Quality
