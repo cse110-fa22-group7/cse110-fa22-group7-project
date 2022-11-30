@@ -1,0 +1,24 @@
+name: UpdateDocs
+on: 
+  push:
+    branches:
+      main
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 16
+    - name: install modules
+      run: npm install
+    - name: Build JSDocs
+      run: npx jsdoc -r ./source -d ./docs
+    - name: stage changes to docs
+      run: git add docs
+    - name: commit changes with [skip actions] decorator
+      run: git commit -m "Auto Update Docs [skip actions]"
+    - name: push to main
+      run: git push origin main
