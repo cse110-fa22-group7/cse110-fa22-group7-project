@@ -174,7 +174,7 @@ class Popup extends HTMLElement {
         const select = formEl.querySelector("select");
         const textBox = formEl.querySelector("textarea");
         let emote = select.value;
-        if(emote == ""){
+        if (emote == "") {
           return;
         }
         textContent = textBox.value;
@@ -215,7 +215,7 @@ class Popup extends HTMLElement {
     //remove all dialog elements
     const output = document.querySelector("#output");
     let firstChild = output.firstChild;
-    while(firstChild != null){
+    while (firstChild != null) {
       firstChild.remove();
       firstChild = output.firstChild;
     }

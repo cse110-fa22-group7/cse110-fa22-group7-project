@@ -1,5 +1,4 @@
-async function create_random_post(){
-  
+async function create_random_post() {
   let button = await page.$("#create_button");
   await button.click();
 
@@ -11,21 +10,23 @@ async function create_random_post(){
   let confirmButton = await shadow.$("#yes-button");
 
   //Type sample text content:
-  await textBox.type('This is some random text lorem ipsum just realized we never set a character limit this could potentially be bad maybe we should add that lol!!!!!!!!');
+  await textBox.type(
+    "This is some random text lorem ipsum just realized we never set a character limit this could potentially be bad maybe we should add that lol!!!!!!!!"
+  );
   //Select a label
-  let label = "Happiness"
+  let label = "Happiness";
   let x = Math.random();
-  switch(x){
-    case (x<.2):
+  switch (x) {
+    case x < 0.2:
       label = "Sadness";
       break;
-    case (x<.4):
+    case x < 0.4:
       label = "Fear";
       break;
-    case (x<.6):
+    case x < 0.6:
       label = "Surprise";
       break;
-    case (x<.8):
+    case x < 0.8:
       label = "Anger";
       break;
   }
