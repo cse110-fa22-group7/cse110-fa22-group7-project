@@ -116,8 +116,8 @@ class Popup extends HTMLElement {
           <textarea placeholder="What would you like to say?">${textContent}</textarea>
           <hr />
           <div class="label_and_button">
-            <select>
-              <option value="Choose a label">
+            <select name="label" required>
+              <option value="" disabled selected hidden>
                 <label>Choose a label</label>
               </option>
               <option value="Happiness">
@@ -174,6 +174,9 @@ class Popup extends HTMLElement {
         const select = formEl.querySelector("select");
         const textBox = formEl.querySelector("textarea");
         let emote = select.value;
+        if(emote == ""){
+          return;
+        }
         textContent = textBox.value;
         if (data["popup_title"] == "Add")
           create_post(data["popup_id"], { label: emote, text: textContent });
@@ -208,6 +211,14 @@ class Popup extends HTMLElement {
   closeDialog() {
     let dialogEl = this.shadowRoot.querySelector("dialog");
     dialogEl.close();
+
+    //remove all dialog elements
+    const output = document.querySelector("#output");
+    let firstChild = output.firstChild;
+    while(firstChild != null){
+      firstChild.remove();
+      firstChild = output.firstChild;
+    }
   }
 }
 customElements.define("popup-dialog", Popup);
