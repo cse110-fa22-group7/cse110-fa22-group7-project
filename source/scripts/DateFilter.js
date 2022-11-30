@@ -3,7 +3,7 @@
  * Converts a string into the array representation of a date
  *
  * @param {String} dateString - MM-DD-YYYY or YYYY-MM-DD Format where "-" can be "-", "/", or " "
- * @returns {Integer []} array representationg of date [month, day, year]
+ * @returns {Integer[]} array representationg of date [month, day, year]
  * @returns {null} if invalid input string
  */
 function stringToDateArray(dateString) {
@@ -71,7 +71,7 @@ function isValidDateArray(arr) {
 
 /**
  * Helper function to convert a given input string into a date object
- * @param {Integer []} arr - array to convert
+ * @param {Integer[]} arr - array to convert
  * @returns {Object} formatted date object
  */
 function arrToDateObj(arr) {
