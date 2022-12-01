@@ -60,12 +60,10 @@ function isValidDateArray(arr) {
   let thirty_day_months = [4, 6, 9, 11];
   if (thirty_day_months.includes(arr[0])) {
     lastDay = 30;
-  } else if (arr[0] == 2) {
-    if (arr[2] % 4 == 0) {
-      lastDay = 28;
-    } else {
-      lastDay = 29;
-    }
+  } else if (arr[0] == 2 && arr[2] % 4 == 0) {
+    lastDay = 29;
+  } else {
+    lastDay = 28;
   }
   // switch (arr[0]) {
   //   case 2:
@@ -121,25 +119,37 @@ export function validateDate(input) {
  * @returns {Bool} (a < b)
  */
 export function isLessThan(a, b) {
-  let isLess = false;
-  if (a.year > b.year) {
-    isLess = false;
-  } else if (a.year < b.year) {
-    isLess = true;
-  } else {
-    if (a.month > b.month) {
-      isLess = false;
-    } else if (a.month < b.month) {
-      isLess = true;
-    } else {
-      if (a.day > b.day) {
-        isLess = false;
-      } else if (a.day < b.day) {
-        isLess = true;
-      }
-    }
+  console.log('in is less than')
+  if(isEqualTo(a,b)){
+    return false;
   }
-  return isLess;
+  const date_a = new Date(a.year, a.month, a.day);
+  const date_b = new Date(b.year, b.month, b.day);
+  if(date_a < date_b){
+    return true;
+  }
+  else{
+    return false;
+  }
+  // let isLess = false;
+  // if (a.year > b.year) {
+  //   isLess = false;
+  // } else if (a.year < b.year) {
+  //   isLess = true;
+  // } else {
+  //   if (a.month > b.month) {
+  //     isLess = false;
+  //   } else if (a.month < b.month) {
+  //     isLess = true;
+  //   } else {
+  //     if (a.day > b.day) {
+  //       isLess = false;
+  //     } else if (a.day < b.day) {
+  //       isLess = true;
+  //     }
+  //   }
+  // }
+  // return isLess;
 
   // //compare year
   // if (a.year > b.year) {
