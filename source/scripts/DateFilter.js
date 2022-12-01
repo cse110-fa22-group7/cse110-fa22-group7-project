@@ -53,18 +53,21 @@ function isValidDateArray(arr) {
   }
   const today = new Date();
   const thirty_day_months = [4, 6, 9, 11];
-  const thirty_one_day_months = [1, 3, 5, 7, 8, 10, 12]
-  if(arr[1] > 31 && thirty_one_day_months.includes(arr[0])){
+  const thirty_one_day_months = [1, 3, 5, 7, 8, 10, 12];
+  if (arr[1] > 31 && thirty_one_day_months.includes(arr[0])) {
     return false;
   }
-  if(arr[1] > 30 && thirty_day_months.includes(arr[0])){
+  if (arr[1] > 30 && thirty_day_months.includes(arr[0])) {
     return false;
   }
-  if((arr[2]%4 == 0 && arr[1] > 29 && arr[0] == 2) || (arr[2]%4 != 0 && arr[1] > 28 && arr[0] == 2)) {
+  if (
+    (arr[2] % 4 == 0 && arr[1] > 29 && arr[0] == 2) ||
+    (arr[2] % 4 != 0 && arr[1] > 28 && arr[0] == 2)
+  ) {
     return false;
   }
-  const arr_date = new Date(arr[2], arr[0]-1, arr[1]);
-  if(arr_date > today) {
+  const arr_date = new Date(arr[2], arr[0] - 1, arr[1]);
+  if (arr_date > today) {
     return false;
   }
   return true;
@@ -136,15 +139,14 @@ export function validateDate(input) {
  * @returns {Bool} (a < b)
  */
 export function isLessThan(a, b) {
-  if(isEqualTo(a,b)){
+  if (isEqualTo(a, b)) {
     return false;
   }
   const date_a = new Date(a.year, a.month, a.day);
   const date_b = new Date(b.year, b.month, b.day);
-  if(date_a < date_b){
+  if (date_a < date_b) {
     return true;
-  }
-  else{
+  } else {
     return false;
   }
   // let isLess = false;
@@ -222,7 +224,7 @@ export function isGreaterThan(a, b) {
  * @param {Object} b - validated date object
  * @returns {Bool} (a >= b)
  */
- export function isGreaterThanEqualTo(a, b) {
+export function isGreaterThanEqualTo(a, b) {
   return !isLessThan(a, b);
 }
 
@@ -232,6 +234,6 @@ export function isGreaterThan(a, b) {
  * @param {Object} b - validated date object
  * @returns {Bool} (a <= b)
  */
- export function isLessThanEqualTo(a, b) {
+export function isLessThanEqualTo(a, b) {
   return !isGreaterThan(a, b);
 }

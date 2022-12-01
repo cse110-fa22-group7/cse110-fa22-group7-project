@@ -256,7 +256,11 @@ function init() {
 
     if (dateA == null || dateB == null) {
       //open warning dialogconst warningDialog = this.shadowRoot.querySelector("#delete_button");
-      myDialog.fill("Date Must Exist and Be In the Format: MM-DD-YYYY", false, false);
+      myDialog.fill(
+        "Date Must Exist and Be In the Format: MM-DD-YYYY",
+        false,
+        false
+      );
       const noButtonEl = document.querySelector("#no-button");
       noButtonEl.addEventListener("click", function denyAction() {
         myDialog.closeDialog();
@@ -321,7 +325,10 @@ function filter_post_array_by_date(from, to) {
       console.error("Invalid Date found within post object, skipping for now");
       continue;
     }
-    if((dateComp.isLessThanEqualTo(dateCreated, to)) && (dateComp.isGreaterThanEqualTo(dateCreated, from))){
+    if (
+      dateComp.isLessThanEqualTo(dateCreated, to) &&
+      dateComp.isGreaterThanEqualTo(dateCreated, from)
+    ) {
       filtered_posts.push(posts[i]);
     }
     // if (dateComp.isLessThan(dateCreated, from)) {
