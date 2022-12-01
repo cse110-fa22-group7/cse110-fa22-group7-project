@@ -9,11 +9,10 @@
  *
  * @TODO : Handle dates correctly, Date.now() gives milliseconds since something IDRK, we would prefer something like MM/DD/YYYY I think
  */
-
+import { create_popup } from "./Popup.js";
 /** Post Class for custom web-component post
  *
  */
-import * as myDialog from "./customdialog.js";
 class JournalPost extends HTMLElement {
   /**
    * sets up shadow dom
@@ -153,23 +152,14 @@ class JournalPost extends HTMLElement {
     `;
 
     //add delete event listener
-
-    //setup delete popup
-    const warningDialog = this.shadowRoot.querySelector("#delete_button");
-    warningDialog.addEventListener("click", function openWarning() {
-      myDialog.fill("Are you sure?", true, false);
-      const okButtonEl = document.querySelector("#yes-button");
-      const noButtonEl = document.querySelector("#no-button");
-      noButtonEl.addEventListener("click", function denyAction() {
-        myDialog.closeDialog(warningDialog);
-      });
-      okButtonEl.addEventListener("click", function confirmAction() {
-        myDialog.closeDialog(warningDialog);
-        delete_post(data["id"]);
-      });
+    //TODO when integrating the above innerHTML with the outline provided by the frontend team, make sure
+    //     to update the getElementById to refer to whatever they named the delete and edit buttons
+    let del_button = this.shadowRoot.getElementById("delete_button");
+    del_button.addEventListener("click", () => {
+      // popup appear
+      create_popup({ title: "Delete", id: data["id"] });
     });
 
-    //add edit event listener
     let edit_button = this.shadowRoot.getElementById("edit_button");
     edit_button.addEventListener("click", () => {
       let main = document.querySelector("main");
@@ -257,19 +247,9 @@ function init() {
   refresh_posts();
 
   document.getElementById("create_button").addEventListener("click", () => {
-    let num = Math.random();
-    console.log(num);
-    let label = "Happiness";
-    if (num <= 0.2) {
-      label = "Anger";
-    } else if (num <= 0.4) {
-      label = "Sadness";
-    } else if (num <= 0.6) {
-      label = "Fear";
-    } else if (num <= 0.8) {
-      label = "Surprise";
-    }
-    create_post({ label: label, text: "this is a test post" });
+    // check popup for create
+    // receive label, text, date from popup
+    create_popup({ title: "Add", id: get_new_post_id() });
   });
 
   //VvV TESTING VvV
@@ -366,13 +346,12 @@ function store_posts(posts) {
  *  @param {String} data."label" - label of new post
  *  @param {String} data."text" - text content of new post
  */
-function create_post(data) {
+export function create_post(post_id, data) {
   let posts = load_posts();
-
   //
   const date = new Date();
   let post_data = {
-    id: get_new_post_id(),
+    id: post_id,
     dateCreated: `${
       date.getMonth() + 1
     }-${date.getDate()}-${date.getFullYear()}`,
@@ -390,7 +369,7 @@ function create_post(data) {
  *
  *  @param {Integer} post_id - id of post to delete
  */
-function delete_post(post_id) {
+export function delete_post(post_id) {
   //get current posts
   let posts = load_posts();
 
@@ -408,16 +387,16 @@ function delete_post(post_id) {
   refresh_posts();
 }
 
-/**
- * Deletes All Posts under the current user
- *
- */
-function delete_all_posts() {
-  //store empty array as new array of posts
-  store_posts([]);
-  //reset post ids
-  window.localStorage.setItem(post_id_key, "0");
-}
+// /**
+//  * Deletes All Posts under the current user
+//  *
+//  */
+// function delete_all_posts() {
+//   //store empty array as new array of posts
+//   store_posts([]);
+//   //reset post ids
+//   window.localStorage.setItem(post_id_key, "0");
+// }
 
 /**
  * Updates the data of a post object
@@ -426,7 +405,7 @@ function delete_all_posts() {
  * @param {String} data."label" - label of edited post
  * @param {String} data."text"  - text content of edited post
  */
-function edit_post(post_id, data) {
+export function edit_post(post_id, data) {
   //get posts from storage
   let posts = load_posts();
   const date = new Date();
