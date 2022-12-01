@@ -26,16 +26,17 @@ function stringToDateArray(dateString) {
   }
 
   //convert strings into integers:
-  for (let i = 0; i < 3; i++) {
-    let value = parseInt(dateArray[i]);
-    if (isNaN(value)) {
-      console.warn("Date string must contain numerical values for dates");
-      return null;
-    }
-    dateArray[i] = value;
-  }
-  let newArr = [dateArray[0], dateArray[1], dateArray[2]];
-  return newArr;
+  return dateArray.map(Number);
+  // for (let i = 0; i < 3; i++) {
+  //   let value = parseInt(dateArray[i]);
+  //   if (isNaN(value)) {
+  //     console.warn("Date string must contain numerical values for dates");
+  //     return null;
+  //   }
+  //   dateArray[i] = value;
+  // }
+  // let newArr = [dateArray[0], dateArray[1], dateArray[2]];
+  // return newArr;
 }
 
 /**
@@ -47,24 +48,37 @@ function stringToDateArray(dateString) {
  * @returns {Boolean} true if the array is in the correct format and false otherwise
  */
 function isValidDateArray(arr) {
-  if (arr == null) {
+  // if (arr == null) {
+  //   return false;
+  // }
+  const today = new Date();
+  const thirty_day_months = [4, 6, 9, 11];
+  const thirty_one_day_months = [1, 3, 5, 7, 8, 10, 12]
+  if(arr == null || arr[0] > 12 || arr[0] < 1 || (arr[1] > 31 && thirty_one_day_months.includes(arr[0])) || (arr[1] > 30 && thirty_day_months.includes(arr[0]))){
     return false;
   }
-
-  if (arr[0] < 1 || arr[0] > 12) {
-    //check month
+  if((arr[2]%4 == 0 && arr[1] > 29 && arr[0] == 2) || (arr[2]%4 != 0 && arr[1] > 28 && arr[0] == 2)) {
     return false;
   }
-  //if valid month: check date based on max day of given month:
-  let lastDay = 31;
-  let thirty_day_months = [4, 6, 9, 11];
-  if (thirty_day_months.includes(arr[0])) {
-    lastDay = 30;
-  } else if (arr[0] == 2 && arr[2] % 4 == 0) {
-    lastDay = 29;
-  } else {
-    lastDay = 28;
+  const arr_date = new Date(arr[2], arr[0]-1, arr[1]);
+  if(arr_date > today) {
+    return false;
   }
+  return true;
+  // if (arr[0] < 1 || arr[0] > 12) {
+  //   //check month
+  //   return false;
+  // }
+  // //if valid month: check date based on max day of given month:
+  // let lastDay = 31;
+  // let thirty_day_months = [4, 6, 9, 11];
+  // if (thirty_day_months.includes(arr[0])) {
+  //   lastDay = 30;
+  // } else if (arr[0] == 2 && arr[2] % 4 == 0) {
+  //   lastDay = 29;
+  // } else {
+  //   lastDay = 28;
+  // }
   // switch (arr[0]) {
   //   case 2:
   //     lastDay = 29; //TODO handle leap years
@@ -76,10 +90,10 @@ function isValidDateArray(arr) {
   //     lastDay = 30;
   //     break;
   // }
-  if (arr[1] < 1 || arr[0] > lastDay || arr[2] < 1000 || arr[2] > 10000) {
-    return false;
-  }
-  return true;
+  // if (arr[1] < 1 || arr[0] > lastDay || arr[2] < 1000 || arr[2] > 10000) {
+  //   return false;
+  // }
+  // return true;
 }
 
 /**
@@ -119,7 +133,6 @@ export function validateDate(input) {
  * @returns {Bool} (a < b)
  */
 export function isLessThan(a, b) {
-  console.log('in is less than')
   if(isEqualTo(a,b)){
     return false;
   }
