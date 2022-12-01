@@ -48,16 +48,22 @@ function stringToDateArray(dateString) {
  * @returns {Boolean} true if the array is in the correct format and false otherwise
  */
 function isValidDateArray(arr) {
-  // if (arr == null) {
-  //   return false;
-  // }
+  if (arr == null || arr[0] > 12 || arr[0] < 1) {
+    return false;
+  }
   const today = new Date();
   const thirty_day_months = [4, 6, 9, 11];
   const thirty_one_day_months = [1, 3, 5, 7, 8, 10, 12]
-  if(arr == null || arr[0] > 12 || arr[0] < 1 || (arr[1] > 31 && thirty_one_day_months.includes(arr[0])) || (arr[1] > 30 && thirty_day_months.includes(arr[0]))){
+  if(arr[1] > 31 && thirty_one_day_months.includes(arr[0])){
     return false;
   }
-  if((arr[2]%4 == 0 && arr[1] > 29 && arr[0] == 2) || (arr[2]%4 != 0 && arr[1] > 28 && arr[0] == 2)) {
+  if(arr[1] > 30 && thirty_day_months.includes(arr[0])){
+    return false;
+  }
+  if(arr[2]%4 == 0 && arr[1] > 29 && arr[0] == 2) {
+    return false;
+  }
+  if(arr[2]%4 != 0 && arr[1] > 28 && arr[0] == 2){
     return false;
   }
   const arr_date = new Date(arr[2], arr[0]-1, arr[1]);
