@@ -60,10 +60,7 @@ function isValidDateArray(arr) {
   if(arr[1] > 30 && thirty_day_months.includes(arr[0])){
     return false;
   }
-  if(arr[2]%4 == 0 && arr[1] > 29 && arr[0] == 2) {
-    return false;
-  }
-  if(arr[2]%4 != 0 && arr[1] > 28 && arr[0] == 2){
+  if((arr[2]%4 == 0 && arr[1] > 29 && arr[0] == 2) || (arr[2]%4 != 0 && arr[1] > 28 && arr[0] == 2)) {
     return false;
   }
   const arr_date = new Date(arr[2], arr[0]-1, arr[1]);
@@ -217,4 +214,24 @@ export function isEqualTo(a, b) {
  */
 export function isGreaterThan(a, b) {
   return !isEqualTo(a, b) && !isLessThan(a, b);
+}
+
+/**
+ * Checks if (a>=b)
+ * @param {Object} a - validated date object
+ * @param {Object} b - validated date object
+ * @returns {Bool} (a >= b)
+ */
+ export function isGreaterThanEqualTo(a, b) {
+  return !isLessThan(a, b);
+}
+
+/**
+ * Checks if (a<=b)
+ * @param {Object} a - validated date object
+ * @param {Object} b - validated date object
+ * @returns {Bool} (a <= b)
+ */
+ export function isLessThanEqualTo(a, b) {
+  return !isGreaterThan(a, b);
 }

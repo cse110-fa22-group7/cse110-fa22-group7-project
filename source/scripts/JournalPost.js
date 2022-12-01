@@ -321,7 +321,7 @@ function filter_post_array_by_date(from, to) {
       console.error("Invalid Date found within post object, skipping for now");
       continue;
     }
-    if((dateComp.isEqualTo(dateCreated, to) || dateComp.isLessThan(dateCreated, to)) && (dateComp.isEqualTo(dateCreated, from) || dateComp.isGreaterThan(dateCreated, from))){
+    if((dateComp.isLessThanEqualTo(dateCreated, to)) && (dateComp.isGreaterThanEqualTo(dateCreated, from))){
       filtered_posts.push(posts[i]);
     }
     // if (dateComp.isLessThan(dateCreated, from)) {
