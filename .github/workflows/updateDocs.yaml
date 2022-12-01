@@ -29,6 +29,7 @@ jobs:
       if: always()  # Force to always run this step to ensure "include administrators" is always turned back on
       with:
         access_token: ${{ secrets.ACCESS_TOKEN }}
+        branch: main
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
@@ -39,3 +40,4 @@ jobs:
       if: always()  # Force to always run this step to ensure "include administrators" is always turned back on
       with:
         access_token: ${{ secrets.ACCESS_TOKEN }}
+        branch: main
