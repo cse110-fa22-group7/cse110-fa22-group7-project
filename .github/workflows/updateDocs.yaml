@@ -23,8 +23,21 @@ jobs:
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
         git commit -m "Updated Docs [skip actions]"
+        - name: Enable "include administrators" branch protection
+    - name: Disable branch protection
+      uses: benjefferies/branch-protection-bot@master
+      if: always()  # Force to always run this step to ensure "include administrators" is always turned back on
+      with:
+        access_token: ${{ secrets.ACCESS_TOKEN }}
+        branch: main
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: main
+    - name: re-enable branch protection
+      uses: benjefferies/branch-protection-bot@master
+      if: always()  # Force to always run this step to ensure "include administrators" is always turned back on
+      with:
+        access_token: ${{ secrets.ACCESS_TOKEN }}
         branch: main
