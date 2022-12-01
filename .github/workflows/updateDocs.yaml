@@ -19,6 +19,9 @@ jobs:
     - name: stage changes to docs
       run: git add docs
     - name: commit changes with [skip actions] decorator
-      run: git commit -m "Auto Update Docs [skip actions]"
-    - name: push to main
-      run: git push origin main
+      run: git commit -m "Auto Update Docs [skip actions]"   
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: main
