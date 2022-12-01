@@ -8,9 +8,17 @@
  */
 function stringToDateArray(dateString) {
   //split string into array:
-  let dateArray = dateString.split("-");
-  if (dateArray.length < 3) dateArray = dateString.split("/");
-  if (dateArray.length < 3) dateArray = dateString.split(" ");
+  // let dateArray = dateString.split("-");
+  // if (dateArray.length < 3) dateArray = dateString.split("/");
+  // if (dateArray.length < 3) dateArray = dateString.split(" ");
+  let dateArray = dateString;
+  if (dateString.includes("-")) {
+    dateArray = dateArray.split("-");
+  } else if (dateString.includes("/")) {
+    dateArray = dateArray.split("/");
+  } else if (dateString.includes(" ")) {
+    dateArray = dateArray.split(" ");
+  }
 
   //reformat if necessary:  YYYY-MM-DD to MM-DD-YYYY
   if (dateArray[0].length == 4) {
@@ -49,21 +57,28 @@ function isValidDateArray(arr) {
   }
   //if valid month: check date based on max day of given month:
   let lastDay = 31;
-  switch (arr[0]) {
-    case 2:
-      lastDay = 29; //TODO handle leap years
-      break;
-    case 4:
-    case 6:
-    case 9:
-    case 11:
-      lastDay = 30;
-      break;
+  let thirty_day_months = [4, 6, 9, 11];
+  if (thirty_day_months.includes(arr[0])) {
+    lastDay = 30;
+  } else if (arr[0] == 2) {
+    if (arr[2] % 4 == 0) {
+      lastDay = 28;
+    } else {
+      lastDay = 29;
+    }
   }
-  if (arr[1] < 1 || arr[0] > lastDay) {
-    return false;
-  }
-  if (arr[2] < 1000 || arr[2] > 10000) {
+  // switch (arr[0]) {
+  //   case 2:
+  //     lastDay = 29; //TODO handle leap years
+  //     break;
+  //   case 4:
+  //   case 6:
+  //   case 9:
+  //   case 11:
+  //     lastDay = 30;
+  //     break;
+  // }
+  if (arr[1] < 1 || arr[0] > lastDay || arr[2] < 1000 || arr[2] > 10000) {
     return false;
   }
   return true;
@@ -106,29 +121,49 @@ export function validateDate(input) {
  * @returns {Bool} (a < b)
  */
 export function isLessThan(a, b) {
-  //compare year
+  let isLess = false;
   if (a.year > b.year) {
-    return false;
+    isLess = false;
   } else if (a.year < b.year) {
-    return true;
+    isLess = true;
+  } else {
+    if (a.month > b.month) {
+      isLess = false;
+    } else if (a.month < b.month) {
+      isLess = true;
+    } else {
+      if (a.day > b.day) {
+        isLess = false;
+      } else if (a.day < b.day) {
+        isLess = true;
+      }
+    }
   }
+  return isLess;
 
-  //if years are the same compare month
-  if (a.month > b.month) {
-    return false;
-  } else if (a.month < b.month) {
-    return true;
-  }
+  // //compare year
+  // if (a.year > b.year) {
+  //   return false;
+  // } else if (a.year < b.year) {
+  //   return true;
+  // }
 
-  //if month is the same compare day
-  if (a.day > b.day) {
-    return false;
-  } else if (a.day < b.day) {
-    return true;
-  }
+  // //if years are the same compare month
+  // if (a.month > b.month) {
+  //   return false;
+  // } else if (a.month < b.month) {
+  //   return true;
+  // }
 
-  //otherwise they are the same day:
-  return false;
+  // //if month is the same compare day
+  // if (a.day > b.day) {
+  //   return false;
+  // } else if (a.day < b.day) {
+  //   return true;
+  // }
+
+  // //otherwise they are the same day:
+  // return false;
 }
 
 /**
