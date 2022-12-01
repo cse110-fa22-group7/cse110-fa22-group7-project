@@ -1,7 +1,7 @@
 # TA Checkin 11/14
 
 11/21/2022
-8:00pm-
+8:00pm-8:30pm
 
 ## Attendance
 - Lucas
