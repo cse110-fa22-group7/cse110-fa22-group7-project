@@ -1,15 +1,50 @@
+async function create_random_post() {
+  let button = await page.$("#create_button");
+  await button.click();
+
+  //get reference to popup
+  let popup = await page.$("popup-dialog");
+  let shadow = await popup.getProperty("shadowRoot");
+  let textBox = await shadow.$("textarea");
+  let labelSelect = await shadow.$("select");
+  let confirmButton = await shadow.$("#yes-button");
+
+  //Type sample text content:
+  await textBox.type(
+    "This is some random text lorem ipsum just realized we never set a character limit this could potentially be bad maybe we should add that lol!!!!!!!!"
+  );
+  //Select a label
+  let label = "Happiness";
+  let x = Math.random();
+  switch (x) {
+    case x < 0.2:
+      label = "Sadness";
+      break;
+    case x < 0.4:
+      label = "Fear";
+      break;
+    case x < 0.6:
+      label = "Surprise";
+      break;
+    case x < 0.8:
+      label = "Anger";
+      break;
+  }
+  await labelSelect.type(label);
+
+  //Confirm post
+  await confirmButton.click();
+}
+
 const PATH = "http://localhost:9999";
 describe("Test Delete Functionality", () => {
   beforeAll(async () => {
     await page.goto(PATH);
   });
   it("Add Posts to LocalStorage", async () => {
-    //click the create button 20 times to create 20 random posts
-    //@todo - when the popup is implemented this test will fail as it won't be creating posts propperly
-
+    //click the create button 5 times to create 5 random posts
     for (let i = 0; i < 5; i++) {
-      let button = await page.$("#create_button");
-      await button.click();
+      await create_random_post();
     }
     let posts = await page.evaluate(
       'window.localStorage.getItem("_post_array")'
@@ -29,7 +64,8 @@ describe("Test Delete Functionality", () => {
     let shadow = await journalPost.getProperty("shadowRoot");
     let button = await shadow.$("#delete_button");
     await button.click();
-    let popup = await page.$("#warning-dialog");
+    let popup = await page.$("popup-dialog");
+    popup = await popup.getProperty("shadowRoot");
     expect(popup == null).toBe(false);
     let no = await popup.$("#no-button");
     await no.click();
@@ -43,7 +79,8 @@ describe("Test Delete Functionality", () => {
       let shadow = await journalPost.getProperty("shadowRoot");
       let button = await shadow.$("#delete_button");
       await button.click();
-      let popup = await page.$("#warning-dialog");
+      let popup = await page.$("popup-dialog");
+      popup = await popup.getProperty("shadowRoot");
       let yes = await popup.$("#yes-button");
       await yes.click();
       popup = await page.$("#warning-dialog");
@@ -54,13 +91,13 @@ describe("Test Delete Functionality", () => {
     }
   });
 
+  jest.setTimeout(30000);
   it("Add Posts to LocalStorage", async () => {
     //click the create button 20 times to create 20 random posts
     //@todo - when the popup is implemented this test will fail as it won't be creating posts propperly
     console.log("Creating 20 Random Posts...");
     for (let i = 0; i < 20; i++) {
-      let button = await page.$("#create_button");
-      await button.click();
+      await create_random_post();
     }
     let posts = await page.evaluate(
       'window.localStorage.getItem("_post_array")'

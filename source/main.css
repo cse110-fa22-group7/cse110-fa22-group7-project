@@ -9,6 +9,7 @@ html {
   background-color: #101010;
 }
 header,
+#collapse_container,
 .left_create,
 .filters {
   background-color: #202020;
@@ -63,25 +64,45 @@ header {
 /*Sections the page into two rows on the left and one on the right*/
 main {
   display: grid;
-  grid-template-columns: 250px auto;
-  grid-template-rows: 70px auto 0;
+  grid-template-columns: 15rem auto;
+  grid-template-rows: 70px 70px auto 0;
   height: calc(100vh - 61px);
   /*Sets the left rows to be create and filter sets the right ot be posts*/
   grid-template-areas:
+    "collpase    posts"
     "left_create posts"
     "filters     posts"
     "edit_popup  output";
+  transition: 0.2s;
 }
 
 /*Adds right border to sidebar*/
+#collapse_container,
 .left_create,
 .filters {
+  padding-top: 0.55rem;
+  display: flex;
+  flex-direction: column;
   border-right: 1px solid rgb(87, 87, 87);
+}
+
+#collapse_container {
+  padding-right: 0.5rem;
+  flex-direction: row-reverse;
+}
+
+#collapse_container * {
+  background-color: #202020;
+  border: none;
+  font-size: large;
+  width: 3.3rem;
+  color: white;
 }
 
 /*Aligns the create button in the create section*/
 .left_create {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-items: center;
   border-right: 1px solid rgb(87, 87, 87);
@@ -113,7 +134,6 @@ main {
 .filters {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid rgb(87, 87, 87);
 }
 
 /*Displays "Filter by" text next to the filter image*/
@@ -146,6 +166,7 @@ details summary {
 form {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   gap: 10px;
   padding: 10px 20px 10px 20px;
 }
