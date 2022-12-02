@@ -1,4 +1,11 @@
-module.exports = {validateDate, isLessThan, isEqualTo, isGreaterThan, isLessThanEqualTo, isGreaterThanEqualTo};
+export {
+  validateDate,
+  isLessThan,
+  isEqualTo,
+  isGreaterThan,
+  isLessThanEqualTo,
+  isGreaterThanEqualTo,
+};
 
 /**
  * Helper function

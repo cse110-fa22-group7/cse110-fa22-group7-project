@@ -85,7 +85,7 @@ describe("Test Site Functionality", () => {
       await yes.click();
       popup = await page.$("#warning-dialog");
       expect(popup).toBe(null);
-      posts = await page.$$("journal-post");
+      let posts = await page.$$("journal-post");
       let len = posts.length;
       expect(len).toBe(4 - i);
     }
