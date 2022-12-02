@@ -37,7 +37,7 @@ async function create_random_post() {
 }
 
 const PATH = "http://localhost:9999";
-describe("Test Delete Functionality", () => {
+describe("Test Site Functionality", () => {
   beforeAll(async () => {
     await page.goto(PATH);
   });

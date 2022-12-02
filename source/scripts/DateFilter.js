@@ -1,3 +1,5 @@
+module.exports = {validateDate, isLessThan, isEqualTo, isGreaterThan, isLessThanEqualTo, isGreaterThanEqualTo};
+
 /**
  * Helper function
  * Converts a string into the array representation of a date
@@ -121,7 +123,7 @@ function arrToDateObj(arr) {
  * @returns {Object} formatted date object
  * @returns {Null} if input is incorrectly formatted
  */
-export function validateDate(input) {
+function validateDate(input) {
   try {
     let date = stringToDateArray(input);
     if (isValidDateArray(date)) {
@@ -138,7 +140,7 @@ export function validateDate(input) {
  * @param {Object} b - validated date object
  * @returns {Bool} (a < b)
  */
-export function isLessThan(a, b) {
+function isLessThan(a, b) {
   if (isEqualTo(a, b)) {
     return false;
   }
@@ -200,7 +202,7 @@ export function isLessThan(a, b) {
  * @param {Object} b - validated date object
  * @returns {Bool} (a == b)
  */
-export function isEqualTo(a, b) {
+function isEqualTo(a, b) {
   //make sure all terms are equal
   if (a.day != b.day || a.month != b.month || a.year != b.year) {
     return false;
@@ -214,7 +216,7 @@ export function isEqualTo(a, b) {
  * @param {Object} b - validated date object
  * @returns {Bool} (a > b)
  */
-export function isGreaterThan(a, b) {
+function isGreaterThan(a, b) {
   return !isEqualTo(a, b) && !isLessThan(a, b);
 }
 
@@ -224,7 +226,7 @@ export function isGreaterThan(a, b) {
  * @param {Object} b - validated date object
  * @returns {Bool} (a >= b)
  */
-export function isGreaterThanEqualTo(a, b) {
+function isGreaterThanEqualTo(a, b) {
   return !isLessThan(a, b);
 }
 
@@ -234,6 +236,6 @@ export function isGreaterThanEqualTo(a, b) {
  * @param {Object} b - validated date object
  * @returns {Bool} (a <= b)
  */
-export function isLessThanEqualTo(a, b) {
+function isLessThanEqualTo(a, b) {
   return !isGreaterThan(a, b);
 }

@@ -13,7 +13,7 @@ import { create_popup } from "./Popup.js";
 /** Post Class for custom web-component post
  *
  */
-import * as dateComp from "./DateFilter.js";
+const dateComp = require("./DateFilter.js");
 import * as myDialog from "./customdialog.js";
 class JournalPost extends HTMLElement {
   /**
