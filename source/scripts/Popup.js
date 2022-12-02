@@ -180,7 +180,7 @@ class Popup extends HTMLElement {
                 <button id="yes-button" value="default" >
                   Cancel
                 </button>
-                <button id="no-create-button" value="no" type="cancel">Confirm</button>
+                <button id="no-button" value="no" type="cancel">Confirm</button>
               </div>
             </form>
               `;
@@ -194,7 +194,7 @@ class Popup extends HTMLElement {
               <p>warning: Are you sure you want to cancel? This post will not be edited.</p>
               <input type="text" style="display: none" id="prompt-message" />
               <div>
-                <button id="no-edit-button" value="no" type="cancel">Cancel</button>
+                <button id="no-button" value="no" type="cancel">Cancel</button>
                 <button id="yes-button" value="default" >
                   Confirm
                 </button>
