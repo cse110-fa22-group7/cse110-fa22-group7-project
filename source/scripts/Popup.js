@@ -154,7 +154,7 @@ class Popup extends HTMLElement {
     // Delete popup fill in and style
     if (data.popup_title == "Delete") {
       popup.innerHTML = `
-            <h1>${data["popup_title"]} Post</h1>
+            <h1>${data["popup_title"]} Post?</h1>
             <hr />
             <form method="dialog" id="${data["popup_id"]}">
             <p>warning: The deleted content cannot be retrieved.</p>
@@ -171,7 +171,7 @@ class Popup extends HTMLElement {
 
     if (data.popup_title == "Cancel Create") {
         popup.innerHTML = `
-              <h1>${data["popup_title"]} Post</h1>
+              <h1>${data["popup_title"]} Post?</h1>
               <hr />
               <form method="dialog" id="${data["popup_id"]}">
               <p>warning: Are you sure you want to cancel? No new post will be created.</p>
