@@ -177,10 +177,10 @@ class Popup extends HTMLElement {
               <p>warning: Are you sure you want to cancel? No new post will be created.</p>
               <input type="text" style="display: none" id="prompt-message" />
               <div>
+                <button id="no-button" value="no" type="cancel">Cancel</button>
                 <button id="yes-button" value="default" >
-                  Cancel
+                  Confirm
                 </button>
-                <button id="no-button" value="no" type="cancel">Confirm</button>
               </div>
             </form>
               `;
@@ -209,7 +209,9 @@ class Popup extends HTMLElement {
     yes_button.addEventListener("click", () => {
       if (data["popup_title"] == "Delete") {
         delete_post(data["popup_id"]);
-      } else {
+      } else if (data["popup_title"] == "Cancel Create" || data["popup_title"] == "Cancel Edit" ){
+        this.closeDialog();
+      }else {
         const formEl = yes_button.parentElement.parentElement;
         const select = formEl.querySelector("select");
         const textBox = formEl.querySelector("textarea");
@@ -228,16 +230,17 @@ class Popup extends HTMLElement {
     // add no event listen
     let no_button = this.shadowRoot.querySelector("#no-button");
     no_button.addEventListener("click", (ev) => {
-      create_popup({ title: "Cancel Create", id: data["id"]});
-      let main = document.querySelector('main');
-      let cancel_popup = main.lastChild;
-      let cancel_popup_confirm = cancel_popup.querySelector("no-button");
-      cancel_popup_confirm.addEventListener("click", (ev) => {
-        ev.preventDefault();
-        this.closeDialog();
-      });
-      //ev.preventDefault();
-      //this.closeDialog();
+      if(data["popup_title"] == "Add") {
+        create_popup({ title: "Cancel Create"});
+      } else if(data["popup_title"] == "Edit") {
+        create_popup({ title: "Cancel Edit"});
+      } else if(data["popup_title"] == "Cancel Create") {
+        create_popup({ title: "Add", id: data["id"]});
+      } else if(data["popup_title"] == "Cancel Edit") {
+        create_popup({ title: "Edit", id: data["id"]});
+      }
+      // ev.preventDefault();
+      // this.closeDialog();
       // no button is clicked just close the modal which is default
     });
 
