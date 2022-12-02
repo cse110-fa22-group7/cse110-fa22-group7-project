@@ -146,11 +146,10 @@ class Popup extends HTMLElement {
         </form>
         `;
 
-    if (data.popup_title == "Edit" && data.popup_label != "Choose a label")
-    {
+    if (data.popup_title == "Edit" && data.popup_label != "Choose a label") {
       popup.querySelector(`option[value=${data.popup_label}]`).selected = true;
     }
-      
+
     // Delete popup fill in and style
     if (data.popup_title == "Delete") {
       popup.innerHTML = `
@@ -169,8 +168,9 @@ class Popup extends HTMLElement {
             `;
     }
 
-    if (data.popup_title == "Cancel Create") { //cancel popup for the create popup
-        popup.innerHTML = `
+    if (data.popup_title == "Cancel Create") {
+      //cancel popup for the create popup
+      popup.innerHTML = `
               <h1>${data["popup_title"]} Post?</h1>
               <hr />
               <form method="dialog" id="${data["popup_id"]}">
@@ -185,9 +185,10 @@ class Popup extends HTMLElement {
             </form>
               `;
     }
-        
-    if (data.popup_title == "Cancel Edit") {//cancel popup for the edit popup
-        popup.innerHTML = `
+
+    if (data.popup_title == "Cancel Edit") {
+      //cancel popup for the edit popup
+      popup.innerHTML = `
               <h1>${data["popup_title"]} Post</h1>
               <hr />
               <form method="dialog" id="${data["popup_id"]}">
@@ -206,15 +207,19 @@ class Popup extends HTMLElement {
     // add yes buttoon event listener
     let yes_button = this.shadowRoot.querySelector("#yes-button");
     yes_button.addEventListener("click", () => {
-      if (data["popup_title"] == "Delete") { // if a delete popup go head and delete post
+      if (data["popup_title"] == "Delete") {
+        // if a delete popup go head and delete post
         delete_post(data["popup_id"]);
-      } else if (data["popup_title"] == "Cancel Create"){// if a cancel create post popup just close popup
+      } else if (data["popup_title"] == "Cancel Create") {
+        // if a cancel create post popup just close popup
         this.closeDialog();
-      } else if (data["popup_title"] == "Cancel Edit"){// if a cancel create edit popup closee popup and remove last child from main (would be the edit popup element)
+      } else if (data["popup_title"] == "Cancel Edit") {
+        // if a cancel create edit popup closee popup and remove last child from main (would be the edit popup element)
         this.closeDialog();
         let main = document.querySelector("main");
         main.removeChild(main.lastChild);
-      } else {//for add and edit, carry out correponding functionality in backend
+      } else {
+        //for add and edit, carry out correponding functionality in backend
         const formEl = yes_button.parentElement.parentElement;
         const select = formEl.querySelector("select");
         const textBox = formEl.querySelector("textarea");
@@ -233,23 +238,27 @@ class Popup extends HTMLElement {
     // add no button (cancel button) event listen
     let no_button = this.shadowRoot.querySelector("#no-button");
     no_button.addEventListener("click", (ev) => {
-      if(data["popup_title"] == "Add") {// if an add popup, close popup and open new Cancel Create popup
+      if (data["popup_title"] == "Add") {
+        // if an add popup, close popup and open new Cancel Create popup
         ev.preventDefault();
         this.closeDialog();
-        create_popup({ title: "Cancel Create"});
-      } else if(data["popup_title"] == "Edit") { // edit popup implemented differently in JournalPost.js so dont think this else if statemnt is used
+        create_popup({ title: "Cancel Create" });
+      } else if (data["popup_title"] == "Edit") {
+        // edit popup implemented differently in JournalPost.js so dont think this else if statemnt is used
         ev.preventDefault();
         this.closeDialog();
-        create_popup({ title: "Cancel Edit"});
-      } else if(data["popup_title"] == "Cancel Create") {//if a Cancel Create popup, close popup and open new add popup is displayed
+        create_popup({ title: "Cancel Edit" });
+      } else if (data["popup_title"] == "Cancel Create") {
+        //if a Cancel Create popup, close popup and open new add popup is displayed
         ev.preventDefault();
         this.closeDialog();
-        create_popup({ title: "Add", id: data["id"]});
-      } else if(data["popup_title"] == "Cancel Edit") { // is a Cancel Edit popup, close popup show the edit popup
+        create_popup({ title: "Add", id: data["id"] });
+      } else if (data["popup_title"] == "Cancel Edit") {
+        // is a Cancel Edit popup, close popup show the edit popup
         ev.preventDefault();
         this.closeDialog();
         let main = document.querySelector("main");
-        main.lastChild.style.display = 'block';
+        main.lastChild.style.display = "block";
       }
     });
 
@@ -267,7 +276,7 @@ class Popup extends HTMLElement {
     const posts_container = document.querySelector("div.posts");
     posts_container.style.filter = "blur(.25rem)";
   }
-  // closing the dialog 
+  // closing the dialog
   closeDialog() {
     let dialogEl = this.shadowRoot.querySelector("dialog");
     dialogEl.close();
