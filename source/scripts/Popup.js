@@ -201,17 +201,20 @@ class Popup extends HTMLElement {
               </div>
             </form>
               `;
-      //            popup.style += `background-color: black;`; // TODO: work on delete popup style
     }
 
-    // add yes event listener
+    // add yes buttoon event listener
     let yes_button = this.shadowRoot.querySelector("#yes-button");
     yes_button.addEventListener("click", () => {
-      if (data["popup_title"] == "Delete") {
+      if (data["popup_title"] == "Delete") { // if a delete popup go head and delete post
         delete_post(data["popup_id"]);
-      } else if (data["popup_title"] == "Cancel Create" || data["popup_title"] == "Cancel Edit" ){
+      } else if (data["popup_title"] == "Cancel Create"){
         this.closeDialog();
-      }else {
+      } else if (data["popup_title"] == "Cancel Edit"){
+        this.closeDialog();
+        let main = document.querySelector("main");
+        main.removeChild(main.lastChild);
+      } else {
         const formEl = yes_button.parentElement.parentElement;
         const select = formEl.querySelector("select");
         const textBox = formEl.querySelector("textarea");
@@ -227,21 +230,27 @@ class Popup extends HTMLElement {
       }
       this.closeDialog();
     });
-    // add no event listen
+    // add no button (cancel button) event listen
     let no_button = this.shadowRoot.querySelector("#no-button");
     no_button.addEventListener("click", (ev) => {
-      if(data["popup_title"] == "Add") {
+      if(data["popup_title"] == "Add") {// if an add popup, close popup and open new Cancel Create popup
+        ev.preventDefault();
+        this.closeDialog();
         create_popup({ title: "Cancel Create"});
-      } else if(data["popup_title"] == "Edit") {
+      } else if(data["popup_title"] == "Edit") { // edit popup implemented differently in JournalPost.js so dont think this else if statemnt is used
+        ev.preventDefault();
+        this.closeDialog();
         create_popup({ title: "Cancel Edit"});
-      } else if(data["popup_title"] == "Cancel Create") {
+      } else if(data["popup_title"] == "Cancel Create") {//if a Cancel Create popup, close popup and open new add popup is displayed
+        ev.preventDefault();
+        this.closeDialog();
         create_popup({ title: "Add", id: data["id"]});
-      } else if(data["popup_title"] == "Cancel Edit") {
-        create_popup({ title: "Edit", id: data["id"]});
+      } else if(data["popup_title"] == "Cancel Edit") { // is a Cancel Edit popup, close popup show the edit popup
+        ev.preventDefault();
+        this.closeDialog();
+        let main = document.querySelector("main");
+        main.lastChild.style.display = 'block';
       }
-      // ev.preventDefault();
-      // this.closeDialog();
-      // no button is clicked just close the modal which is default
     });
 
     let dialogEl = this.shadowRoot.querySelector("dialog");
