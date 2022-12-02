@@ -81,6 +81,10 @@ class Popup extends HTMLElement {
           font-size: 2rem;
           color: white;
         }
+        p
+        {
+          color: white;
+        }
         `;
     let style = document.createElement("style");
 
@@ -143,8 +147,10 @@ class Popup extends HTMLElement {
         `;
 
     if (data.popup_title == "Edit" && data.popup_label != "Choose a label")
+    {
       popup.querySelector(`option[value=${data.popup_label}]`).selected = true;
-
+    }
+      
     // Delete popup fill in and style
     if (data.popup_title == "Delete") {
       popup.innerHTML = `
@@ -161,6 +167,40 @@ class Popup extends HTMLElement {
             </div>
           </form>
             `;
+    }
+
+    if (data.popup_title == "Cancel Create") {
+        popup.innerHTML = `
+              <h1>${data["popup_title"]} Post</h1>
+              <hr />
+              <form method="dialog" id="${data["popup_id"]}">
+              <p>warning: Are you sure you want to cancel? No new post will be created.</p>
+              <input type="text" style="display: none" id="prompt-message" />
+              <div>
+                <button id="yes-button" value="default" >
+                  Cancel
+                </button>
+                <button id="no-create-button" value="no" type="cancel">Confirm</button>
+              </div>
+            </form>
+              `;
+    }
+        
+    if (data.popup_title == "Cancel Edit") {
+        popup.innerHTML = `
+              <h1>${data["popup_title"]} Post</h1>
+              <hr />
+              <form method="dialog" id="${data["popup_id"]}">
+              <p>warning: Are you sure you want to cancel? This post will not be edited.</p>
+              <input type="text" style="display: none" id="prompt-message" />
+              <div>
+                <button id="no-edit-button" value="no" type="cancel">Cancel</button>
+                <button id="yes-button" value="default" >
+                  Confirm
+                </button>
+              </div>
+            </form>
+              `;
       //            popup.style += `background-color: black;`; // TODO: work on delete popup style
     }
 
@@ -188,8 +228,16 @@ class Popup extends HTMLElement {
     // add no event listen
     let no_button = this.shadowRoot.querySelector("#no-button");
     no_button.addEventListener("click", (ev) => {
-      ev.preventDefault();
-      this.closeDialog();
+      create_popup({ title: "Cancel Create", id: data["id"]});
+      let main = document.querySelector('main');
+      let cancel_popup = main.lastChild;
+      let cancel_popup_confirm = cancel_popup.querySelector("no-button");
+      cancel_popup_confirm.addEventListener("click", (ev) => {
+        ev.preventDefault();
+        this.closeDialog();
+      });
+      //ev.preventDefault();
+      //this.closeDialog();
       // no button is clicked just close the modal which is default
     });
 
@@ -207,7 +255,7 @@ class Popup extends HTMLElement {
     const posts_container = document.querySelector("div.posts");
     posts_container.style.filter = "blur(.25rem)";
   }
-  // closing the dialog
+  // closing the dialog 
   closeDialog() {
     let dialogEl = this.shadowRoot.querySelector("dialog");
     dialogEl.close();

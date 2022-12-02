@@ -210,6 +210,8 @@ class JournalPost extends HTMLElement {
       //do nothing if cancel button is clicked
       cancel_but.addEventListener("click", () => {
         main.removeChild(main.lastChild);
+        create_popup({ title: "Cancel Edit", id: data["id"]});
+        //create_popup({ title: "Cancel Create", id: data["id"]});
       });
     });
   }
