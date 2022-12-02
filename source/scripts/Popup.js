@@ -169,7 +169,7 @@ class Popup extends HTMLElement {
             `;
     }
 
-    if (data.popup_title == "Cancel Create") {
+    if (data.popup_title == "Cancel Create") { //cancel popup for the create popup
         popup.innerHTML = `
               <h1>${data["popup_title"]} Post?</h1>
               <hr />
@@ -186,7 +186,7 @@ class Popup extends HTMLElement {
               `;
     }
         
-    if (data.popup_title == "Cancel Edit") {
+    if (data.popup_title == "Cancel Edit") {//cancel popup for the edit popup
         popup.innerHTML = `
               <h1>${data["popup_title"]} Post</h1>
               <hr />
@@ -208,13 +208,13 @@ class Popup extends HTMLElement {
     yes_button.addEventListener("click", () => {
       if (data["popup_title"] == "Delete") { // if a delete popup go head and delete post
         delete_post(data["popup_id"]);
-      } else if (data["popup_title"] == "Cancel Create"){
+      } else if (data["popup_title"] == "Cancel Create"){// if a cancel create post popup just close popup
         this.closeDialog();
-      } else if (data["popup_title"] == "Cancel Edit"){
+      } else if (data["popup_title"] == "Cancel Edit"){// if a cancel create edit popup closee popup and remove last child from main (would be the edit popup element)
         this.closeDialog();
         let main = document.querySelector("main");
         main.removeChild(main.lastChild);
-      } else {
+      } else {//for add and edit, carry out correponding functionality in backend
         const formEl = yes_button.parentElement.parentElement;
         const select = formEl.querySelector("select");
         const textBox = formEl.querySelector("textarea");
@@ -228,7 +228,7 @@ class Popup extends HTMLElement {
         if (data["popup_title"] == "Edit")
           edit_post(data["popup_id"], { label: emote, text: textContent });
       }
-      this.closeDialog();
+      this.closeDialog(); //after all action, popup should close
     });
     // add no button (cancel button) event listen
     let no_button = this.shadowRoot.querySelector("#no-button");
