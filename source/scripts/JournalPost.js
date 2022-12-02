@@ -223,7 +223,6 @@ const post_key = "post_array";
 const post_id_key = "NEXT_POST_ID";
 
 var post_container;
-var curr_user = "";
 //runs the init function upon page being fully loaded
 window.addEventListener("DOMContentLoaded", init);
 
@@ -292,10 +291,11 @@ function init() {
 }
 
 /**
- * Displays on the posts of a specified label on the page.
+ * Gets only posts of a specified label on the page.
  * Call with label = "Reset" to show all posts.
  *
  * @param {String} [label = "Reset"] - label to filter by
+ * @return {Object[]} - lists of posts with the specified label
  */
 function filter_posts(label = "Reset") {
   let post_array = load_posts();
@@ -313,7 +313,10 @@ function filter_posts(label = "Reset") {
 }
 
 /**
+ * Gets only posts within a given date range
  *
+ * @param {String} [label = "Reset"] - label to filter by
+ * @return {Object[]} - lists of posts within the specified date range
  */
 function filter_post_array_by_date(from, to) {
   let posts = load_posts();
@@ -331,13 +334,6 @@ function filter_post_array_by_date(from, to) {
     ) {
       filtered_posts.push(posts[i]);
     }
-    // if (dateComp.isLessThan(dateCreated, from)) {
-    //   continue;
-    // }
-    // if (dateComp.isGreaterThan(dateCreated, to)) {
-    //   continue;
-    // }
-    // filtered_posts.push(posts[i]);
   }
   return filtered_posts;
 }
