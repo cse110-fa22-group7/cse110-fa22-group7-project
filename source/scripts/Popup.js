@@ -111,7 +111,6 @@ class Popup extends HTMLElement {
     let popup = this.shadowRoot.querySelector("#popup");
     let button_approval = data.popup_title;
     let textContent = data.popup_title == "Add" ? "" : data.popup_text;
-    // Create / Edit
     popup.className = "popup";
     popup.innerHTML = `
         <h1>${data["popup_title"]} Post</h1>
@@ -238,25 +237,19 @@ class Popup extends HTMLElement {
     // add no button (cancel button) event listen
     let no_button = this.shadowRoot.querySelector("#no-button");
     no_button.addEventListener("click", (ev) => {
+      ev.preventDefault();
+      this.closeDialog();
       if (data["popup_title"] == "Add") {
         // if an add popup, close popup and open new Cancel Create popup
-        ev.preventDefault();
-        this.closeDialog();
         create_popup({ title: "Cancel Create" });
       } else if (data["popup_title"] == "Edit") {
         // edit popup implemented differently in JournalPost.js so dont think this else if statemnt is used
-        ev.preventDefault();
-        this.closeDialog();
         create_popup({ title: "Cancel Edit" });
       } else if (data["popup_title"] == "Cancel Create") {
         //if a Cancel Create popup, close popup and open new add popup is displayed
-        ev.preventDefault();
-        this.closeDialog();
         create_popup({ title: "Add", id: data["id"] });
       } else if (data["popup_title"] == "Cancel Edit") {
         // is a Cancel Edit popup, close popup show the edit popup
-        ev.preventDefault();
-        this.closeDialog();
         let main = document.querySelector("main");
         main.lastChild.style.display = "block";
       }
@@ -276,7 +269,6 @@ class Popup extends HTMLElement {
     const posts_container = document.querySelector("div.posts");
     posts_container.style.filter = "blur(.25rem)";
   }
-  // closing the dialog
   closeDialog() {
     let dialogEl = this.shadowRoot.querySelector("dialog");
     dialogEl.close();
