@@ -66,6 +66,7 @@ class EditPopup extends HTMLElement {
           color: #ffffff;
           display: flex;
           justify-content: center;
+          font-family: "Inter";
         }
         textarea {
           background: transparent;
