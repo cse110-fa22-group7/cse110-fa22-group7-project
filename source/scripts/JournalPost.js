@@ -75,6 +75,7 @@ class JournalPost extends HTMLElement {
       font-size: 0.75rem;
       font-weight: 600;
       transition: 0.2s;
+      cursor: pointer;
     }
     .post_edit:hover {
       color: #3191ff;

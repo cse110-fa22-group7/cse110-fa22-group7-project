@@ -64,7 +64,7 @@ header {
 /*Sections the page into two rows on the left and one on the right*/
 main {
   display: grid;
-  grid-template-columns: 15rem auto;
+  grid-template-columns: 250px auto;
   grid-template-rows: 70px 70px auto 0;
   height: calc(100vh - 61px);
   /*Sets the left rows to be create and filter sets the right ot be posts*/
@@ -80,22 +80,23 @@ main {
 #collapse_container,
 .left_create,
 .filters {
-  padding-top: 0.55rem;
+  padding-top: 8px;
   display: flex;
   flex-direction: column;
   border-right: 1px solid rgb(87, 87, 87);
 }
 
 #collapse_container {
-  padding-right: 0.5rem;
   flex-direction: row-reverse;
 }
 
 #collapse_container * {
   background-color: #202020;
   border: none;
-  font-size: large;
-  width: 3.3rem;
+  font-size: 24px;
+  width: auto;
+  padding: 0 20px;
+  justify-content: center;
   color: white;
 }
 
@@ -140,11 +141,12 @@ main {
 .filter_by {
   display: flex;
   flex-direction: row;
-  padding: 5px 22px 10px 22px;
+  padding: 8px 22px;
   gap: 18px;
   font-size: 15px;
   height: 35px;
-  align-items: flex-end;
+  align-items: center;
+  white-space: nowrap;
 }
 
 /*Aligns "Label" and "Date" drop down text */
@@ -152,12 +154,16 @@ main {
   font-size: 15px;
   padding: 5px 30px 5px 30px;
   transition: background-color 0.2s;
+  white-space: nowrap;
 }
 .filterby_option:hover {
   background-color: #444444;
 }
-/*Makes "Label" and "Date" text seem clickable*/
-details summary {
+/*Makes buttons and "Label" and "Date" text seem clickable*/
+details summary,
+.filterby_label,
+button,
+input[type="submit"] {
   cursor: pointer;
 }
 
