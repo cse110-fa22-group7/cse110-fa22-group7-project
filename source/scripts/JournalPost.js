@@ -108,7 +108,7 @@ class JournalPost extends HTMLElement {
       font-size: 1rem;
       line-height: 1.5rem;
       padding: 1rem;
-      white-space: pre-line;
+      white-space: pre-wrap;
     }
     
     /*Color coded header styling*/
