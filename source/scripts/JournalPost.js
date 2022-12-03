@@ -13,6 +13,8 @@ import { create_popup } from "./Popup.js";
 /** Post Class for custom web-component post
  *
  */
+import * as dateComp from "./DateFilter.js";
+import * as myDialog from "./customdialog.js";
 class JournalPost extends HTMLElement {
   /**
    * sets up shadow dom
@@ -218,11 +220,10 @@ class JournalPost extends HTMLElement {
 customElements.define("journal-post", JournalPost);
 
 // Define variables needed for this file
-const post_key = "_post_array";
+const post_key = "post_array";
 const post_id_key = "NEXT_POST_ID";
 
 var post_container;
-var curr_user = "";
 //runs the init function upon page being fully loaded
 window.addEventListener("DOMContentLoaded", init);
 
@@ -241,11 +242,51 @@ function init() {
     let value = labels[i].value;
     let label = labels[i];
     label.addEventListener("click", () => {
-      filter_posts(value);
+      let posts = filter_posts(value);
+      display_posts(posts);
     });
   }
 
-  refresh_posts();
+  document.getElementById("dateSubmit").addEventListener("click", () => {
+    let a = document.getElementById("dateFrom").value;
+    let b = document.getElementById("dateTo").value;
+
+    let dateA = dateComp.validateDate(a);
+    let dateB = dateComp.validateDate(b);
+
+    if (dateA == null || dateB == null) {
+      //open warning dialogconst warningDialog = this.shadowRoot.querySelector("#delete_button");
+      myDialog.fill(
+        "Date Must Exist and Be In the Format: MM-DD-YYYY",
+        false,
+        false
+      );
+      const noButtonEl = document.querySelector("#no-button");
+      noButtonEl.addEventListener("click", function denyAction() {
+        myDialog.closeDialog();
+      });
+      return;
+    }
+
+    if (dateComp.isEqualTo(dateB, dateA) || dateComp.isLessThan(dateB, dateA)) {
+      myDialog.fill("Please enter a valid date range", false, false);
+      const noButtonEl = document.querySelector("#no-button");
+      noButtonEl.addEventListener("click", function denyAction() {
+        myDialog.closeDialog();
+      });
+      return;
+    }
+
+    let posts = filter_post_array_by_date(dateA, dateB);
+    display_posts(posts);
+  });
+
+  document.getElementById("dateReset").addEventListener("click", () => {
+    document.getElementById("dateFrom").value = "";
+    document.getElementById("dateTo").value = "";
+    let posts = filter_posts("Reset");
+    display_posts(posts);
+  });
 
   document.getElementById("create_button").addEventListener("click", () => {
     // check popup for create
@@ -253,21 +294,22 @@ function init() {
     create_popup({ title: "Add", id: get_new_post_id() });
   });
 
+  refresh_posts();
   //VvV TESTING VvV
 }
 
 /**
- * Displays on the posts of a specified label on the page.
+ * Gets only posts of a specified label on the page.
  * Call with label = "Reset" to show all posts.
  *
  * @param {String} [label = "Reset"] - label to filter by
+ * @return {Object[]} - lists of posts with the specified label
  */
 function filter_posts(label = "Reset") {
-  if (label == "Reset") {
-    refresh_posts();
-    return;
-  }
   let post_array = load_posts();
+  if (label == "Reset") {
+    return post_array;
+  }
   let output = [];
   for (var i in post_array) {
     let post = post_array[i];
@@ -275,16 +317,40 @@ function filter_posts(label = "Reset") {
       output.push(post);
     }
   }
-  display_posts(output);
+  return output;
+}
+
+/**
+ * Gets only posts within a given date range
+ *
+ * @param {String} [label = "Reset"] - label to filter by
+ * @return {Object[]} - lists of posts within the specified date range
+ */
+function filter_post_array_by_date(from, to) {
+  let posts = load_posts();
+  let filtered_posts = [];
+  for (var i in posts) {
+    let dateCreated = posts[i]["dateCreated"];
+    dateCreated = dateComp.validateDate(dateCreated);
+    if (dateCreated == null) {
+      console.error("Invalid Date found within post object, skipping for now");
+      continue;
+    }
+    if (
+      dateComp.isLessThanEqualTo(dateCreated, to) &&
+      dateComp.isGreaterThanEqualTo(dateCreated, from)
+    ) {
+      filtered_posts.push(posts[i]);
+    }
+  }
+  return filtered_posts;
 }
 /**
  * Refreshes display of posts to match what is currently in storage
  */
 function refresh_posts() {
   //load the post array from storage
-  let post_array = JSON.parse(
-    window.localStorage.getItem(curr_user + post_key)
-  );
+  let post_array = JSON.parse(window.localStorage.getItem(post_key));
   display_posts(post_array);
 }
 
@@ -323,7 +389,7 @@ function display_posts(post_array) {
  *  @return {Object[]|null} Post Array object from local storage or null if missing
  */
 function load_posts() {
-  let posts = JSON.parse(window.localStorage.getItem(curr_user + post_key));
+  let posts = JSON.parse(window.localStorage.getItem(post_key));
   if (!posts) {
     return [];
   } else {
@@ -337,7 +403,7 @@ function load_posts() {
  *  @param {Object[]} posts - array of post object to store
  */
 function store_posts(posts) {
-  window.localStorage.setItem(curr_user + post_key, JSON.stringify(posts));
+  window.localStorage.setItem(post_key, JSON.stringify(posts));
 }
 
 /**
