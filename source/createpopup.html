@@ -3,77 +3,73 @@
   <body>
     <style>
       .popup {
-          background-color: #202020;
-          border-radius: 30px;
-          text-align: center;
-          width:60%;
-          height: 30rem;
-          left: 15rem;
-          top: 10%;
-        }
-        h1 {
-          font-family: "Inter";
-          font-style: normal;
-          font-weight: 400;
-          font-size: 3rem;
-          line-height: 1rem;
-          color: #ffffff;
-          display: flex;
-          justify-content: center;
-        }
-        textarea {
-          background: transparent;
-          width: 99%;
-          height: 19rem;
-          color: white;
-          resize: none;
-          font-size: 1.5rem;
-          font-family: "Inter";
-        }
-        textarea::placeholder {
-          color: white;
-        }
-        .label_and_button {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-        }
-        select {
-          width: 246px;
-          height: 2.5rem;
-          background: transparent;
-          font-family: "Inter";
-          color: white;
-          border-color: white;
-          font-family: "Inter";
-          font-family: "Inter";
-          font-style: normal;
-          font-weight: 400;
-          font-size: 2rem;
-          color: white;
-        }
-        select option {
-          color: black;
-        }
-        button {
-          width: 8rem;
-          height: 2.5rem;
-          background: transparent;
-          border-radius: 30px;
-          border-color: white;
-          font-family: "Inter";
-          font-style: normal;
-          font-weight: 400;
-          font-size: 2rem;
-          color: white;
-        }
-        p
-        {
-          color: white;
-        }
-        button:hover{
-          background-color:grey;
-        }
+        background-color: #202020;
+        border-radius: 30px;
+        text-align: center;
+        width: 60%;
+        height: 30rem;
+        left: 15rem;
+        top: 10%;
+      }
+      h1 {
+        font-family: "Inter";
+        font-weight: 400;
+        font-size: 3rem;
+        line-height: 1rem;
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+      }
+      textarea {
+        background: transparent;
+        width: 99%;
+        height: 19rem;
+        color: white;
+        resize: none;
+        font-size: 1.5rem;
+        font-family: "Inter";
+      }
+      textarea::placeholder {
+        color: white;
+      }
+      .label_and_button {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      select {
+        width: 246px;
+        height: 2.5rem;
+        background: transparent;
+        font-family: "Inter";
+        color: white;
+        border-color: white;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 2rem;
+        color: white;
+      }
+      select option {
+        color: black;
+      }
+      button {
+        width: 8rem;
+        height: 2.5rem;
+        background: transparent;
+        border-radius: 30px;
+        border-color: white;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 2rem;
+        color: white;
+      }
+      p {
+        color: white;
+      }
+      button:hover {
+        background-color: grey;
+      }
     </style>
     <dialog open class="popup">
       <h1>Add Post</h1>
@@ -103,9 +99,15 @@
             </option>
           </select>
           <button id="no-button" type="cancel">Cancel</button>
-          <button id="yes-button" type="submit" value="${button_approval.toLowerCase()}">Confirm</button>
+          <button
+            id="yes-button"
+            type="submit"
+            value="${button_approval.toLowerCase()}"
+          >
+            Confirm
+          </button>
         </div>
       </form>
-      </dialog>
+    </dialog>
   </body>
 </html>

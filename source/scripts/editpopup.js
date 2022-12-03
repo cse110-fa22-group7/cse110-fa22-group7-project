@@ -39,7 +39,6 @@ class EditPopup extends HTMLElement {
             </div>
         </div>
         `;
-
     let style = document.createElement("style");
     style.textContent = `
         .edit_popup .content {
@@ -52,16 +51,14 @@ class EditPopup extends HTMLElement {
           border-radius: 30px;
           text-align: center;
           justify-content: center;
-          align-items: center;
           z-index: 2;
-          padding-top:30px;
-          border: 3px solid black;
+          padding-top: 30px;
+          border: 5px solid black;
         }
-        hr{
+        hr {
           width: 95%;
         }
         h1.popup {
-          font-family: "Inter";
           font-style: normal;
           font-weight: 400;
           font-size: 3rem;
@@ -96,12 +93,10 @@ class EditPopup extends HTMLElement {
           font-family: "Inter";
           color: white;
           border-color: white;
-          font-style: normal;
           font-weight: 400;
           font-size: 24px;
-          color: white;
         }
-        select option{
+        select option {
           color: black;
         }
         button.popup {
@@ -111,13 +106,12 @@ class EditPopup extends HTMLElement {
           border-radius: 30px;
           border-color: white;
           font-family: "Inter";
-          font-style: normal;
           font-weight: 400;
           font-size: 2rem;
           color: white;
         }
-        button.popup:hover{
-          background-color:grey;
+        button.popup:hover {
+          background-color: grey;
         }
         .edit_popup .background {
           position: fixed;

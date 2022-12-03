@@ -13,7 +13,6 @@ class Popup extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-
     let popupDialog = document.createElement("dialog");
     popupDialog.id = "popup";
     this.shadowRoot.appendChild(popupDialog);
@@ -58,10 +57,8 @@ class Popup extends HTMLElement {
         width: 246px;
         height: 2.5rem;
         background: transparent;
-        font-family: "Inter";
         color: white;
         border-color: white;
-        font-family: "Inter";
         font-family: "Inter";
         font-style: normal;
         font-weight: 400;
@@ -92,11 +89,8 @@ class Popup extends HTMLElement {
       }
         `;
     let style = document.createElement("style");
-
     // style for Create and Edit popups
-
     style.innerText = popup_style_text;
-
     this.shadowRoot.appendChild(style);
   }
 
@@ -207,7 +201,6 @@ class Popup extends HTMLElement {
             </form>
               `;
     }
-
     // add yes buttoon event listener
     let yes_button = this.shadowRoot.querySelector("#yes-button");
     yes_button.addEventListener("click", () => {
