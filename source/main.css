@@ -187,62 +187,69 @@ input[type="submit"] {
   border: 3px solid #a79d13;
   background-color: #a79d13;
 }
-#label1:hover {
+#label1:hover,
+#label1.selected {
   color: #ede35f;
   border: 3px solid #ede35f;
-  background-color: #686210;
+  background-color: #ede35f20;
 }
 /*Colors "Sadness" label*/
 #label2 {
   border: 3px solid #1e5595;
   background-color: #1e5595;
 }
-#label2:hover {
+#label2:hover,
+#label2.selected {
   color: #2189ff;
   border: 3px solid #2189ff;
-  background-color: #153356;
+  background-color: #2189ff20;
 }
 /*Colors "Anger" label*/
 #label3 {
   border: 3px solid #951e1e;
   background-color: #951e1e;
 }
-#label3:hover {
+#label3:hover,
+#label3.selected {
   color: #ef5353;
   border: 3px solid #ef5353;
-  background-color: #561515;
+  background-color: #ef535320;
 }
 /*Colors "Fear" label*/
 #label4 {
   border: 3px solid #257f25;
   background-color: #257f25;
 }
-#label4:hover {
+#label4:hover,
+#label4.selected {
   color: #57cd57;
   border: 3px solid #57cd57;
-  background-color: #155a15;
+  background-color: #57cd5720;
 }
 /*Colors "Surprise" label*/
 #label5 {
   border: 3px solid #99299b;
   background-color: #99299b;
 }
-#label5:hover {
+#label5:hover,
+#label5.selected {
   color: #ea59ed;
   border: 3px solid #ea59ed;
-  background-color: #4c144d;
+  background-color: #ea59ed20;
 }
-
-/*Colors reset and submit buttons when hovered*/
-#label6:hover,
-input[type="submit"]:hover {
-  color: #3191ff;
-  border: 3px solid #3191ff;
+/*Colors reset button when hovered*/
+#label6:hover {
+  color: rgb(227, 45, 45);
+  border: solid rgb(227, 45, 45);
 }
 
 /*Set form font size*/
 form {
   font-size: 14px;
+}
+/*Sizes elements in form*/
+form * {
+  width: 100%;
 }
 /*Styles textboxes*/
 input[type="textbox"] {
@@ -251,6 +258,7 @@ input[type="textbox"] {
   color: white;
   border-radius: 1.5vh;
   padding: 2px 7px;
+  box-sizing: border-box;
 }
 /*Styles textboxes when focused*/
 input[type="textbox"]:focus {
@@ -260,6 +268,11 @@ input[type="textbox"]:focus {
 h2,
 h4 {
   margin: 0;
+}
+/*Colors submit button when hovered*/
+input[type="submit"]:hover {
+  color: #3191ff;
+  border: 3px solid #3191ff;
 }
 
 /*Sets the post area as well as the line to the left of it*/

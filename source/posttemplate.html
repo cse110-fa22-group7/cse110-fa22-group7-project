@@ -24,16 +24,72 @@
         gap: 1rem;
         align-items: center;
         padding: 0.4rem;
-        border: 1px solid rgb(87, 87, 87);
         border-radius: 0.75rem 0.75rem 0 0;
         background-color: rgba(87, 87, 87, 0);
       }
+      /*Styles label text*/
       .post_label {
         grid-area: label;
         padding: 0 0.25rem;
         border-radius: 50vh;
         font-size: 1rem;
       }
+      /*Happiness card styling*/
+      .happiness {
+        border: 2px solid #ede35f;
+      }
+      .happiness_header {
+        border-bottom: 1px solid #ede35f;
+        background-color: #ede35f20;
+      }
+      .happiness * {
+        color: #ede35f;
+      }
+      /*Sadness card styling*/
+      .sadness {
+        border: 2px solid #2189ff;
+      }
+      .sadness_header {
+        border-bottom: 1px solid #2189ff;
+        background-color: #2189ff20;
+      }
+      .sadness * {
+        color: #2189ff;
+      }
+      /*Anger card styling*/
+      .anger {
+        border: 2px solid #ef5353;
+      }
+      .anger_header {
+        border-bottom: 1px solid #ef5353;
+        background-color: #ef535320;
+      }
+      .anger * {
+        color: #ef5353;
+      }
+      /*Fear card styling*/
+      .fear {
+        border: 2px solid #57cd57;
+      }
+      .fear_header {
+        border-bottom: 1px solid #57cd57;
+        background-color: #57cd5720;
+      }
+      .fear * {
+        color: #57cd57;
+      }
+      /*Surprise card styling*/
+      .surprise {
+        border: 2px solid #ea59ed;
+      }
+      .surprise_header {
+        border-bottom: 1px solid #ea59ed;
+        background-color: #ea59ed20;
+      }
+      .surprise * {
+        color: #ea59ed;
+      }
+      /*Styles header buttons*/
       .post_buttons {
         grid-area: buttons;
         display: flex;
@@ -44,7 +100,7 @@
         border-radius: 2rem;
         background-color: #00000000;
         color: white;
-        border: solid white;
+        border: 2px solid white;
         padding: 0.25rem 0.75rem;
         height: 100%;
         width: 100%;
@@ -54,11 +110,11 @@
       }
       .post_edit:hover {
         color: #3191ff;
-        border: solid #3191ff;
+        border: 2px solid #3191ff;
       }
       .post_delete:hover {
         color: rgb(227, 45, 45);
-        border: solid rgb(227, 45, 45);
+        border: 2px solid rgb(227, 45, 45);
       }
 
       /*Styles footer*/
@@ -67,9 +123,6 @@
         justify-content: space-between;
         gap: 0.5rem;
         padding: 0.5rem;
-        border-bottom: 1px solid rgb(87, 87, 87);
-        border-left: 1px solid rgb(87, 87, 87);
-        border-right: 1px solid rgb(87, 87, 87);
         border-radius: 0 0 0.75rem 0.75rem;
       }
       .post_meta * {
@@ -82,23 +135,22 @@
         grid-area: text;
         flex: 1 1 auto;
         margin: 0;
-        border-left: 1px solid rgb(87, 87, 87);
-        border-right: 1px solid rgb(87, 87, 87);
         border-bottom: 1px solid rgb(87, 87, 87);
         font-size: 1rem;
         line-height: 1.5rem;
         padding: 1rem;
         white-space: pre-line;
+        color: white;
       }
     </style>
 
-    <article>
+    <article id="post-article" class="label">
       <!-- Header of post/card -->
-      <div class="post_header">
+      <div class="post_header label_header">
         <div class="post_label">Label</div>
         <div class="post_buttons">
-          <button class="post_edit">Edit</button>
-          <button class="post_delete">Delete</button>
+          <button id="edit_button" class="post_edit">Edit</button>
+          <button id="delete_button" class="post_delete">Delete</button>
         </div>
       </div>
       <!-- Post text -->
