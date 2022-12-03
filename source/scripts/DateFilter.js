@@ -16,10 +16,6 @@ export {
  * @returns {null} if invalid input string
  */
 function stringToDateArray(dateString) {
-  //split string into array:
-  // let dateArray = dateString.split("-");
-  // if (dateArray.length < 3) dateArray = dateString.split("/");
-  // if (dateArray.length < 3) dateArray = dateString.split(" ");
   let dateArray = dateString;
   if (dateString.includes("-")) {
     dateArray = dateArray.split("-");
@@ -36,16 +32,6 @@ function stringToDateArray(dateString) {
 
   //convert strings into integers:
   return dateArray.map(Number);
-  // for (let i = 0; i < 3; i++) {
-  //   let value = parseInt(dateArray[i]);
-  //   if (isNaN(value)) {
-  //     console.warn("Date string must contain numerical values for dates");
-  //     return null;
-  //   }
-  //   dateArray[i] = value;
-  // }
-  // let newArr = [dateArray[0], dateArray[1], dateArray[2]];
-  // return newArr;
 }
 
 /**
@@ -80,35 +66,6 @@ function isValidDateArray(arr) {
     return false;
   }
   return true;
-  // if (arr[0] < 1 || arr[0] > 12) {
-  //   //check month
-  //   return false;
-  // }
-  // //if valid month: check date based on max day of given month:
-  // let lastDay = 31;
-  // let thirty_day_months = [4, 6, 9, 11];
-  // if (thirty_day_months.includes(arr[0])) {
-  //   lastDay = 30;
-  // } else if (arr[0] == 2 && arr[2] % 4 == 0) {
-  //   lastDay = 29;
-  // } else {
-  //   lastDay = 28;
-  // }
-  // switch (arr[0]) {
-  //   case 2:
-  //     lastDay = 29; //TODO handle leap years
-  //     break;
-  //   case 4:
-  //   case 6:
-  //   case 9:
-  //   case 11:
-  //     lastDay = 30;
-  //     break;
-  // }
-  // if (arr[1] < 1 || arr[0] > lastDay || arr[2] < 1000 || arr[2] > 10000) {
-  //   return false;
-  // }
-  // return true;
 }
 
 /**
@@ -158,49 +115,6 @@ function isLessThan(a, b) {
   } else {
     return false;
   }
-  // let isLess = false;
-  // if (a.year > b.year) {
-  //   isLess = false;
-  // } else if (a.year < b.year) {
-  //   isLess = true;
-  // } else {
-  //   if (a.month > b.month) {
-  //     isLess = false;
-  //   } else if (a.month < b.month) {
-  //     isLess = true;
-  //   } else {
-  //     if (a.day > b.day) {
-  //       isLess = false;
-  //     } else if (a.day < b.day) {
-  //       isLess = true;
-  //     }
-  //   }
-  // }
-  // return isLess;
-
-  // //compare year
-  // if (a.year > b.year) {
-  //   return false;
-  // } else if (a.year < b.year) {
-  //   return true;
-  // }
-
-  // //if years are the same compare month
-  // if (a.month > b.month) {
-  //   return false;
-  // } else if (a.month < b.month) {
-  //   return true;
-  // }
-
-  // //if month is the same compare day
-  // if (a.day > b.day) {
-  //   return false;
-  // } else if (a.day < b.day) {
-  //   return true;
-  // }
-
-  // //otherwise they are the same day:
-  // return false;
 }
 
 /**
