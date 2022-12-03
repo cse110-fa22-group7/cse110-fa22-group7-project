@@ -280,6 +280,13 @@ function init() {
     display_posts(posts);
   });
 
+  document.getElementById("dateReset").addEventListener("click", () => {
+    document.getElementById("dateFrom").value = "";
+    document.getElementById("dateTo").value = "";
+    let posts = filter_posts("Reset");
+    display_posts(posts);
+  });
+
   document.getElementById("create_button").addEventListener("click", () => {
     // check popup for create
     // receive label, text, date from popup
