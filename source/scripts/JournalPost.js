@@ -109,8 +109,49 @@ class JournalPost extends HTMLElement {
       padding: 1rem;
       white-space: pre-line;
     }
+    
+    /*Color coded header styling*/
+    .happiness {
+      border: 2px solid #ede35f;
+    }
+    .happiness_header {
+      border-bottom: 1px solid #ede35f;
+      background-color: #ede35f20;
+      color: #ede35f;
+    }
+    .sadness {
+      border: 2px solid #2189ff;
+    }
+    .sadness_header {
+      border-bottom: 1px solid #2189ff;
+      background-color: #2189ff20;
+      color: #2189ff;
+    }
+    .anger {
+      border: 2px solid #ef5353;
+    }
+    .anger_header {
+      border-bottom: 1px solid #ef5353;
+      background-color: #ef535320;
+      color: #ef5353;
+    }
+    .fear {
+      border: 2px solid #57cd57;
+    }
+    .fear_header {
+      border-bottom: 1px solid #57cd57;
+      background-color: #57cd5720;
+      color: #57cd57;
+    }
+    .surprise {
+      border: 2px solid #ea59ed;
+    }
+    .surprise_header {
+      border-bottom: 1px solid #ea59ed;
+      background-color: #ea59ed20;
+      color: #ea59ed;
+    }
     `;
-    color_header(style);
     this.shadowRoot.appendChild(style);
   }
 
@@ -250,57 +291,6 @@ function init() {
   });
 
   //VvV TESTING VvV
-}
-
-/**
- * Add style for header colors
- *
- * @param {Object} [style] - style element for posts
- */
-function color_header(style) {
-  style.innerText += `
-  /*Color coded header styling*/
-  .happiness {
-    border: 2px solid #ede35f;
-  }
-  .happiness_header {
-    border-bottom: 1px solid #ede35f;
-    background-color: #ede35f20;
-    color: #ede35f;
-  }
-  .sadness {
-    border: 2px solid #2189ff;
-  }
-  .sadness_header {
-    border-bottom: 1px solid #2189ff;
-    background-color: #2189ff20;
-    color: #2189ff;
-  }
-  .anger {
-    border: 2px solid #ef5353;
-  }
-  .anger_header {
-    border-bottom: 1px solid #ef5353;
-    background-color: #ef535320;
-    color: #ef5353;
-  }
-  .fear {
-    border: 2px solid #57cd57;
-  }
-  .fear_header {
-    border-bottom: 1px solid #57cd57;
-    background-color: #57cd5720;
-    color: #57cd57;
-  }
-  .surprise {
-    border: 2px solid #ea59ed;
-  }
-  .surprise_header {
-    border-bottom: 1px solid #ea59ed;
-    background-color: #ea59ed20;
-    color: #ea59ed;
-  }
-  `;
 }
 
 /**
