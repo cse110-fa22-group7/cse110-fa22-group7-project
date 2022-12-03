@@ -81,6 +81,10 @@ class Popup extends HTMLElement {
           font-size: 2rem;
           color: white;
         }
+        p
+        {
+          color: white;
+        }
         `;
     let style = document.createElement("style");
 
@@ -107,7 +111,6 @@ class Popup extends HTMLElement {
     let popup = this.shadowRoot.querySelector("#popup");
     let button_approval = data.popup_title;
     let textContent = data.popup_title == "Add" ? "" : data.popup_text;
-    // Create / Edit
     popup.className = "popup";
     popup.innerHTML = `
         <h1>${data["popup_title"]} Post</h1>
@@ -142,13 +145,14 @@ class Popup extends HTMLElement {
         </form>
         `;
 
-    if (data.popup_title == "Edit" && data.popup_label != "Choose a label")
+    if (data.popup_title == "Edit" && data.popup_label != "Choose a label") {
       popup.querySelector(`option[value=${data.popup_label}]`).selected = true;
+    }
 
     // Delete popup fill in and style
     if (data.popup_title == "Delete") {
       popup.innerHTML = `
-            <h1>${data["popup_title"]} Post</h1>
+            <h1>${data["popup_title"]} Post?</h1>
             <hr />
             <form method="dialog" id="${data["popup_id"]}">
             <p>warning: The deleted content cannot be retrieved.</p>
@@ -161,15 +165,60 @@ class Popup extends HTMLElement {
             </div>
           </form>
             `;
-      //            popup.style += `background-color: black;`; // TODO: work on delete popup style
     }
 
-    // add yes event listener
+    if (data.popup_title == "Cancel Create") {
+      //cancel popup for the create popup
+      popup.innerHTML = `
+              <h1>${data["popup_title"]} Post?</h1>
+              <hr />
+              <form method="dialog" id="${data["popup_id"]}">
+              <p>warning: Are you sure you want to cancel? No new post will be created.</p>
+              <input type="text" style="display: none" id="prompt-message" />
+              <div>
+                <button id="no-button" value="no" type="cancel">Cancel</button>
+                <button id="yes-button" value="default" >
+                  Confirm
+                </button>
+              </div>
+            </form>
+              `;
+    }
+
+    if (data.popup_title == "Cancel Edit") {
+      //cancel popup for the edit popup
+      popup.innerHTML = `
+              <h1>${data["popup_title"]} Post</h1>
+              <hr />
+              <form method="dialog" id="${data["popup_id"]}">
+              <p>warning: Are you sure you want to cancel? This post will not be edited.</p>
+              <input type="text" style="display: none" id="prompt-message" />
+              <div>
+                <button id="no-button" value="no" type="cancel">Cancel</button>
+                <button id="yes-button" value="default" >
+                  Confirm
+                </button>
+              </div>
+            </form>
+              `;
+    }
+
+    // add yes buttoon event listener
     let yes_button = this.shadowRoot.querySelector("#yes-button");
     yes_button.addEventListener("click", () => {
       if (data["popup_title"] == "Delete") {
+        // if a delete popup go head and delete post
         delete_post(data["popup_id"]);
+      } else if (data["popup_title"] == "Cancel Create") {
+        // if a cancel create post popup just close popup
+        this.closeDialog();
+      } else if (data["popup_title"] == "Cancel Edit") {
+        // if a cancel create edit popup closee popup and remove last child from main (would be the edit popup element)
+        this.closeDialog();
+        let main = document.querySelector("main");
+        main.removeChild(main.lastChild);
       } else {
+        //for add and edit, carry out correponding functionality in backend
         const formEl = yes_button.parentElement.parentElement;
         const select = formEl.querySelector("select");
         const textBox = formEl.querySelector("textarea");
@@ -183,14 +232,27 @@ class Popup extends HTMLElement {
         if (data["popup_title"] == "Edit")
           edit_post(data["popup_id"], { label: emote, text: textContent });
       }
-      this.closeDialog();
+      this.closeDialog(); //after all action, popup should close
     });
-    // add no event listen
+    // add no button (cancel button) event listen
     let no_button = this.shadowRoot.querySelector("#no-button");
     no_button.addEventListener("click", (ev) => {
       ev.preventDefault();
       this.closeDialog();
-      // no button is clicked just close the modal which is default
+      if (data["popup_title"] == "Add") {
+        // if an add popup, close popup and open new Cancel Create popup
+        create_popup({ title: "Cancel Create" });
+      } else if (data["popup_title"] == "Edit") {
+        // edit popup implemented differently in JournalPost.js so dont think this else if statemnt is used
+        create_popup({ title: "Cancel Edit" });
+      } else if (data["popup_title"] == "Cancel Create") {
+        //if a Cancel Create popup, close popup and open new add popup is displayed
+        create_popup({ title: "Add", id: data["id"] });
+      } else if (data["popup_title"] == "Cancel Edit") {
+        // is a Cancel Edit popup, close popup show the edit popup
+        let main = document.querySelector("main");
+        main.lastChild.style.display = "block";
+      }
     });
 
     let dialogEl = this.shadowRoot.querySelector("dialog");
@@ -207,7 +269,6 @@ class Popup extends HTMLElement {
     const posts_container = document.querySelector("div.posts");
     posts_container.style.filter = "blur(.25rem)";
   }
-  // closing the dialog
   closeDialog() {
     let dialogEl = this.shadowRoot.querySelector("dialog");
     dialogEl.close();
