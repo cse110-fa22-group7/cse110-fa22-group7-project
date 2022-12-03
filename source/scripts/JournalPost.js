@@ -51,7 +51,6 @@ class JournalPost extends HTMLElement {
       gap: 1rem;
       align-items: center;
       padding: 0.4rem;
-      border: 1px solid rgb(87, 87, 87);
       border-radius: 0.75rem 0.75rem 0 0;
       background-color: rgba(87, 87, 87, 0);
     }
@@ -71,51 +70,89 @@ class JournalPost extends HTMLElement {
       border-radius: 2rem;
       background-color: #00000000;
       color: white;
-      border: solid white;
+      border: 2px solid white;
       padding: 0.25rem 0.75rem;
       height: 100%;
       width: 100%;
       font-size: 0.75rem;
       font-weight: 600;
       transition: 0.2s;
+      cursor: pointer;
     }
     .post_edit:hover {
       color: #3191ff;
-      border: solid #3191ff;
+      border: 2px solid #3191ff;
     }
     .post_delete:hover {
       color: rgb(227, 45, 45);
-      border: solid rgb(227, 45, 45);
+      border: 2px solid rgb(227, 45, 45);
     }
-  
+
     /*Styles footer*/
     .post_meta {
       display: flex;
       justify-content: space-between;
       gap: 0.5rem;
       padding: 0.5rem;
-      border-bottom: 1px solid rgb(87, 87, 87);
-      border-left: 1px solid rgb(87, 87, 87);
-      border-right: 1px solid rgb(87, 87, 87);
       border-radius: 0 0 0.75rem 0.75rem;
     }
     .post_meta * {
       font-size: 0.65rem;
       color: #606060;
     }
-  
+
     /*Styles post text*/
     .post_text {
       grid-area: text;
       flex: 1 1 auto;
       margin: 0;
-      border-left: 1px solid rgb(87, 87, 87);
-      border-right: 1px solid rgb(87, 87, 87);
       border-bottom: 1px solid rgb(87, 87, 87);
       font-size: 1rem;
       line-height: 1.5rem;
       padding: 1rem;
-      white-space: pre-line;
+      white-space: pre-wrap;
+    }
+    
+    /*Color coded header styling*/
+    .happiness {
+      border: 2px solid #ede35f;
+    }
+    .happiness_header {
+      border-bottom: 1px solid #ede35f;
+      background-color: #ede35f20;
+      color: #ede35f;
+    }
+    .sadness {
+      border: 2px solid #2189ff;
+    }
+    .sadness_header {
+      border-bottom: 1px solid #2189ff;
+      background-color: #2189ff20;
+      color: #2189ff;
+    }
+    .anger {
+      border: 2px solid #ef5353;
+    }
+    .anger_header {
+      border-bottom: 1px solid #ef5353;
+      background-color: #ef535320;
+      color: #ef5353;
+    }
+    .fear {
+      border: 2px solid #57cd57;
+    }
+    .fear_header {
+      border-bottom: 1px solid #57cd57;
+      background-color: #57cd5720;
+      color: #57cd57;
+    }
+    .surprise {
+      border: 2px solid #ea59ed;
+    }
+    .surprise_header {
+      border-bottom: 1px solid #ea59ed;
+      background-color: #ea59ed20;
+      color: #ea59ed;
     }
     `;
     this.shadowRoot.appendChild(style);
@@ -138,8 +175,9 @@ class JournalPost extends HTMLElement {
       mod_date = "Never";
     }
     let article = this.shadowRoot.getElementById("post-article");
+    article.classList.add(`${data["label"].toLowerCase()}`);
     article.innerHTML = `
-    <div class="post_header">
+    <div class="post_header ${data["label"].toLowerCase()}_header">
       <div class="post_label">${data["label"]}</div>
       <div class="post_buttons">
         <button id="edit_button" class="post_edit">Edit</button>
@@ -244,6 +282,7 @@ function init() {
     label.addEventListener("click", () => {
       let posts = filter_posts(value);
       display_posts(posts);
+      select_label(labels, value);
     });
   }
 
@@ -345,6 +384,23 @@ function filter_post_array_by_date(from, to) {
   }
   return filtered_posts;
 }
+
+/**
+ * Indicates which label filter is selected.
+ *
+ * @param {Object[]} [labels] - array of labels
+ * @param {String} [value] - label to filter by
+ */
+function select_label(labels, value) {
+  for (var i = 0; i < labels.length; i++) {
+    if (labels[i].value == value) {
+      labels[i].classList.add("selected");
+    } else {
+      labels[i].classList.remove("selected");
+    }
+  }
+}
+
 /**
  * Refreshes display of posts to match what is currently in storage
  */
