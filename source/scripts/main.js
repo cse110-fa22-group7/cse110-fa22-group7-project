@@ -30,10 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
       '<img src="/source/images/create_white.svg" alt="create_image" height="22">';
     createBtn.style.width = 0;
     filterBtn.textContent = "";
+    summaryDateEl.parentElement.removeAttribute("open");
+    summaryLabelEl.parentElement.removeAttribute("open");
     summaryDateEl.style = "display:none";
     summaryLabelEl.style = "display:none";
     mainEl.style.gridTemplateColumns = "4.5rem auto";
   }
+  shrink();
   collapseBtn.addEventListener("click", () => {
     // Collapse button textcontent to >
     if (collapseBtn.textContent == "<") {

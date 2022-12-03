@@ -129,6 +129,8 @@ describe("Test Site Functionality", () => {
     for (let i = 0; i < posts.length; i++) {
       post_totals[posts[i]["label"]] += 1;
     }
+    let collapse_side_button = await page.$("#collapse_button");
+    await collapse_side_button.click();
     //Open Drop Down:
     let dropDown = await page.$("#label_option");
     await dropDown.click();
