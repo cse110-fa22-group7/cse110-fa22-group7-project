@@ -52,7 +52,6 @@ class JournalPost extends HTMLElement {
       border-radius: 0.75rem 0.75rem 0 0;
       background-color: rgba(87, 87, 87, 0);
     }
-    /*Styles label text*/
     .post_label {
       grid-area: label;
       padding: 0 0.25rem;
@@ -300,7 +299,8 @@ function color_header(style) {
     border-bottom: 1px solid #ea59ed;
     background-color: #ea59ed20;
     color: #ea59ed;
-  }`;
+  }
+  `;
 }
 
 /**
