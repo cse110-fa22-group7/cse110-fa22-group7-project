@@ -39,81 +39,90 @@ class EditPopup extends HTMLElement {
             </div>
         </div>
         `;
-
     let style = document.createElement("style");
     style.textContent = `
         .edit_popup .content {
-            position: absolute;
-            width: 802px;
-            height: 480px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #60686a;
-            border-radius: 30px;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-            z-index: 2;
-          }
-          h1.popup {
-            font-family: "Inter";
-            font-style: normal;
-            font-weight: 400;
-            font-size: 64px;
-            line-height: 10px;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-          }
-          textarea {
-            background: transparent;
-            width: 750px;
-            height: 250px;
-            color: white;
-            resize: none;
-          }
-          textarea::placeholder {
-            color: white;
-          }
-          .label_and_button {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-          }
-          select {
-            width: 246px;
-            height: 52px;
-            background: transparent;
-            font-family: "Inter";
-            color: white;
-            border-color: white;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 24px;
-            color: white;
-          }
-          button.popup {
-            width: 150px;
-            height: 48px;
-            background: transparent;
-            border-radius: 30px;
-            border-color: white;
-            font-family: "Inter";
-            font-style: normal;
-            font-weight: 400;
-            font-size: 36px;
-            color: white;
-          }
-          .edit_popup .background {
-            position: fixed;
-            top: 0px;
-            left: 0px;
-            width: 200vw;
-            height: 200vh;
-            background: rgba(9, 8, 8, 0.6);
-            z-index: 1;
-          }
+          position: absolute;
+          width: 62.5%;
+          height: 30.5rem;
+          top: 10%;
+          left: 15rem;
+          background-color: #202020;
+          border-radius: 30px;
+          text-align: center;
+          justify-content: center;
+          z-index: 2;
+          padding-top: 30px;
+          border: 5px solid black;
+        }
+        hr {
+          width: 95%;
+        }
+        h1.popup {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 3rem;
+          line-height: 10px;
+          color: #ffffff;
+          display: flex;
+          justify-content: center;
+          font-family: "Inter";
+        }
+        textarea {
+          background: transparent;
+          width: 94%;
+          height: 19rem;
+          color: white;
+          resize: none;
+          font-size: 1.5rem;
+          font-family: "Inter";
+        }
+        textarea::placeholder {
+          color: white;
+        }
+        .label_and_button {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+        select {
+          width: 246px;
+          height: 2.5rem;
+          background: transparent;
+          font-family: "Inter";
+          color: white;
+          border-color: white;
+          font-weight: 400;
+          font-size: 24px;
+        }
+        select option {
+          color: black;
+        }
+        button.popup {
+          width: 8rem;
+          height: 2.5rem;
+          background: transparent;
+          border-radius: 30px;
+          border-color: white;
+          font-family: "Inter";
+          font-weight: 400;
+          font-size: 2rem;
+          color: white;
+        }
+        button.popup:hover {
+          background-color: grey;
+        }
+        .edit_popup .background {
+          position: fixed;
+          top: 0px;
+          left: 0px;
+          width: 200vw;
+          height: 200vh;
+          background: rgba(9, 8, 8, 0.6);
+          z-index: 1;
+        }
         `;
     this.shadowRoot.appendChild(style);
     this.shadowRoot.appendChild(edit_popup_holder);
