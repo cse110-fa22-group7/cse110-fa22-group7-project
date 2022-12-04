@@ -119,8 +119,13 @@ describe("Test Post Functionality", () => {
     let button = await shadow.$("#edit_button");
     await button.click();
 
-    let popup = await page.$("edit-popup");
+    let popup = await page.$("popup-dialog");
     let shadowPop = await popup.getProperty("shadowRoot");
+    await shadowPop.waitForSelector("h1")
+    let edit_post_header = await shadowPop.$("h1");
+    let inner_text = await edit_post_header.getProperty("innerText");
+    let text = await inner_text.jsonValue()
+    expect(text).toBe("Edit Post");
     let textBox = await shadowPop.$("textarea");
     let confirmButton = await shadowPop.$("#yes-button");
 
