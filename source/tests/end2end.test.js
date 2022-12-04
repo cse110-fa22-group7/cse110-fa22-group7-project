@@ -112,6 +112,20 @@ describe("Test Delete Functionality", () => {
     expect(posts.length).toBe(20);
   });
 
+  it("Check that edit works", async () => {
+    let journalPost = await page.$("journal-post");
+    let shadow = await journalPost.getProperty("shadowRoot");
+    let button = await shadow.$("#edit_button");
+    await button.click();
+    
+  });
+
+  it("Check that refreshing page saves posts", async () => {
+    await page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] });
+    let posts = await page.$$("journal-post");
+    expect(posts.length).toBe(20);
+  });  
+
   it("Check Filter Buttons", async () => {
     let posts = await page.evaluate(
       'window.localStorage.getItem("_post_array")'
