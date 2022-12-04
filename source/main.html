@@ -25,6 +25,8 @@
       </dialog>
     </template>
     <meta chartset="UTF-8" />
+    <link rel="icon" href="./images/logo.png" type="image/png" />
+    <link rel="icon" href="./images/logo.svg" type="image/svg+xml" />
     <title>MyJournal</title>
   </head>
 
@@ -32,7 +34,7 @@
     <!-- Header holds logo, appname, username, signout button -->
     <header>
       <div class="appinfo">
-        <img class="logo" src="/source/images/logo.svg" alt="logo" />
+        <img class="logo" src="./images/logo.svg" alt="logo" />
         <h1 class="app_title">MyJournal</h1>
       </div>
     </header>
@@ -45,18 +47,18 @@
       <div class="left_create">
         <button id="create_button" class="create" value="Create">
           <img
-            src="/source/images/create_white.svg"
+            src="./images/create_white.svg"
             alt="create_image"
             height="22"
+            class="create_img"
           />
-          Create
         </button>
       </div>
       <!-- Filter by date and by label -->
       <div class="filters">
         <div class="filter_by">
           <img
-            src="/source/images/filter_white.svg"
+            src="./images/filter_white.svg"
             alt="filter_image"
             height="22"
             class="filter_img"
@@ -115,25 +117,31 @@
           <form>
             <h4>From:</h4>
             <input
-              type="textbox"
+              type="date"
               class="filterby_date_from"
               placeholder="MM/DD/YYYY"
+              id="dateFrom"
             />
             <h4>To:</h4>
             <input
-              type="textbox"
+              type="date"
               class="filterby_date_to"
               placeholder="MM/DD/YYYY"
+              id="dateTo"
             />
-            <input type="submit" class="submit" />
+            <input
+              type="button"
+              class="submit"
+              id="dateSubmit"
+              value="Submit"
+            />
+            <input type="button" class="submit" id="dateReset" value="Reset" />
           </form>
         </details>
       </div>
 
       <!-- Posts will contain all posts from local storage -->
-      <div class="posts">
-        <div class="post_configuration"></div>
-      </div>
+      <div class="posts"></div>
       <output id="output"></output>
     </main>
   </body>

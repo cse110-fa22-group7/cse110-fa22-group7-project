@@ -1,5 +1,7 @@
 # cse110-fa22-group7-project
 
+[View Project Here](https://cse110-fa22-group7.github.io/cse110-fa22-group7-project/source/main.html)
+
 [meet the team](admin/team.md)
 
 ## Dev Instructions
