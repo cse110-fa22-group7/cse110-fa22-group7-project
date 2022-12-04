@@ -131,7 +131,7 @@ main {
   background-color: #3191ff;
 }
 /*color changes on click*/
-#create_button:active{
+#create_button:active {
   background-color: #28799c;
 }
 /*Makes it so that element in filters section are sectioned*/
@@ -202,7 +202,7 @@ input[type="submit"] {
   border: 3px solid #ede35f;
   background-color: #ede35f20;
 }
-#label1:active{
+#label1:active {
   background-color: #515c0a;
 }
 /*Colors "Sadness" label*/
@@ -216,7 +216,7 @@ input[type="submit"] {
   border: 3px solid #2189ff;
   background-color: #2189ff20;
 }
-#label2:active{
+#label2:active {
   background-color: #0a325c;
 }
 /*Colors "Anger" label*/
@@ -230,7 +230,7 @@ input[type="submit"] {
   border: 3px solid #ef5353;
   background-color: #ef535320;
 }
-#label3:active{
+#label3:active {
   background-color: #5c120a;
 }
 /*Colors "Fear" label*/
@@ -244,7 +244,7 @@ input[type="submit"] {
   border: 3px solid #57cd57;
   background-color: #57cd5720;
 }
-#label4:active{
+#label4:active {
   background-color: #0a5c0f;
 }
 /*Colors "Surprise" label*/
@@ -258,7 +258,7 @@ input[type="submit"] {
   border: 3px solid #ea59ed;
   background-color: #ea59ed20;
 }
-#label5:active{
+#label5:active {
   background-color: #3d0a52;
 }
 /*Colors reset button when hovered*/
@@ -266,7 +266,7 @@ input[type="submit"] {
   color: rgb(227, 45, 45);
   border: solid rgb(227, 45, 45);
 }
-#label6:active{
+#label6:active {
   background-color: #c70a0a;
 }
 /*Set form font size*/
