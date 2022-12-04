@@ -37,7 +37,7 @@ async function create_random_post() {
 }
 
 const PATH = "http://localhost:9999";
-describe("Test Delete Functionality", () => {
+describe("Test Post Functionality", () => {
   beforeAll(async () => {
     await page.goto(PATH);
   });
@@ -113,10 +113,20 @@ describe("Test Delete Functionality", () => {
   });
 
   it("Check that edit works", async () => {
-    let journalPost = await page.$("journal-post");
-    let shadow = await journalPost.getProperty("shadowRoot");
+    // clicks the edit button
+    let post = await page.$("journal-post");
+    let shadow = await post.getProperty("shadowRoot");
     let button = await shadow.$("#edit_button");
     await button.click();
+
+    let popup = await page.$("edit-popup");
+    let shadowPop = await popup.getProperty("shadowRoot");
+    let textBox = await shadowPop.$("textarea");
+    let confirmButton = await shadowPop.$("#yes-button");
+
+    // edits post
+    await textBox.type("this is an edited post");
+    await confirmButton.click();
     
   });
 
