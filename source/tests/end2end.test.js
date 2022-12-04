@@ -37,7 +37,11 @@ async function create_random_post() {
 }
 
 const PATH = "http://localhost:9999";
+<<<<<<< HEAD
 describe("Test Post Functionality", () => {
+=======
+describe("Test Site Functionality", () => {
+>>>>>>> main
   beforeAll(async () => {
     await page.goto(PATH);
   });
@@ -47,7 +51,7 @@ describe("Test Post Functionality", () => {
       await create_random_post();
     }
     let posts = await page.evaluate(
-      'window.localStorage.getItem("_post_array")'
+      'window.localStorage.getItem("post_array")'
     );
     posts = JSON.parse(posts);
     let len = posts.length;
@@ -85,7 +89,7 @@ describe("Test Post Functionality", () => {
       await yes.click();
       popup = await page.$("#warning-dialog");
       expect(popup).toBe(null);
-      posts = await page.$$("journal-post");
+      let posts = await page.$$("journal-post");
       let len = posts.length;
       expect(len).toBe(4 - i);
     }
@@ -100,7 +104,7 @@ describe("Test Post Functionality", () => {
       await create_random_post();
     }
     let posts = await page.evaluate(
-      'window.localStorage.getItem("_post_array")'
+      'window.localStorage.getItem("post_array")'
     );
     posts = JSON.parse(posts);
     let length = posts.length;
@@ -138,7 +142,7 @@ describe("Test Post Functionality", () => {
 
   it("Check Filter Buttons", async () => {
     let posts = await page.evaluate(
-      'window.localStorage.getItem("_post_array")'
+      'window.localStorage.getItem("post_array")'
     );
     posts = JSON.parse(posts);
     //get total number of posts with each label:

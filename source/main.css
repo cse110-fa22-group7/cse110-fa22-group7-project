@@ -64,7 +64,7 @@ header {
 /*Sections the page into two rows on the left and one on the right*/
 main {
   display: grid;
-  grid-template-columns: 15rem auto;
+  grid-template-columns: 250px auto;
   grid-template-rows: 70px 70px auto 0;
   height: calc(100vh - 61px);
   /*Sets the left rows to be create and filter sets the right ot be posts*/
@@ -80,22 +80,23 @@ main {
 #collapse_container,
 .left_create,
 .filters {
-  padding-top: 0.55rem;
+  padding-top: 8px;
   display: flex;
   flex-direction: column;
   border-right: 1px solid rgb(87, 87, 87);
 }
 
 #collapse_container {
-  padding-right: 0.5rem;
   flex-direction: row-reverse;
 }
 
 #collapse_container * {
   background-color: #202020;
   border: none;
-  font-size: large;
-  width: 3.3rem;
+  font-size: 24px;
+  width: auto;
+  padding: 0 20px;
+  justify-content: center;
   color: white;
 }
 
@@ -129,7 +130,10 @@ main {
   border: solid #3191ff;
   background-color: #3191ff;
 }
-
+/*color changes on click*/
+#create_button:active {
+  background-color: #28799c;
+}
 /*Makes it so that element in filters section are sectioned*/
 .filters {
   display: flex;
@@ -140,11 +144,12 @@ main {
 .filter_by {
   display: flex;
   flex-direction: row;
-  padding: 5px 22px 10px 22px;
+  padding: 8px 22px;
   gap: 18px;
   font-size: 15px;
   height: 35px;
-  align-items: flex-end;
+  align-items: center;
+  white-space: nowrap;
 }
 
 /*Aligns "Label" and "Date" drop down text */
@@ -152,12 +157,16 @@ main {
   font-size: 15px;
   padding: 5px 30px 5px 30px;
   transition: background-color 0.2s;
+  white-space: nowrap;
 }
 .filterby_option:hover {
   background-color: #444444;
 }
-/*Makes "Label" and "Date" text seem clickable*/
-details summary {
+/*Makes buttons and "Label" and "Date" text seem clickable*/
+details summary,
+.filterby_label,
+button,
+input[type="submit"] {
   cursor: pointer;
 }
 
@@ -187,62 +196,86 @@ input[type="submit"] {
   border: 3px solid #a79d13;
   background-color: #a79d13;
 }
-#label1:hover {
+#label1:hover,
+#label1.selected {
   color: #ede35f;
   border: 3px solid #ede35f;
-  background-color: #686210;
+  background-color: #ede35f20;
+}
+#label1:active {
+  background-color: #515c0a;
 }
 /*Colors "Sadness" label*/
 #label2 {
   border: 3px solid #1e5595;
   background-color: #1e5595;
 }
-#label2:hover {
+#label2:hover,
+#label2.selected {
   color: #2189ff;
   border: 3px solid #2189ff;
-  background-color: #153356;
+  background-color: #2189ff20;
+}
+#label2:active {
+  background-color: #0a325c;
 }
 /*Colors "Anger" label*/
 #label3 {
   border: 3px solid #951e1e;
   background-color: #951e1e;
 }
-#label3:hover {
+#label3:hover,
+#label3.selected {
   color: #ef5353;
   border: 3px solid #ef5353;
-  background-color: #561515;
+  background-color: #ef535320;
+}
+#label3:active {
+  background-color: #5c120a;
 }
 /*Colors "Fear" label*/
 #label4 {
   border: 3px solid #257f25;
   background-color: #257f25;
 }
-#label4:hover {
+#label4:hover,
+#label4.selected {
   color: #57cd57;
   border: 3px solid #57cd57;
-  background-color: #155a15;
+  background-color: #57cd5720;
+}
+#label4:active {
+  background-color: #0a5c0f;
 }
 /*Colors "Surprise" label*/
 #label5 {
   border: 3px solid #99299b;
   background-color: #99299b;
 }
-#label5:hover {
+#label5:hover,
+#label5.selected {
   color: #ea59ed;
   border: 3px solid #ea59ed;
-  background-color: #4c144d;
+  background-color: #ea59ed20;
 }
-
-/*Colors reset and submit buttons when hovered*/
-#label6:hover,
-input[type="submit"]:hover {
-  color: #3191ff;
-  border: 3px solid #3191ff;
+#label5:active {
+  background-color: #3d0a52;
 }
-
+/*Colors reset button when hovered*/
+#label6:hover {
+  color: rgb(227, 45, 45);
+  border: solid rgb(227, 45, 45);
+}
+#label6:active {
+  background-color: #c70a0a;
+}
 /*Set form font size*/
 form {
   font-size: 14px;
+}
+/*Sizes elements in form*/
+form * {
+  width: 100%;
 }
 /*Styles textboxes*/
 input[type="textbox"] {
@@ -251,6 +284,7 @@ input[type="textbox"] {
   color: white;
   border-radius: 1.5vh;
   padding: 2px 7px;
+  box-sizing: border-box;
 }
 /*Styles textboxes when focused*/
 input[type="textbox"]:focus {
@@ -260,6 +294,11 @@ input[type="textbox"]:focus {
 h2,
 h4 {
   margin: 0;
+}
+/*Colors submit button when hovered*/
+input[type="submit"]:hover {
+  color: #3191ff;
+  border: 3px solid #3191ff;
 }
 
 /*Sets the post area as well as the line to the left of it*/
