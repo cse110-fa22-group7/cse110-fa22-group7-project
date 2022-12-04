@@ -109,7 +109,12 @@ class Popup extends HTMLElement {
   set data(data) {
     let popup = this.shadowRoot.querySelector("#popup");
     let button_approval = data.popup_title;
-    let textContent = data.popup_title == "Add" ? "" : data.popup_text;
+
+    let textContent = data.popup_text;
+    if(textContent == undefined || textContent == null){
+      textContent = "";
+    }
+    
     popup.className = "popup";
     popup.innerHTML = `
         <h1>${data["popup_title"]} Post</h1>
@@ -144,8 +149,11 @@ class Popup extends HTMLElement {
         </form>
         `;
 
-    if (data.popup_title == "Edit" && data.popup_label != "Choose a label") {
-      popup.querySelector(`option[value=${data.popup_label}]`).selected = true;
+    //set default label:
+    if(data.popup_label != ""){
+      let option = popup.querySelector(`option[value=${data.popup_label}]`)
+      if(option)
+        option.selected = true;
     }
 
     // Delete popup fill in and style
@@ -213,8 +221,6 @@ class Popup extends HTMLElement {
       } else if (data["popup_title"] == "Cancel Edit") {
         // if a cancel create edit popup closee popup and remove last child from main (would be the edit popup element)
         this.closeDialog();
-        let main = document.querySelector("main");
-        main.removeChild(main.lastChild);
       } else {
         //for add and edit, carry out correponding functionality in backend
         const formEl = yes_button.parentElement.parentElement;
@@ -235,31 +241,44 @@ class Popup extends HTMLElement {
     // add no button (cancel button) event listen
     let no_button = this.shadowRoot.querySelector("#no-button");
     no_button.addEventListener("click", (ev) => {
+      //Prevent page refresh:
       ev.preventDefault();
+
+      //Stash popup data:
+      let textBox = this.shadowRoot.querySelector("textarea");
+      if(textBox){
+        data["popup_text"] = textBox.value;
+      }
+      let labelSelect = this.shadowRoot.querySelector("select");
+      if(labelSelect){
+        data["popup_label"] = labelSelect.value;
+      }
+      let old_data = {"id": data["popup_id"], "label": data["popup_label"], "text": data["popup_text"], "title": data["popup_title"]};
+
+      //close popup:
       this.closeDialog();
-      if (data["popup_title"] == "Add") {
-        // if an add popup, close popup and open new Cancel Create popup
-        create_popup({ title: "Cancel Create" });
-      } else if (data["popup_title"] == "Edit") {
-        // edit popup implemented differently in JournalPost.js so dont think this else if statemnt is used
-        create_popup({ title: "Cancel Edit" });
-      } else if (data["popup_title"] == "Cancel Create") {
-        //if a Cancel Create popup, close popup and open new add popup is displayed
-        create_popup({ title: "Add", id: data["id"] });
-      } else if (data["popup_title"] == "Cancel Edit") {
-        // is a Cancel Edit popup, close popup show the edit popup
-        let main = document.querySelector("main");
-        main.lastChild.style.display = "block";
+      //Handle Event based on popup_title:
+      switch(data["popup_title"]){
+        case("Add"):
+          // if an add popup, close popup and open new Cancel Create popup
+          create_popup({"title": "Cancel Create", "id":old_data["id"], "label":old_data["label"], "text":old_data["text"]});
+          break;
+        case("Edit"):
+          // edit popup implemented differently in JournalPost.js so dont think this else if statemnt is used
+          create_popup({ title: "Cancel Edit",  "id":old_data["id"], "label":old_data["label"], "text":old_data["text"]});
+          break;
+        case("Cancel Create"):
+          //if a Cancel Create popup, close popup and open new add popup is displayed
+          create_popup({ "title": "Add", "id": old_data["id"], "text":old_data["text"], "label":old_data["label"]});
+          break;
+        case ("Cancel Edit"):
+          // is a Cancel Edit popup, close popup show the edit popup
+          create_popup({ "title": "Edit", "id": old_data["id"], "text":old_data["text"], "label":old_data["label"]});
+          break;
       }
     });
-
-    let dialogEl = this.shadowRoot.querySelector("dialog");
-    dialogEl.addEventListener("close", () => {
-      // un blur posts
-      const posts_container = document.querySelector("div.posts");
-      posts_container.style.filter = "none";
-    });
   }
+  
   displayDialog() {
     let dialogEl = this.shadowRoot.querySelector("dialog");
     dialogEl.showModal();
@@ -278,6 +297,9 @@ class Popup extends HTMLElement {
       firstChild.remove();
       firstChild = output.firstChild;
     }
+    // un blur posts
+    const posts_container = document.querySelector("div.posts");
+    posts_container.style.filter = "none";
   }
 }
 customElements.define("popup-dialog", Popup);
