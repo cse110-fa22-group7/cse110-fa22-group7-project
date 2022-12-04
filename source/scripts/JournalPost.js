@@ -83,9 +83,19 @@ class JournalPost extends HTMLElement {
       color: #3191ff;
       border: 2px solid #3191ff;
     }
+    .post_edit:active{
+      background-color: #3191ff;
+      color: white;
+      border: 2px solid white;
+    }
     .post_delete:hover {
       color: rgb(227, 45, 45);
       border: 2px solid rgb(227, 45, 45);
+    }
+    .post_delete:active{
+      background-color: rgb(227, 45, 45);
+      color: white;
+      border: 2px solid white;
     }
 
     /*Styles footer*/
