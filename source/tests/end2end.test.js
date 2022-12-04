@@ -38,10 +38,14 @@ async function create_random_post() {
 
 const PATH = "http://localhost:9999";
 <<<<<<< HEAD
+<<<<<<< HEAD
 describe("Test Post Functionality", () => {
 =======
 describe("Test Site Functionality", () => {
 >>>>>>> main
+=======
+describe("Test Post Functionality", () => {
+>>>>>>> c107a92032707e0a35d03db1dca1bbe4d90d0aae
   beforeAll(async () => {
     await page.goto(PATH);
   });
@@ -123,8 +127,13 @@ describe("Test Site Functionality", () => {
     let button = await shadow.$("#edit_button");
     await button.click();
 
-    let popup = await page.$("edit-popup");
+    let popup = await page.$("popup-dialog");
     let shadowPop = await popup.getProperty("shadowRoot");
+    await shadowPop.waitForSelector("h1")
+    let edit_post_header = await shadowPop.$("h1");
+    let inner_text = await edit_post_header.getProperty("innerText");
+    let text = await inner_text.jsonValue()
+    expect(text).toBe("Edit Post");
     let textBox = await shadowPop.$("textarea");
     let confirmButton = await shadowPop.$("#yes-button");
 
