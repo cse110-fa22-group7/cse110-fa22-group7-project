@@ -111,10 +111,10 @@ class Popup extends HTMLElement {
     let button_approval = data.popup_title;
 
     let textContent = data.popup_text;
-    if(textContent == undefined || textContent == null){
+    if (textContent == undefined || textContent == null) {
       textContent = "";
     }
-    
+
     popup.className = "popup";
     popup.innerHTML = `
         <h1>${data["popup_title"]} Post</h1>
@@ -150,10 +150,9 @@ class Popup extends HTMLElement {
         `;
 
     //set default label:
-    if(data.popup_label != ""){
-      let option = popup.querySelector(`option[value=${data.popup_label}]`)
-      if(option)
-        option.selected = true;
+    if (data.popup_label != "") {
+      let option = popup.querySelector(`option[value=${data.popup_label}]`);
+      if (option) option.selected = true;
     }
 
     // Delete popup fill in and style
@@ -246,39 +245,64 @@ class Popup extends HTMLElement {
 
       //Stash popup data:
       let textBox = this.shadowRoot.querySelector("textarea");
-      if(textBox){
+      if (textBox) {
         data["popup_text"] = textBox.value;
       }
       let labelSelect = this.shadowRoot.querySelector("select");
-      if(labelSelect){
+      if (labelSelect) {
         data["popup_label"] = labelSelect.value;
       }
-      let old_data = {"id": data["popup_id"], "label": data["popup_label"], "text": data["popup_text"], "title": data["popup_title"]};
+      let old_data = {
+        id: data["popup_id"],
+        label: data["popup_label"],
+        text: data["popup_text"],
+        title: data["popup_title"],
+      };
 
       //close popup:
       this.closeDialog();
       //Handle Event based on popup_title:
-      switch(data["popup_title"]){
-        case("Add"):
+      switch (data["popup_title"]) {
+        case "Add":
           // if an add popup, close popup and open new Cancel Create popup
-          create_popup({"title": "Cancel Create", "id":old_data["id"], "label":old_data["label"], "text":old_data["text"]});
+          create_popup({
+            title: "Cancel Create",
+            id: old_data["id"],
+            label: old_data["label"],
+            text: old_data["text"],
+          });
           break;
-        case("Edit"):
+        case "Edit":
           // edit popup implemented differently in JournalPost.js so dont think this else if statemnt is used
-          create_popup({ title: "Cancel Edit",  "id":old_data["id"], "label":old_data["label"], "text":old_data["text"]});
+          create_popup({
+            title: "Cancel Edit",
+            id: old_data["id"],
+            label: old_data["label"],
+            text: old_data["text"],
+          });
           break;
-        case("Cancel Create"):
+        case "Cancel Create":
           //if a Cancel Create popup, close popup and open new add popup is displayed
-          create_popup({ "title": "Add", "id": old_data["id"], "text":old_data["text"], "label":old_data["label"]});
+          create_popup({
+            title: "Add",
+            id: old_data["id"],
+            text: old_data["text"],
+            label: old_data["label"],
+          });
           break;
-        case ("Cancel Edit"):
+        case "Cancel Edit":
           // is a Cancel Edit popup, close popup show the edit popup
-          create_popup({ "title": "Edit", "id": old_data["id"], "text":old_data["text"], "label":old_data["label"]});
+          create_popup({
+            title: "Edit",
+            id: old_data["id"],
+            text: old_data["text"],
+            label: old_data["label"],
+          });
           break;
       }
     });
   }
-  
+
   displayDialog() {
     let dialogEl = this.shadowRoot.querySelector("dialog");
     dialogEl.showModal();
