@@ -83,9 +83,19 @@ class JournalPost extends HTMLElement {
       color: #3191ff;
       border: 2px solid #3191ff;
     }
+    .post_edit:active{
+      background-color: #3191ff;
+      color: white;
+      border: 2px solid white;
+    }
     .post_delete:hover {
       color: rgb(227, 45, 45);
       border: 2px solid rgb(227, 45, 45);
+    }
+    .post_delete:active{
+      background-color: rgb(227, 45, 45);
+      color: white;
+      border: 2px solid white;
     }
 
     /*Styles footer*/
@@ -202,6 +212,13 @@ class JournalPost extends HTMLElement {
 
     let edit_button = this.shadowRoot.getElementById("edit_button");
     edit_button.addEventListener("click", () => {
+      create_popup({
+        title: "Edit",
+        id: data["id"],
+        text: data["text"],
+        label: data["label"],
+      });
+      /*
       let main = document.querySelector("main");
 
       //select the popup
@@ -252,6 +269,7 @@ class JournalPost extends HTMLElement {
         main.lastChild.style.display = "none";
         create_popup({ title: "Cancel Edit", id: data["id"] });
       });
+      */
     });
   }
 }
@@ -330,7 +348,7 @@ function init() {
   document.getElementById("create_button").addEventListener("click", () => {
     // check popup for create
     // receive label, text, date from popup
-    create_popup({ title: "Add", id: get_new_post_id() });
+    create_popup({ title: "Add", id: get_new_post_id(), label: "" });
   });
 
   refresh_posts();
