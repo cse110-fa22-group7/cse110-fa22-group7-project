@@ -300,7 +300,7 @@ function init() {
     label.addEventListener("click", () => {
       let posts = filter_posts(value);
       display_posts(posts);
-      select_label(labels, value);
+      select_label(value);
     });
   }
 
@@ -406,10 +406,10 @@ function filter_post_array_by_date(from, to) {
 /**
  * Indicates which label filter is selected.
  *
- * @param {Object[]} [labels] - array of labels
  * @param {String} [value] - label to filter by
  */
-function select_label(labels, value) {
+function select_label(value) {
+  var labels = document.getElementsByClassName("filterby_label");
   for (var i = 0; i < labels.length; i++) {
     if (labels[i].value == value) {
       labels[i].classList.add("selected");
@@ -426,6 +426,7 @@ function refresh_posts() {
   //load the post array from storage
   let post_array = JSON.parse(window.localStorage.getItem(post_key));
   display_posts(post_array);
+  select_label("Reset");
 }
 
 /**
