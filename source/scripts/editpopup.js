@@ -45,8 +45,8 @@ class EditPopup extends HTMLElement {
           position: absolute;
           width: 62.5%;
           height: 30.5rem;
-          top: 27.5%;
-          left: 30rem;
+          top: 10%;
+          left: 15rem;
           background-color: #202020;
           border-radius: 30px;
           text-align: center;
