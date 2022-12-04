@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function expand() {
     collapseBtn.textContent = "<";
     createBtn.innerHTML =
-      '<img src="/source/images/create_white.svg" alt="create_image" height="22"> Create';
+      '<img src="./images/create_white.svg" alt="create_image" height="22"> Create';
     filterBtn.textContent = "Filter by";
     summaryDateEl.style = summaryDateStyle;
     summaryLabelEl.style = summaryLabelStyle;
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function shrink() {
     collapseBtn.textContent = ">";
     createBtn.innerHTML =
-      '<img src="/source/images/create_white.svg" alt="create_image" height="22">';
+      '<img src="./images/create_white.svg" alt="create_image" height="22">';
     createBtn.style.width = 0;
     filterBtn.textContent = "";
     summaryDateEl.parentElement.removeAttribute("open");
