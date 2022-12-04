@@ -1,7 +1,9 @@
 // collapse nav button
 document.addEventListener("DOMContentLoaded", () => {
   const collapseBtn = document.querySelector("#collapse_button");
+  const collapseCon = document.querySelector("#collapse_container");
   const createBtn = document.querySelector("#create_button");
+  const filterByCon = document.querySelector(".filter_by");
   const filterBtn = document.querySelector(".filter_by h2");
   const summaryDateEl = document.querySelector("summary#date_option");
   const summaryLabelEl = document.querySelector("summary#label_option");
@@ -20,8 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
     filterBtn.textContent = "Filter by";
     summaryDateEl.style = summaryDateStyle;
     summaryLabelEl.style = summaryLabelStyle;
-    mainEl.style.gridTemplateColumns = "15rem auto";
+    mainEl.style.gridTemplateColumns = "250px auto";
     createBtn.style.width = createBtnWidth;
+    collapseCon.style.justifyContent = "end";
+    filterByCon.style.gap = "18px";
+    filterByCon.style.justifyContent = "start";
+    filterImgEl.style.cursor = "auto";
   }
 
   function shrink() {
@@ -34,7 +40,11 @@ document.addEventListener("DOMContentLoaded", () => {
     summaryLabelEl.parentElement.removeAttribute("open");
     summaryDateEl.style = "display:none";
     summaryLabelEl.style = "display:none";
-    mainEl.style.gridTemplateColumns = "4.5rem auto";
+    mainEl.style.gridTemplateColumns = "75px auto";
+    collapseCon.style.justifyContent = "center";
+    filterByCon.style.gap = 0;
+    filterByCon.style.justifyContent = "center";
+    filterImgEl.style.cursor = "pointer";
   }
   shrink();
   collapseBtn.addEventListener("click", () => {
