@@ -64,6 +64,7 @@ class Popup extends HTMLElement {
         font-weight: 400;
         font-size: 2rem;
         color: white;
+        cursor: pointer;
       }
       select option {
         color: black;
@@ -79,6 +80,7 @@ class Popup extends HTMLElement {
         font-weight: 400;
         font-size: 2rem;
         color: white;
+        cursor: pointer;
       }
       p
       {
