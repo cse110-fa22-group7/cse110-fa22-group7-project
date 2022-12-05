@@ -10,9 +10,7 @@ async function create_random_post() {
   let confirmButton = await shadow.$("#yes-button");
 
   //Type sample text content:
-  await textBox.type(
-    "This is some random text lorem ipsum"
-  );
+  await textBox.type("This is some random text lorem ipsum");
   //Select a label
   let label = "Happiness";
   let x = Math.random();
@@ -78,7 +76,7 @@ describe("Test Post Functionality", () => {
     expect(text).toBe("Cancel Create Post?");
 
     let confirmButton = await shadowPop.$("#yes-button");
-    confirmButton.click();
+    await confirmButton.click();
 
     let posts = await page.$$("journal-post");
     expect(posts.length).toBe(5);
