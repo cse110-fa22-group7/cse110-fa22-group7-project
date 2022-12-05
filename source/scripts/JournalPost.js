@@ -13,6 +13,8 @@ import { create_popup } from "./Popup.js";
 /** Post Class for custom web-component post
  *
  */
+import * as dateComp from "./DateFilter.js";
+import * as myDialog from "./customdialog.js";
 class JournalPost extends HTMLElement {
   /**
    * sets up shadow dom
@@ -49,7 +51,6 @@ class JournalPost extends HTMLElement {
       gap: 1rem;
       align-items: center;
       padding: 0.4rem;
-      border: 1px solid rgb(87, 87, 87);
       border-radius: 0.75rem 0.75rem 0 0;
       background-color: rgba(87, 87, 87, 0);
     }
@@ -69,51 +70,99 @@ class JournalPost extends HTMLElement {
       border-radius: 2rem;
       background-color: #00000000;
       color: white;
-      border: solid white;
+      border: 2px solid white;
       padding: 0.25rem 0.75rem;
       height: 100%;
       width: 100%;
       font-size: 0.75rem;
       font-weight: 600;
       transition: 0.2s;
+      cursor: pointer;
     }
     .post_edit:hover {
       color: #3191ff;
-      border: solid #3191ff;
+      border: 2px solid #3191ff;
+    }
+    .post_edit:active{
+      background-color: #3191ff;
+      color: white;
+      border: 2px solid white;
     }
     .post_delete:hover {
       color: rgb(227, 45, 45);
-      border: solid rgb(227, 45, 45);
+      border: 2px solid rgb(227, 45, 45);
     }
-  
+    .post_delete:active{
+      background-color: rgb(227, 45, 45);
+      color: white;
+      border: 2px solid white;
+    }
+
     /*Styles footer*/
     .post_meta {
       display: flex;
       justify-content: space-between;
       gap: 0.5rem;
       padding: 0.5rem;
-      border-bottom: 1px solid rgb(87, 87, 87);
-      border-left: 1px solid rgb(87, 87, 87);
-      border-right: 1px solid rgb(87, 87, 87);
       border-radius: 0 0 0.75rem 0.75rem;
     }
     .post_meta * {
       font-size: 0.65rem;
       color: #606060;
     }
-  
+
     /*Styles post text*/
     .post_text {
       grid-area: text;
       flex: 1 1 auto;
       margin: 0;
-      border-left: 1px solid rgb(87, 87, 87);
-      border-right: 1px solid rgb(87, 87, 87);
       border-bottom: 1px solid rgb(87, 87, 87);
       font-size: 1rem;
       line-height: 1.5rem;
       padding: 1rem;
-      white-space: pre-line;
+      white-space: pre-wrap;
+    }
+    
+    /*Color coded header styling*/
+    .happiness {
+      border: 2px solid #ede35f;
+    }
+    .happiness_header {
+      border-bottom: 1px solid #ede35f;
+      background-color: #ede35f20;
+      color: #ede35f;
+    }
+    .sadness {
+      border: 2px solid #2189ff;
+    }
+    .sadness_header {
+      border-bottom: 1px solid #2189ff;
+      background-color: #2189ff20;
+      color: #2189ff;
+    }
+    .anger {
+      border: 2px solid #ef5353;
+    }
+    .anger_header {
+      border-bottom: 1px solid #ef5353;
+      background-color: #ef535320;
+      color: #ef5353;
+    }
+    .fear {
+      border: 2px solid #57cd57;
+    }
+    .fear_header {
+      border-bottom: 1px solid #57cd57;
+      background-color: #57cd5720;
+      color: #57cd57;
+    }
+    .surprise {
+      border: 2px solid #ea59ed;
+    }
+    .surprise_header {
+      border-bottom: 1px solid #ea59ed;
+      background-color: #ea59ed20;
+      color: #ea59ed;
     }
     `;
     this.shadowRoot.appendChild(style);
@@ -136,8 +185,9 @@ class JournalPost extends HTMLElement {
       mod_date = "Never";
     }
     let article = this.shadowRoot.getElementById("post-article");
+    article.classList.add(`${data["label"].toLowerCase()}`);
     article.innerHTML = `
-    <div class="post_header">
+    <div class="post_header ${data["label"].toLowerCase()}_header">
       <div class="post_label">${data["label"]}</div>
       <div class="post_buttons">
         <button id="edit_button" class="post_edit">Edit</button>
@@ -162,6 +212,13 @@ class JournalPost extends HTMLElement {
 
     let edit_button = this.shadowRoot.getElementById("edit_button");
     edit_button.addEventListener("click", () => {
+      create_popup({
+        title: "Edit",
+        id: data["id"],
+        text: data["text"],
+        label: data["label"],
+      });
+      /*
       let main = document.querySelector("main");
 
       //select the popup
@@ -209,19 +266,20 @@ class JournalPost extends HTMLElement {
 
       //do nothing if cancel button is clicked
       cancel_but.addEventListener("click", () => {
-        main.removeChild(main.lastChild);
+        main.lastChild.style.display = "none";
+        create_popup({ title: "Cancel Edit", id: data["id"] });
       });
+      */
     });
   }
 }
 customElements.define("journal-post", JournalPost);
 
 // Define variables needed for this file
-const post_key = "_post_array";
+const post_key = "post_array";
 const post_id_key = "NEXT_POST_ID";
 
 var post_container;
-var curr_user = "";
 //runs the init function upon page being fully loaded
 window.addEventListener("DOMContentLoaded", init);
 
@@ -240,33 +298,75 @@ function init() {
     let value = labels[i].value;
     let label = labels[i];
     label.addEventListener("click", () => {
-      filter_posts(value);
+      let posts = filter_posts(value);
+      display_posts(posts);
+      select_label(value);
     });
   }
 
-  refresh_posts();
+  document.getElementById("dateSubmit").addEventListener("click", () => {
+    let a = document.getElementById("dateFrom").value;
+    let b = document.getElementById("dateTo").value;
+
+    let dateA = dateComp.validateDate(a);
+    let dateB = dateComp.validateDate(b);
+
+    if (dateA == null || dateB == null) {
+      //open warning dialogconst warningDialog = this.shadowRoot.querySelector("#delete_button");
+      myDialog.fill(
+        "Date Must Exist and Be In the Format: MM-DD-YYYY",
+        false,
+        false
+      );
+      const noButtonEl = document.querySelector("#no-button");
+      noButtonEl.addEventListener("click", function denyAction() {
+        myDialog.closeDialog();
+      });
+      return;
+    }
+
+    if (dateComp.isEqualTo(dateB, dateA) || dateComp.isLessThan(dateB, dateA)) {
+      myDialog.fill("Please enter a valid date range", false, false);
+      const noButtonEl = document.querySelector("#no-button");
+      noButtonEl.addEventListener("click", function denyAction() {
+        myDialog.closeDialog();
+      });
+      return;
+    }
+
+    let posts = filter_post_array_by_date(dateA, dateB);
+    display_posts(posts);
+  });
+
+  document.getElementById("dateReset").addEventListener("click", () => {
+    document.getElementById("dateFrom").value = "";
+    document.getElementById("dateTo").value = "";
+    let posts = filter_posts("Reset");
+    display_posts(posts);
+  });
 
   document.getElementById("create_button").addEventListener("click", () => {
     // check popup for create
     // receive label, text, date from popup
-    create_popup({ title: "Add", id: get_new_post_id() });
+    create_popup({ title: "Add", id: get_new_post_id(), label: "" });
   });
 
+  refresh_posts();
   //VvV TESTING VvV
 }
 
 /**
- * Displays on the posts of a specified label on the page.
+ * Gets only posts of a specified label on the page.
  * Call with label = "Reset" to show all posts.
  *
  * @param {String} [label = "Reset"] - label to filter by
+ * @return {Object[]} - lists of posts with the specified label
  */
 function filter_posts(label = "Reset") {
-  if (label == "Reset") {
-    refresh_posts();
-    return;
-  }
   let post_array = load_posts();
+  if (label == "Reset") {
+    return post_array;
+  }
   let output = [];
   for (var i in post_array) {
     let post = post_array[i];
@@ -274,17 +374,59 @@ function filter_posts(label = "Reset") {
       output.push(post);
     }
   }
-  display_posts(output);
+  return output;
 }
+
+/**
+ * Gets only posts within a given date range
+ *
+ * @param {String} [label = "Reset"] - label to filter by
+ * @return {Object[]} - lists of posts within the specified date range
+ */
+function filter_post_array_by_date(from, to) {
+  let posts = load_posts();
+  let filtered_posts = [];
+  for (var i in posts) {
+    let dateCreated = posts[i]["dateCreated"];
+    dateCreated = dateComp.validateDate(dateCreated);
+    if (dateCreated == null) {
+      console.error("Invalid Date found within post object, skipping for now");
+      continue;
+    }
+    if (
+      dateComp.isLessThanEqualTo(dateCreated, to) &&
+      dateComp.isGreaterThanEqualTo(dateCreated, from)
+    ) {
+      filtered_posts.push(posts[i]);
+    }
+  }
+  return filtered_posts;
+}
+
+/**
+ * Indicates which label filter is selected.
+ *
+ * @param {String} [value] - label to filter by
+ */
+function select_label(value) {
+  var labels = document.getElementsByClassName("filterby_label");
+  for (var i = 0; i < labels.length; i++) {
+    if (labels[i].value == value) {
+      labels[i].classList.add("selected");
+    } else {
+      labels[i].classList.remove("selected");
+    }
+  }
+}
+
 /**
  * Refreshes display of posts to match what is currently in storage
  */
 function refresh_posts() {
   //load the post array from storage
-  let post_array = JSON.parse(
-    window.localStorage.getItem(curr_user + post_key)
-  );
+  let post_array = JSON.parse(window.localStorage.getItem(post_key));
   display_posts(post_array);
+  select_label("Reset");
 }
 
 /**
@@ -322,7 +464,7 @@ function display_posts(post_array) {
  *  @return {Object[]|null} Post Array object from local storage or null if missing
  */
 function load_posts() {
-  let posts = JSON.parse(window.localStorage.getItem(curr_user + post_key));
+  let posts = JSON.parse(window.localStorage.getItem(post_key));
   if (!posts) {
     return [];
   } else {
@@ -336,7 +478,7 @@ function load_posts() {
  *  @param {Object[]} posts - array of post object to store
  */
 function store_posts(posts) {
-  window.localStorage.setItem(curr_user + post_key, JSON.stringify(posts));
+  window.localStorage.setItem(post_key, JSON.stringify(posts));
 }
 
 /**
