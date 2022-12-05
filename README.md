@@ -1,9 +1,20 @@
 # cse110-fa22-group7-project
 
-[View Project Here](https://cse110-fa22-group7.github.io/cse110-fa22-group7-project/source/main.html)
+## Meet the Team
+Our team can be viewed here: [Group 7](admin/team.md)
+## What is MyJournal?
+MyJournal is a personalalized social media app where the users can post for themselves. The purpose of MyJournal is to allow users to truly express themselves without having to worry about what others think. MyJournal is just like a social media where a user can post how they're feeling and any text; the difference is that there are no friends, no seeing each other's posts, and the user's posts are only visible to themselves.  
 
-[meet the team](admin/team.md)
+To make MyJournal more personalized users create their own posts which each have an emotion associated with them. The user is then able to view just posts from a certain emotion or all posts at once. The user can also view posts from a certain date.
 
+Key Features of our website include:
+- Creating Posts
+- Editing Posts
+- Deleting Posts
+- Filtering Posts by Label Assigned
+- Filtering Posts by Date Created
+
+MyJournal can be viewed and used here: [MyJournal](https://cse110-fa22-group7.github.io/cse110-fa22-group7-project/source/main.html)
 ## Dev Instructions
 
 ### 1. Branch from main
@@ -32,14 +43,15 @@ Any HTML and CSS code should also be validated before submitting
 ```
 npx html-validate --ext html ./source
 ```
-And the JSDoc should be built from any updated javascript.  We are looking into performing the JSDoc creation automatically from workflow which runs on merging into main however for now it still needs to be done manually.
+And the JSDoc should be built from any updated javascript.  Currently, we have a workflow that generated JSDocs and puts it into a branch called docs each time there is a merge to the main branch. This branch then has to manually be merged into main with a pull request from a developer. In the future, we would also automate the merging of the docs branch into main. However for now, the pull request and merging to main must be done manually.
 ```
 npx jsdoc -r ./source -d ./docs
 ```
-Finally any test cases should be checked (we haven't built any tests yet)
+Finally any test cases should be checked 
 ```
 npm run test
 ```
+This should run both unit tests as well as end-to-end tests that are created.
 
 ### 3. Create a pull request and request a review
 
