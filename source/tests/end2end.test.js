@@ -11,7 +11,7 @@ async function create_random_post() {
 
   //Type sample text content:
   await textBox.type(
-    "This is some random text lorem ipsum just realized we never set a character limit this could potentially be bad maybe we should add that lol!!!!!!!!"
+    "This is some random text lorem ipsum"
   );
   //Select a label
   let label = "Happiness";
@@ -121,18 +121,32 @@ describe("Test Post Functionality", () => {
 
     let popup = await page.$("popup-dialog");
     let shadowPop = await popup.getProperty("shadowRoot");
-    await shadowPop.waitForSelector("h1")
+    await shadowPop.waitForSelector("h1");
     let edit_post_header = await shadowPop.$("h1");
     let inner_text = await edit_post_header.getProperty("innerText");
-    let text = await inner_text.jsonValue()
+    let text = await inner_text.jsonValue();
+    //checks to see if popup is the edit post popup
     expect(text).toBe("Edit Post");
+    await shadowPop.waitForSelector("textarea");
     let textBox = await shadowPop.$("textarea");
+    await page.keyboard.type("This is an edited post. ");
+    let textBox_inner_text = await textBox.getProperty("value");
+    let textBox_text = await textBox_inner_text.jsonValue();
+    //checks to see if text is changed in the textbox of edit post popup
+    expect(textBox_text).toBe("This is an edited post. This is some random text lorem ipsum");
+    console.log(textBox_text);
     let confirmButton = await shadowPop.$("#yes-button");
 
-    // edits post
-    await textBox.type("this is an edited post");
     await confirmButton.click();
-    
+
+    let new_post = await page.$("journal-post");
+    let new_shadow = await new_post.getProperty("shadowRoot");
+    let new_post_textBox = await new_shadow.$(".post_text");
+    let new_post_textBox_inner_text = await new_post_textBox.getProperty("innerText");
+    let new_post_textBox_text = await new_post_textBox_inner_text.jsonValue();
+    //checks to see if post card now has edited content on it
+    expect(new_post_textBox_text).toBe("This is an edited post. This is some random text lorem ipsum");
+    console.log(new_post_textBox_text);
   });
 
   it("Check that refreshing page saves posts", async () => {
