@@ -308,6 +308,9 @@ class Popup extends HTMLElement {
   displayDialog() {
     let dialogEl = this.shadowRoot.querySelector("dialog");
     dialogEl.showModal();
+    dialogEl.addEventListener('cancel', (event) => {
+      event.preventDefault();
+    });
     // blur posts
     const posts_container = document.querySelector("div.posts");
     posts_container.style.filter = "blur(.25rem)";
