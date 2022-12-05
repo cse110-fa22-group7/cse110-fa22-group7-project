@@ -59,8 +59,33 @@ describe("Test Post Functionality", () => {
     expect(posts.length).toBe(5);
   });
 
-  it("Check cancel functionality", async () => {
-      // clicks the edit button
+  it("Check create cancel functionality", async () => {
+    let button = await page.$("#create_button");
+    await button.click();
+
+    let popup = await page.$("popup-dialog");
+    let shadow = await popup.getProperty("shadowRoot");
+    let cancelButton = await shadow.$("#no-button");
+    await cancelButton.click();
+
+    let cancelPop = await page.$("popup-dialog");
+    let shadowPop = await cancelPop.getProperty("shadowRoot");
+    await shadowPop.waitForSelector("h1");
+    let edit_post_header = await shadowPop.$("h1");
+    let inner_text = await edit_post_header.getProperty("innerText");
+    let text = await inner_text.jsonValue();
+    //checks to see if popup is the edit post popup
+    expect(text).toBe("Cancel Create Post?");
+
+    let confirmButton = await shadowPop.$("#yes-button");
+    confirmButton.click();
+
+    let posts = await page.$$("journal-post");
+    expect(posts.length).toBe(5);
+  });
+
+  it("Check edit cancel functionality", async () => {
+    // clicks the edit button
     let post = await page.$("journal-post");
     let shadow = await post.getProperty("shadowRoot");
     let button = await shadow.$("#edit_button");
@@ -80,7 +105,9 @@ describe("Test Post Functionality", () => {
     let textBox_inner_text = await textBox.getProperty("value");
     let textBox_text = await textBox_inner_text.jsonValue();
     //checks to see if text is changed in the textbox of edit post popup
-    expect(textBox_text).toBe("This is an edited post. This is some random text lorem ipsum");
+    expect(textBox_text).toBe(
+      "This is an edited post. This is some random text lorem ipsum"
+    );
     console.log(textBox_text);
     let noButton = await shadowPop.$("#no-button");
     await noButton.click();
@@ -93,7 +120,9 @@ describe("Test Post Functionality", () => {
     let new_post = await page.$("journal-post");
     let new_shadow = await new_post.getProperty("shadowRoot");
     let new_post_textBox = await new_shadow.$(".post_text");
-    let new_post_textBox_inner_text = await new_post_textBox.getProperty("innerText");
+    let new_post_textBox_inner_text = await new_post_textBox.getProperty(
+      "innerText"
+    );
     let new_post_textBox_text = await new_post_textBox_inner_text.jsonValue();
     //checks to see if post card now has edited content on it
     expect(new_post_textBox_text).toBe("This is some random text lorem ipsum");
@@ -174,7 +203,9 @@ describe("Test Post Functionality", () => {
     let textBox_inner_text = await textBox.getProperty("value");
     let textBox_text = await textBox_inner_text.jsonValue();
     //checks to see if text is changed in the textbox of edit post popup
-    expect(textBox_text).toBe("This is an edited post. This is some random text lorem ipsum");
+    expect(textBox_text).toBe(
+      "This is an edited post. This is some random text lorem ipsum"
+    );
     console.log(textBox_text);
     let confirmButton = await shadowPop.$("#yes-button");
 
@@ -183,10 +214,14 @@ describe("Test Post Functionality", () => {
     let new_post = await page.$("journal-post");
     let new_shadow = await new_post.getProperty("shadowRoot");
     let new_post_textBox = await new_shadow.$(".post_text");
-    let new_post_textBox_inner_text = await new_post_textBox.getProperty("innerText");
+    let new_post_textBox_inner_text = await new_post_textBox.getProperty(
+      "innerText"
+    );
     let new_post_textBox_text = await new_post_textBox_inner_text.jsonValue();
     //checks to see if post card now has edited content on it
-    expect(new_post_textBox_text).toBe("This is an edited post. This is some random text lorem ipsum");
+    expect(new_post_textBox_text).toBe(
+      "This is an edited post. This is some random text lorem ipsum"
+    );
     console.log(new_post_textBox_text);
   });
 
@@ -194,7 +229,7 @@ describe("Test Post Functionality", () => {
     await page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] });
     let posts = await page.$$("journal-post");
     expect(posts.length).toBe(20);
-  });  
+  });
 
   it("Check Filter Buttons", async () => {
     let posts = await page.evaluate(

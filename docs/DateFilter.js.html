@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: DateFilter.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: DateFilter.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>export {
+  validateDate,
+  isLessThan,
+  isEqualTo,
+  isGreaterThan,
+  isLessThanEqualTo,
+  isGreaterThanEqualTo,
+};
+
+/**
+ * Helper function
+ * Converts a string into the array representation of a date
+ *
+ * @param {String} dateString - MM-DD-YYYY or YYYY-MM-DD Format where "-" can be "-", "/", or " "
+ * @returns {Integer[]} array representationg of date [month, day, year]
+ * @returns {null} if invalid input string
+ */
+function stringToDateArray(dateString) {
+  let dateArray = dateString;
+  if (dateString.includes("-")) {
+    dateArray = dateArray.split("-");
+  } else if (dateString.includes("/")) {
+    dateArray = dateArray.split("/");
+  } else if (dateString.includes(" ")) {
+    dateArray = dateArray.split(" ");
+  }
+
+  //reformat if necessary:  YYYY-MM-DD to MM-DD-YYYY
+  if (dateArray[0].length == 4) {
+    dateArray = [dateArray[1], dateArray[2], dateArray[0]];
+  }
+
+  //convert strings into integers:
+  return dateArray.map(Number);
+}
+
+/**
+ * Helper function
+ * Checks in the input array is in the right format to be a date and that the values of the date make sense
+ * for the given month.
+ *
+ * @param {Integer[]} arr - date array to check
+ * @returns {Boolean} true if the array is in the correct format and false otherwise
+ */
+function isValidDateArray(arr) {
+  if (arr == null || arr[0] > 12 || arr[0] &lt; 1) {
+    return false;
+  }
+  const today = new Date();
+  const thirty_day_months = [4, 6, 9, 11];
+  const thirty_one_day_months = [1, 3, 5, 7, 8, 10, 12];
+  if (arr[1] > 31 &amp;&amp; thirty_one_day_months.includes(arr[0])) {
+    return false;
+  }
+  if (arr[1] > 30 &amp;&amp; thirty_day_months.includes(arr[0])) {
+    return false;
+  }
+  if (
+    (arr[2] % 4 == 0 &amp;&amp; arr[1] > 29 &amp;&amp; arr[0] == 2) ||
+    (arr[2] % 4 != 0 &amp;&amp; arr[1] > 28 &amp;&amp; arr[0] == 2)
+  ) {
+    return false;
+  }
+  const arr_date = new Date(arr[2], arr[0] - 1, arr[1]);
+  if (arr_date > today) {
+    return false;
+  }
+  return true;
+}
+
+/**
+ * Helper function to convert a given input string into a date object
+ * @param {Integer[]} arr - array to convert
+ * @returns {Object} formatted date object
+ */
+function arrToDateObj(arr) {
+  return {
+    day: arr[1],
+    month: arr[0],
+    year: arr[2],
+  };
+}
+
+/**
+ * Outwards facing function which converts a given input string into date object format
+ * @param {String} input
+ * @returns {Object} formatted date object
+ * @returns {Null} if input is incorrectly formatted
+ */
+function validateDate(input) {
+  try {
+    let date = stringToDateArray(input);
+    if (isValidDateArray(date)) {
+      return arrToDateObj(date);
+    }
+  } catch (e) {
+    return null;
+  }
+}
+
+/**
+ * Checks if (a&lt;b)
+ * @param {Object} a - validated date object
+ * @param {Object} b - validated date object
+ * @returns {Bool} (a &lt; b)
+ */
+function isLessThan(a, b) {
+  if (isEqualTo(a, b)) {
+    return false;
+  }
+  const date_a = new Date(a.year, a.month, a.day);
+  const date_b = new Date(b.year, b.month, b.day);
+  if (date_a &lt; date_b) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+/**
+ * Checks if (a==b)
+ * @param {Object} a - validated date object
+ * @param {Object} b - validated date object
+ * @returns {Bool} (a == b)
+ */
+function isEqualTo(a, b) {
+  //make sure all terms are equal
+  if (a.day != b.day || a.month != b.month || a.year != b.year) {
+    return false;
+  }
+  return true;
+}
+
+/**
+ * Checks if (a>b)
+ * @param {Object} a - validated date object
+ * @param {Object} b - validated date object
+ * @returns {Bool} (a > b)
+ */
+function isGreaterThan(a, b) {
+  return !isEqualTo(a, b) &amp;&amp; !isLessThan(a, b);
+}
+
+/**
+ * Checks if (a>=b)
+ * @param {Object} a - validated date object
+ * @param {Object} b - validated date object
+ * @returns {Bool} (a >= b)
+ */
+function isGreaterThanEqualTo(a, b) {
+  return !isLessThan(a, b);
+}
+
+/**
+ * Checks if (a&lt;=b)
+ * @param {Object} a - validated date object
+ * @param {Object} b - validated date object
+ * @returns {Bool} (a &lt;= b)
+ */
+function isLessThanEqualTo(a, b) {
+  return !isGreaterThan(a, b);
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="JournalPost.html">JournalPost</a></li><li><a href="Popup.html">Popup</a></li></ul><h3>Global</h3><ul><li><a href="global.html#arrToDateObj">arrToDateObj</a></li><li><a href="global.html#create_post">create_post</a></li><li><a href="global.html#delete_post">delete_post</a></li><li><a href="global.html#display_posts">display_posts</a></li><li><a href="global.html#edit_post">edit_post</a></li><li><a href="global.html#filter_post_array_by_date">filter_post_array_by_date</a></li><li><a href="global.html#filter_posts">filter_posts</a></li><li><a href="global.html#get_new_post_id">get_new_post_id</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#isEqualTo">isEqualTo</a></li><li><a href="global.html#isGreaterThan">isGreaterThan</a></li><li><a href="global.html#isGreaterThanEqualTo">isGreaterThanEqualTo</a></li><li><a href="global.html#isLessThan">isLessThan</a></li><li><a href="global.html#isLessThanEqualTo">isLessThanEqualTo</a></li><li><a href="global.html#isValidDateArray">isValidDateArray</a></li><li><a href="global.html#load_posts">load_posts</a></li><li><a href="global.html#refresh_posts">refresh_posts</a></li><li><a href="global.html#select_label">select_label</a></li><li><a href="global.html#store_posts">store_posts</a></li><li><a href="global.html#stringToDateArray">stringToDateArray</a></li><li><a href="global.html#validateDate">validateDate</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Sun Dec 04 2022 21:34:36 GMT-0800 (Pacific Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -104,6 +104,165 @@
     
 
     
+    <h4 class="name" id="arrToDateObj"><span class="type-signature"></span>arrToDateObj<span class="signature">(arr)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Helper function to convert a given input string into a date object
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>arr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Integer></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">array to convert</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="DateFilter.js.html">DateFilter.js</a>, <a href="DateFilter.js.html#line76">line 76</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    formatted date object
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="create_post"><span class="type-signature"></span>create_post<span class="signature">(data)</span><span class="type-signature"></span></h4>
     
 
@@ -277,95 +436,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line279">line 279</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="delete_all_posts"><span class="type-signature"></span>delete_all_posts<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Deletes All Posts under the current user
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line320">line 320</a>
+        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line491">line 491</a>
     </li></ul></dd>
     
 
@@ -502,7 +573,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line298">line 298</a>
+        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line514">line 514</a>
     </li></ul></dd>
     
 
@@ -640,7 +711,7 @@ Used by refresh_posts and filter_posts to display the loaded posts
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line226">line 226</a>
+        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line438">line 438</a>
     </li></ul></dd>
     
 
@@ -872,7 +943,7 @@ Used by refresh_posts and filter_posts to display the loaded posts
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line334">line 334</a>
+        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line550">line 550</a>
     </li></ul></dd>
     
 
@@ -908,7 +979,7 @@ Used by refresh_posts and filter_posts to display the loaded posts
     
 
     
-    <h4 class="name" id="filter_posts"><span class="type-signature"></span>filter_posts<span class="signature">(label<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="filter_post_array_by_date"><span class="type-signature"></span>filter_post_array_by_date<span class="signature">(label<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Array.&lt;Object>}</span></h4>
     
 
     
@@ -916,7 +987,186 @@ Used by refresh_posts and filter_posts to display the loaded posts
 
 
 <div class="description">
-    Displays on the posts of a specified label on the page.
+    Gets only posts within a given date range
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>label</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    "Reset"
+                
+                </td>
+            
+
+            <td class="description last">label to filter by</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line386">line 386</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - lists of posts within the specified date range
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;Object></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="filter_posts"><span class="type-signature"></span>filter_posts<span class="signature">(label<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Array.&lt;Object>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets only posts of a specified label on the page.
 Call with label = "Reset" to show all posts.
 </div>
 
@@ -1030,7 +1280,7 @@ Call with label = "Reset" to show all posts.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line194">line 194</a>
+        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line365">line 365</a>
     </li></ul></dd>
     
 
@@ -1055,6 +1305,28 @@ Call with label = "Reset" to show all posts.
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - lists of posts with the specified label
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;Object></span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -1118,7 +1390,7 @@ Call with label = "Reset" to show all posts.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line359">line 359</a>
+        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line577">line 577</a>
     </li></ul></dd>
     
 
@@ -1231,7 +1503,7 @@ Code can be added here to test the functionality of the script
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line154">line 154</a>
+        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line292">line 292</a>
     </li></ul></dd>
     
 
@@ -1256,6 +1528,1077 @@ Code can be added here to test the functionality of the script
 
 
 
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="isEqualTo"><span class="type-signature"></span>isEqualTo<span class="signature">(a, b)</span><span class="type-signature"> &rarr; {Bool}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Checks if (a==b)
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">validated date object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">validated date object</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="DateFilter.js.html">DateFilter.js</a>, <a href="DateFilter.js.html#line126">line 126</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    (a == b)
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Bool</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="isGreaterThan"><span class="type-signature"></span>isGreaterThan<span class="signature">(a, b)</span><span class="type-signature"> &rarr; {Bool}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Checks if (a>b)
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">validated date object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">validated date object</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="DateFilter.js.html">DateFilter.js</a>, <a href="DateFilter.js.html#line140">line 140</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    (a > b)
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Bool</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="isGreaterThanEqualTo"><span class="type-signature"></span>isGreaterThanEqualTo<span class="signature">(a, b)</span><span class="type-signature"> &rarr; {Bool}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Checks if (a>=b)
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">validated date object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">validated date object</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="DateFilter.js.html">DateFilter.js</a>, <a href="DateFilter.js.html#line150">line 150</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    (a >= b)
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Bool</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="isLessThan"><span class="type-signature"></span>isLessThan<span class="signature">(a, b)</span><span class="type-signature"> &rarr; {Bool}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Checks if (a<b)
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">validated date object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">validated date object</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="DateFilter.js.html">DateFilter.js</a>, <a href="DateFilter.js.html#line107">line 107</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    (a < b)
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Bool</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="isLessThanEqualTo"><span class="type-signature"></span>isLessThanEqualTo<span class="signature">(a, b)</span><span class="type-signature"> &rarr; {Bool}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Checks if (a<=b)
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">validated date object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">validated date object</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="DateFilter.js.html">DateFilter.js</a>, <a href="DateFilter.js.html#line160">line 160</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    (a <= b)
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Bool</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="isValidDateArray"><span class="type-signature"></span>isValidDateArray<span class="signature">(arr)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Helper function
+Checks in the input array is in the right format to be a date and that the values of the date make sense
+for the given month.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>arr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Integer></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">date array to check</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="DateFilter.js.html">DateFilter.js</a>, <a href="DateFilter.js.html#line45">line 45</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    true if the array is in the correct format and false otherwise
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Boolean</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -1320,7 +2663,7 @@ loads the current posts from storage and appends them to their post_container
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line254">line 254</a>
+        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line466">line 466</a>
     </li></ul></dd>
     
 
@@ -1433,7 +2776,156 @@ loads the current posts from storage and appends them to their post_container
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line212">line 212</a>
+        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line425">line 425</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="select_label"><span class="type-signature"></span>select_label<span class="signature">(value<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Indicates which label filter is selected.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">label to filter by</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line411">line 411</a>
     </li></ul></dd>
     
 
@@ -1570,7 +3062,7 @@ loads the current posts from storage and appends them to their post_container
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line268">line 268</a>
+        <a href="JournalPost.js.html">JournalPost.js</a>, <a href="JournalPost.js.html#line480">line 480</a>
     </li></ul></dd>
     
 
@@ -1601,6 +3093,365 @@ loads the current posts from storage and appends them to their post_container
 
 
         
+            
+
+    
+
+    
+    <h4 class="name" id="stringToDateArray"><span class="type-signature"></span>stringToDateArray<span class="signature">(dateString)</span><span class="type-signature"> &rarr; {Array.&lt;Integer>|null}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Helper function
+Converts a string into the array representation of a date
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dateString</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">MM-DD-YYYY or YYYY-MM-DD Format where "-" can be "-", "/", or " "</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="DateFilter.js.html">DateFilter.js</a>, <a href="DateFilter.js.html#line18">line 18</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+<ul>
+        <li>
+<div class="param-desc">
+    array representationg of date [month, day, year]
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;Integer></span>
+
+
+    </dd>
+</dl>
+</li>
+    
+        <li>
+<div class="param-desc">
+    if invalid input string
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">null</span>
+
+
+    </dd>
+</dl>
+</li>
+    </ul>
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="validateDate"><span class="type-signature"></span>validateDate<span class="signature">(input)</span><span class="type-signature"> &rarr; {Object|Null}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Outwards facing function which converts a given input string into date object format
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>input</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="DateFilter.js.html">DateFilter.js</a>, <a href="DateFilter.js.html#line90">line 90</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+<ul>
+        <li>
+<div class="param-desc">
+    formatted date object
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+</li>
+    
+        <li>
+<div class="param-desc">
+    if input is incorrectly formatted
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Null</span>
+
+
+    </dd>
+</dl>
+</li>
+    </ul>
+
+
+
+
+
+        
     
 
     
@@ -1616,13 +3467,13 @@ loads the current posts from storage and appends them to their post_container
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="JournalPost.html">JournalPost</a></li></ul><h3>Global</h3><ul><li><a href="global.html#create_post">create_post</a></li><li><a href="global.html#delete_all_posts">delete_all_posts</a></li><li><a href="global.html#delete_post">delete_post</a></li><li><a href="global.html#display_posts">display_posts</a></li><li><a href="global.html#edit_post">edit_post</a></li><li><a href="global.html#filter_posts">filter_posts</a></li><li><a href="global.html#get_new_post_id">get_new_post_id</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#load_posts">load_posts</a></li><li><a href="global.html#refresh_posts">refresh_posts</a></li><li><a href="global.html#store_posts">store_posts</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="JournalPost.html">JournalPost</a></li><li><a href="Popup.html">Popup</a></li></ul><h3>Global</h3><ul><li><a href="global.html#arrToDateObj">arrToDateObj</a></li><li><a href="global.html#create_post">create_post</a></li><li><a href="global.html#delete_post">delete_post</a></li><li><a href="global.html#display_posts">display_posts</a></li><li><a href="global.html#edit_post">edit_post</a></li><li><a href="global.html#filter_post_array_by_date">filter_post_array_by_date</a></li><li><a href="global.html#filter_posts">filter_posts</a></li><li><a href="global.html#get_new_post_id">get_new_post_id</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#isEqualTo">isEqualTo</a></li><li><a href="global.html#isGreaterThan">isGreaterThan</a></li><li><a href="global.html#isGreaterThanEqualTo">isGreaterThanEqualTo</a></li><li><a href="global.html#isLessThan">isLessThan</a></li><li><a href="global.html#isLessThanEqualTo">isLessThanEqualTo</a></li><li><a href="global.html#isValidDateArray">isValidDateArray</a></li><li><a href="global.html#load_posts">load_posts</a></li><li><a href="global.html#refresh_posts">refresh_posts</a></li><li><a href="global.html#select_label">select_label</a></li><li><a href="global.html#store_posts">store_posts</a></li><li><a href="global.html#stringToDateArray">stringToDateArray</a></li><li><a href="global.html#validateDate">validateDate</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Fri Nov 18 2022 15:38:26 GMT-0800 (Pacific Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Sun Dec 04 2022 21:34:36 GMT-0800 (Pacific Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
