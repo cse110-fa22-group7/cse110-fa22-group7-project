@@ -3,7 +3,10 @@
 [View Project Here](https://cse110-fa22-group7.github.io/cse110-fa22-group7-project/source/main.html)
 
 [meet the team](admin/team.md)
+## What is MyJournal?
+MyJournal is a personalalized social media app where the users can post for themselves. The purpose of MyJournal is to allow users to truly express themselves without having to worry about what others think. MyJournal is just like a social media where a user can post how they're feeling and any text; the difference is that there are no friends, no seeing each other's posts, and the user's posts are only visible to themselves.  
 
+To make MyJournal more personalized users create their own posts which each have an emotion associated with them. The user is then able to view just posts from a certain emotion or all posts at once. The user can also view posts from a certain date. 
 ## Dev Instructions
 
 ### 1. Branch from main
