@@ -31,4 +31,4 @@ jobs:
     - name: run Jest/Pupetter Tests (unit and end-to-end)
       run: npm run test
     - name: check Jest test coverage
-      run: npm run test --coverage
+      run: npm run test -- --coverage
