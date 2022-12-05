@@ -59,6 +59,47 @@ describe("Test Post Functionality", () => {
     expect(posts.length).toBe(5);
   });
 
+  it("Check cancel functionality", async () => {
+      // clicks the edit button
+    let post = await page.$("journal-post");
+    let shadow = await post.getProperty("shadowRoot");
+    let button = await shadow.$("#edit_button");
+    await button.click();
+
+    let popup = await page.$("popup-dialog");
+    let shadowPop = await popup.getProperty("shadowRoot");
+    await shadowPop.waitForSelector("h1");
+    let edit_post_header = await shadowPop.$("h1");
+    let inner_text = await edit_post_header.getProperty("innerText");
+    let text = await inner_text.jsonValue();
+    //checks to see if popup is the edit post popup
+    expect(text).toBe("Edit Post");
+    await shadowPop.waitForSelector("textarea");
+    let textBox = await shadowPop.$("textarea");
+    await page.keyboard.type("This is an edited post. ");
+    let textBox_inner_text = await textBox.getProperty("value");
+    let textBox_text = await textBox_inner_text.jsonValue();
+    //checks to see if text is changed in the textbox of edit post popup
+    expect(textBox_text).toBe("This is an edited post. This is some random text lorem ipsum");
+    console.log(textBox_text);
+    let noButton = await shadowPop.$("#no-button");
+    await noButton.click();
+
+    let cancelPop = await page.$("popup-dialog");
+    cancelPop = await cancelPop.getProperty("shadowRoot");
+    let yes = await cancelPop.$("#yes-button");
+    await yes.click();
+
+    let new_post = await page.$("journal-post");
+    let new_shadow = await new_post.getProperty("shadowRoot");
+    let new_post_textBox = await new_shadow.$(".post_text");
+    let new_post_textBox_inner_text = await new_post_textBox.getProperty("innerText");
+    let new_post_textBox_text = await new_post_textBox_inner_text.jsonValue();
+    //checks to see if post card now has edited content on it
+    expect(new_post_textBox_text).toBe("This is some random text lorem ipsum");
+    console.log(new_post_textBox_text);
+  });
+
   it("Check that popup appears after clicking delete button", async () => {
     let journalPost = await page.$("journal-post");
     let shadow = await journalPost.getProperty("shadowRoot");
