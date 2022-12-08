@@ -15,6 +15,9 @@ Key Features of our website include:
 - Filtering Posts by Date Created
 
 MyJournal can be viewed and used here: [MyJournal](https://cse110-fa22-group7.github.io/cse110-fa22-group7-project/source/main.html)
+
+Documentation can be viewed and used here: [JSDcos](https://cse110-fa22-group7.github.io/cse110-fa22-group7-project/docs/index.html)
+
 ## Dev Instructions
 
 ### 1. Branch from main
