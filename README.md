@@ -1,7 +1,7 @@
 # cse110-fa22-group7-project
 
 ## Meet the Team
-Our team can be viewed here: [Group 7](admin/team.md)
+Our team can be seen here: [Group 7](admin/team.md)
 ## What is MyJournal?
 MyJournal is a personalalized social media app where the users can post for themselves. The purpose of MyJournal is to allow users to truly express themselves without having to worry about what others think. MyJournal is just like a social media where a user can post how they're feeling and any text; the difference is that there are no friends, no seeing each other's posts, and the user's posts are only visible to themselves.  
 
